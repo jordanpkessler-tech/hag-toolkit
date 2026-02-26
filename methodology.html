@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Methodology | HaG Toolkit</title>
+
+  <!-- Use your global site stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Methodology-only styles (accordion). Uses your existing CSS variables. -->
+  <style>
+    .methodology-controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin: 12px 0 14px;
+    }
+
+    .methodology-btn{
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .methodology-btn:hover{ background: rgba(255,255,255,0.04); }
+    .methodology-btn:focus{ outline: 2px solid rgba(59,130,246,0.55); outline-offset: 2px; }
+
+    .methodology-accordion{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top: 10px;
+    }
+
+    .methodology-accordion details{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: clip;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .methodology-accordion summary{
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      user-select:none;
+    }
+    .methodology-accordion summary::-webkit-details-marker{ display:none; }
+
+    .sum-left{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:0;
+    }
+
+    .sum-title{
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .sum-desc{
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 760px;
+    }
+
+    .chev{
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      transition: transform 140ms ease;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    details[open] .chev{
+      transform: rotate(180deg);
+      color: var(--text);
+    }
+
+    .content{
+      padding: 0 14px 14px;
+      border-top: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .content p{ margin: 10px 0; }
+    .content ul{ margin: 10px 0 10px 18px; }
+    .content li{ margin: 6px 0; }
+
+    .pill-inline{
+      display:inline-block;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      margin-right: 8px;
+      margin-top: 6px;
+    }
+
+    .callout{
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .content code{
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      color: var(--text);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Shared site header (matches your other pages) -->
+  <header class="header">
+    <div class="wrap">
+      <div class="topline">
+        <div class="brand">HaG Toolkit</div>
+        <div class="stats">
+          <div class="pill" id="hdrBudget">Budget: —</div>
+          <div class="pill" id="hdrSlots">Slots: —</div>
+        </div>
+      </div>
+
+      <nav class="navrow">
+        <a href="index.html" data-tab="index.html">Dashboard</a>
+        <a href="auction.html" data-tab="auction.html">Auction Board</a>
+        <a href="strategy.html" data-tab="strategy.html">Strategy</a>
+        <a href="roster.html" data-tab="roster.html">Roster</a>
+        <a href="projections.html" data-tab="projections.html">Projections</a>
+        <a href="methodology.html" data-tab="methodology.html">Methodology</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>Methodology</h1>
+      <p class="muted">How HaG Toolkit turns projections into auction guidance, and what the warnings mean.</p>
+
+      <div class="methodology-controls">
+        <button class="methodology-btn" id="expandAll" type="button">Expand all</button>
+        <button class="methodology-btn" id="collapseAll" type="button">Collapse all</button>
+      </div>
+
+      <div class="methodology-accordion" id="accordion">
+
+        
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Brief How-To</div>
+              <div class="sum-desc">Configure your league, set strategy, and plan spending.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>1. Enter League Settings</p>
+<p>Start on the <strong>Dashboard</strong> and input:</p>
+<ul>
+<li>Total auction budget</li>
+<li>Number of hitter slots</li>
+<li>Number of pitcher slots</li>
+</ul>
+<p>These inputs determine how projection totals convert into dollar values.</p>
+<hr />
+<p>2. Add Players Under Contract</p>
+<p>Enter players already on your roster.</p>
+<p>Their salaries are subtracted from your available budget, and spending distributions update accordingly.</p>
+<p>This ensures valuations reflect your true remaining flexibility.</p>
+<hr />
+<p>3. Set Strategy Weights</p>
+<p>Adjust category weights and roster preferences to reflect how you intend to build.</p>
+<p>When strategy settings change:</p>
+<ul>
+<li><strong>Adj recalculates</strong></li>
+<li><strong>Delta recalculates</strong></li>
+</ul>
+<p>Adj reflects what a player is worth under your build.</p>
+<hr />
+<p>4. Choose a Baseline Mode</p>
+<p>On the Auction Board, select:</p>
+<ul>
+<li><strong>Proj Anchor</strong> → evaluate strictly on projected production</li>
+<li><strong>Market Estimate</strong> → evaluate relative to expected auction pricing</li>
+</ul>
+<p>Switching baseline mode changes:</p>
+<ul>
+<li>The baseline Value</li>
+<li>Adj (which recalculates from that baseline)</li>
+<li>Delta</li>
+</ul>
+<hr />
+<p>Intended Use</p>
+<p>The Toolkit is best used for <strong>pre-auction planning and valuation reference</strong>. It provides structured price anchors that should be adapted as the auction unfolds.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Model Architecture</div>
+              <div class="sum-desc">Baseline Value → Strategy Adjustment → Delta.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>The HaG Toolkit separates valuation into three layers:</p>
+<p><strong>Baseline Value → Strategy Adjustment → Delta</strong></p>
+<p>This structure keeps projection, market psychology, and strategy independent.</p>
+<hr />
+<p>Baseline Value</p>
+<p>Baseline Value is the starting dollar amount for a player.</p>
+<p>It depends on the selected <strong>Value Mode</strong>:</p>
+<ul>
+<li><strong>Proj Anchor</strong> – projection-based valuation</li>
+<li><strong>Market Estimate</strong> – projection adjusted by structured flag modifiers</li>
+</ul>
+<p>Only one baseline is active at a time. It represents the neutral starting point before strategy is applied.</p>
+<hr />
+<p>Strategy-Adjusted Value (Adj)</p>
+<p>Adj is the output of the strategy engine.</p>
+<p>It recalculates dynamically from the selected Baseline Value and responds to:</p>
+<ul>
+<li>Category weights</li>
+<li>Budget structure</li>
+<li>Roster slot allocation</li>
+<li>Strategic emphasis</li>
+</ul>
+<p>Conceptually:</p>
+<p>Adj = StrategyAdjust(Baseline Value)</p>
+<p>Adj reflects what a player should be worth under your specific build.</p>
+<hr />
+<p>Delta</p>
+<p>Delta measures the impact of strategy:</p>
+<p>Delta = Adj − Baseline Value</p>
+<ul>
+<li>Positive → strategy boosts the player</li>
+<li>Negative → strategy suppresses the player</li>
+<li>Zero → neutral fit</li>
+</ul>
+<p>Because Adj recalculates from the active baseline, Delta recalculates when Value Mode changes.</p>
+<hr />
+<p>Design Principle</p>
+<p>Projection (talent), market modeling (flags), and strategy (Adj) are intentionally separated. This allows users to evaluate players on production, anticipate pricing behavior, or align value to build preference—without merging those forces into one opaque number.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Baseline Modes</div>
+              <div class="sum-desc">Proj Anchor vs Market Estimate and why toggling matters.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>The Toolkit allows you to select the starting point for valuation. This choice determines the baseline used by the strategy engine.</p>
+<p>Proj Anchor</p>
+<p>Proj Anchor represents projection-based value derived from expected statistical output.</p>
+<p>Use this mode when you want to evaluate players strictly on projected production, independent of draft-room behavior.</p>
+<p>This is the cleanest talent-based lens.</p>
+<hr />
+<p>Market Estimate</p>
+<p>Market Estimate adjusts projection value using structured flag modifiers designed to approximate expected auction pricing.</p>
+<p>Use this mode when you want to evaluate players relative to likely room behavior and historical pricing patterns.</p>
+<p>This lens incorporates market psychology.</p>
+<hr />
+<p>Why It Matters</p>
+<p>The selected baseline becomes the input for the strategy engine:</p>
+<ul>
+<li>Adj recalculates from the chosen baseline</li>
+<li>Delta recalculates accordingly</li>
+</ul>
+<p>Toggling between modes allows you to compare:</p>
+<ul>
+<li>Pure talent value</li>
+<li>Market-relative pricing value</li>
+</ul>
+<p>without changing your underlying strategy preferences.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">How Values Are Calculated</div>
+              <div class="sum-desc">Eligibility cutoffs, z-scores, and budget scaling.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>Player values begin with projections, standardized using z-scores, then converted into auction dollars using league budget and roster-slot assumptions.</p>
+<hr />
+<p>Player Pool and Cutoffs</p>
+<p>League means and standard deviations are calculated using only draft-relevant players:</p>
+<ul>
+<li><strong>Hitters:</strong> 200+ PA</li>
+<li><strong>Starters:</strong> 120+ IP</li>
+<li><strong>Relievers:</strong> 35+ IP</li>
+</ul>
+<p>These thresholds determine who contributes to league averages. Players below the thresholds can still appear in the dataset, but their z-scores are computed against the established pool baselines.</p>
+<hr />
+<p>Total League Budget and Allocation</p>
+<p>Total league spending is modeled as:</p>
+<ul>
+<li><strong>14 teams × $300 = $4200</strong></li>
+</ul>
+<p>Budget is split across role groups to reflect league spending patterns:</p>
+<ul>
+<li><strong>Hitters:</strong> $2730 (65%)</li>
+<li><strong>Starters:</strong> $870 (21%)</li>
+<li><strong>Relievers:</strong> $600 (14%)</li>
+</ul>
+<p>Each group is valued independently, then scaled to its share of the budget.</p>
+<hr />
+<p>Z-Score Framework</p>
+<p>For each category:</p>
+<p>Z = (Player Stat − League Mean) / Standard Deviation</p>
+<p>Category z-scores are combined using weighted sums (SumProduct) to create a total value score for each player group.</p>
+<hr />
+<p>Hitters</p>
+<p>Hitters use weighted z-scores with a <strong>positive-z only</strong> conversion to dollars:</p>
+<ul>
+<li>Only players with a positive total hitter score receive auction dollars.</li>
+<li>Players above 200 PA can still be <strong>replacement-level ($0)</strong> if their total score is not positive.</li>
+</ul>
+<p>Dollar scaling:</p>
+<ul>
+<li>Compute a multiplier: <strong>$2730 / Sum(positive hitter totals)</strong></li>
+<li>Player value: <strong>Hitter Total × multiplier</strong>, then rounded</li>
+</ul>
+<p>Hitter category weights reflect the league’s power-advantaged format:</p>
+<ul>
+<li>AVG (0.5), OPS (1.75), TB (1.25), HR (1.25), RBI (1.1), R (1.0), SB (0.35)</li>
+</ul>
+<hr />
+<p>Starters</p>
+<p>Starters (120+ IP) are valued using weighted totals that can include negative contributions during scaling, then converted into dollars from the starter budget pool.</p>
+<ul>
+<li>Starter budget pool: <strong>$870</strong></li>
+<li>Values are produced from weighted totals, scaled into dollars</li>
+<li><strong>Minimum starter anchor is $1</strong> for pitchers above 120 IP</li>
+</ul>
+<p>Starter category weights emphasize pitcher skill over raw volume:</p>
+<ul>
+<li>ERA (1.5), WHIP (1.5), IP (0.1), QS (1.0), K (1.0)</li>
+</ul>
+<p>This weighting intentionally prioritizes stable skill indicators and reduces reliance on innings volume, which is more volatile in projection systems.</p>
+<hr />
+<p>Relievers</p>
+<p>Relievers (35+ IP) use a positive-z conversion similar to hitters, but are also role-adjusted:</p>
+<ul>
+<li>Values are computed from positive reliever totals and scaled into the <strong>$600</strong> reliever budget pool.</li>
+<li>Relievers are treated differently depending on closer vs non-closer usage.</li>
+<li><strong>Non-closer relievers are capped at $5.</strong></li>
+<li>Any dollars removed by the cap are redistributed to closers.</li>
+</ul>
+<p>Reliever weighting emphasizes <strong>Holds</strong> most heavily for non-closers, while closer weighting emphasizes <strong>Saves</strong> most heavily.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Strategy Adjustment Engine</div>
+              <div class="sum-desc">How strategy weights modify baseline into Adj.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>The Strategy Adjustment Engine converts baseline value into a build-specific valuation.</p>
+<p>It operates after projection and market modeling and is independent of how the baseline was derived.</p>
+<hr />
+<p>Baseline Input</p>
+<p>The engine begins with the selected Baseline Value:</p>
+<ul>
+<li><strong>Proj Anchor</strong>, or</li>
+<li><strong>Market Estimate</strong></li>
+</ul>
+<p>Only one baseline is active at a time.</p>
+<hr />
+<p>Strategy Modifiers</p>
+<p>Adj is calculated by applying strategic emphasis to the baseline through:</p>
+<ul>
+<li>Category weight preferences</li>
+<li>Budget allocation assumptions</li>
+<li>Roster slot distribution</li>
+<li>Build priorities (e.g., pitching depth, power focus)</li>
+</ul>
+<p>Conceptually:</p>
+<p>Adj = StrategyAdjust(Baseline Value)</p>
+<p>Strategy adjustments can increase or decrease a player’s value depending on how their statistical profile aligns with the selected build.</p>
+<hr />
+<p>Dynamic Recalculation</p>
+<p>Adj recalculates whenever:</p>
+<ul>
+<li>Strategy weights change</li>
+<li>League budget settings change</li>
+<li>Baseline mode changes</li>
+</ul>
+<p>This ensures that valuation remains aligned with both roster construction and chosen valuation lens.</p>
+<hr />
+<p>Purpose</p>
+<p>The Strategy Adjustment Engine answers:</p>
+<p>“What should this player be worth under my specific roster construction goals?”</p>
+<p>It does not alter projections or market modeling.<br />
+It modifies value only to reflect strategic fit.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Delta Explanation</div>
+              <div class="sum-desc">What Delta means and how it changes.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>Delta measures how much your strategy changes a player’s value relative to the selected baseline.</p>
+<p>It is always defined as:</p>
+<h2>Delta = Adj − Baseline Value</h2>
+<p>What Delta Represents</p>
+<ul>
+<li><strong>Positive Delta</strong> → Your strategy increases the player’s value.</li>
+<li><strong>Negative Delta</strong> → Your strategy suppresses the player’s value.</li>
+<li><strong>Zero Delta</strong> → Neutral fit under current build.</li>
+</ul>
+<p>Delta reflects <strong>strategic premium</strong>, not projection accuracy or market inefficiency.</p>
+<hr />
+<p>Why Delta Changes</p>
+<p>Because Adj is calculated from the active Baseline Value:</p>
+<ul>
+<li>Changing strategy weights changes Delta.</li>
+<li>Changing league settings changes Delta.</li>
+<li>Toggling Baseline Mode changes Delta.</li>
+</ul>
+<p>Delta always measures the difference between strategy-adjusted value and the selected starting lens.</p>
+<hr />
+<p>What Delta Is Not</p>
+<p>Delta does not measure:</p>
+<ul>
+<li>Projection vs. market discrepancy</li>
+<li>Draft inflation</li>
+<li>Player quality in isolation</li>
+</ul>
+<p>It strictly measures alignment between a player’s statistical profile and your roster construction preferences.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Flag Framework</div>
+              <div class="sum-desc">What flags mean and when they change dollars.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>Flags are structured modifiers designed to approximate market behavior and highlight contextual risk.</p>
+<p>They influence <strong>Market Estimate</strong>, not projection or strategy logic.</p>
+<p>If a flag includes a visible severity level (e.g., Minor, Moderate, Major), it applies a percentage adjustment to value.</p>
+<p>If no severity level is shown, the flag functions as an informational warning only and does <strong>not</strong> modify value.</p>
+<p>Conceptually:</p>
+<p>Market Estimate = Proj Anchor × (1 ± Flag Adjustments)</p>
+<p>Flags never alter:</p>
+<ul>
+<li>Proj Anchor</li>
+<li>Adj</li>
+<li>Delta</li>
+</ul>
+<p>They only shape Market Estimate.</p>
+<hr />
+<p>A. Market Behavior Flags</p>
+<p>These reflect how draft rooms historically price certain player profiles.</p>
+<p><strong>Market Overpay</strong><br />
+Applied when historical behavior suggests inflation beyond projection value.</p>
+<p><strong>Market Undershoot / Undershoot</strong><br />
+Applied when players are consistently priced below projection value.</p>
+<p><strong>Overpay / Underpay</strong><br />
+Signals structural pricing bias relative to baseline value.</p>
+<hr />
+<p>B. Projection Dynamics Flags</p>
+<p>These address mismatches between projection systems and observed skill trends.</p>
+<p><strong>Projection Premium</strong><br />
+Upside not fully captured by projection systems.</p>
+<p><strong>Projection Lag</strong><br />
+Projection systems trailing recent skill growth.</p>
+<p><strong>Ceiling</strong><br />
+High-upside player with volatile range of outcomes.</p>
+<p><strong>False Bounceback</strong><br />
+Minor statistical improvement mistaken for full recovery.</p>
+<p><strong>Bounceback</strong><br />
+Projection below established performance baseline.</p>
+<hr />
+<p>C. Injury &amp; Health Flags</p>
+<p>These account for distortion caused by health-related volatility.</p>
+<p><strong>Injury Distortion (+)</strong><br />
+Recent injury artificially suppressed prior production.</p>
+<p><strong>Injury Distortion (−)</strong><br />
+Partial recovery inflated perceived rebound.</p>
+<p><strong>Injury Risk</strong><br />
+Elevated probability of missed time based on profile or history.</p>
+<hr />
+<p>D. Role &amp; Usage Flags</p>
+<p>These reflect structural opportunity changes.</p>
+<p><strong>Role Change</strong><br />
+Material shift in usage, lineup slot, rotation role, or leverage.</p>
+<p><strong>Small Sample Breakout</strong><br />
+Projection spike driven by limited sample performance.</p>
+<hr />
+<p>E. Structural Value Flags</p>
+<p>These address pool-wide or archetype-based valuation distortions.</p>
+<p><strong>Replacement-Level Illusion</strong><br />
+Category production appears strong but is widely replaceable.</p>
+<p><strong>Aging Cliff Risk</strong><br />
+Player entering historical performance decline window.</p>
+<p><strong>Contract Adjustment Required</strong><br />
+Valuation requires adjustment relative to contract inflation structure.</p>
+<hr />
+<p>F. Reliever-Specific Context</p>
+<p>Some reliever flags reflect role clarity or leverage uncertainty, particularly when distinguishing between closers and non-closers. These may influence Market Estimate but do not alter projection or strategy logic.</p>
+<hr />
+<p>Informational Flags</p>
+<p>If a flag appears without a severity level:</p>
+<ul>
+<li>It does not modify value.</li>
+<li>It serves as a contextual warning only.</li>
+</ul>
+<p>This allows managers to see structural risk or opportunity without automatically adjusting valuation.</p>
+<hr />
+<p>Design Principle</p>
+<p>Flags model pricing behavior and contextual uncertainty.<br />
+They do not override projection or strategy.<br />
+They provide an additional lens for anticipating auction dynamics.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Interpretation Guide</div>
+              <div class="sum-desc">How to read Value, Adj, Delta, and Flags together.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>The Auction Board provides multiple valuation lenses. Understanding how they interact allows you to prioritize targets and identify risk.</p>
+<hr />
+<p>Reading the Core Columns</p>
+<p><strong>Value</strong><br />
+Your selected baseline (Proj Anchor or Market Estimate).</p>
+<p><strong>Adj</strong><br />
+What the player is worth under your strategy.</p>
+<p><strong>Delta</strong><br />
+The strategic premium:<br />
+Delta = Adj − Value</p>
+<hr />
+<p>Strategic Fit Signals</p>
+<p><strong>High Positive Delta</strong><br />
+Your strategy favors this player’s statistical profile.<br />
+These are strong structural fits under your build.</p>
+<p><strong>Large Negative Delta</strong><br />
+The player does not align with your current strategy emphasis.</p>
+<p><strong>Delta Near Zero</strong><br />
+Neutral fit — valuation driven primarily by baseline lens.</p>
+<hr />
+<p>Market Context Signals</p>
+<p>When using Market Estimate as your baseline:</p>
+<p><strong>Adj &gt; Market Estimate</strong><br />
+Your strategy suggests the player is undervalued relative to expected room behavior.</p>
+<p><strong>Adj &lt; Market Estimate</strong><br />
+Your strategy suggests the player may not justify anticipated market pricing.</p>
+<p>When using Proj Anchor as your baseline:</p>
+<ul>
+<li>Compare Market Estimate separately to gauge potential inflation or discount.</li>
+</ul>
+<hr />
+<p>Combined Signals</p>
+<p>Some useful combinations:</p>
+<p><strong>High Delta + Modest Market Estimate</strong><br />
+Strong build fit without obvious inflation risk.</p>
+<p><strong>Low Delta + High Market Estimate</strong><br />
+Potential overpay under your build.</p>
+<p><strong>Positive Delta + Market Undershoot Flag</strong><br />
+Possible structural value opportunity.</p>
+<p><strong>Negative Delta + Overpay Flag</strong><br />
+High risk of inefficient allocation.</p>
+<hr />
+<p>Practical Use</p>
+<p>Use the board to:</p>
+<ul>
+<li>Identify priority targets that fit your strategy</li>
+<li>Anticipate market pressure on specific player types</li>
+<li>Stress-test roster construction assumptions</li>
+<li>Refine allocation before entering the draft</li>
+</ul>
+<p>The Toolkit is a structured valuation reference — not an automated bidding system. Final decisions should adapt to auction flow and room dynamics.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Limitations</div>
+              <div class="sum-desc">Where the model is weakest and why.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>No valuation model eliminates uncertainty. The HaG Toolkit is designed to structure decision-making, not remove volatility.</p>
+<hr />
+<p>Projection Dependency</p>
+<p>All baseline values originate from statistical projections.</p>
+<p>If projections misestimate playing time, performance, or role, valuation will reflect those errors. The model assumes projections are directionally sound but acknowledges inherent uncertainty.</p>
+<hr />
+<p>Distribution Assumptions</p>
+<p>Z-scores are calculated using eligible player pools and assume reasonably stable statistical distributions.</p>
+<p>Outliers, sudden role changes, or extreme variance seasons can distort relative value calculations.</p>
+<hr />
+<p>Budget Allocation Assumptions</p>
+<p>Dollar conversion depends on predefined budget splits:</p>
+<ul>
+<li>65% Hitters</li>
+<li>21% Starters</li>
+<li>14% Relievers</li>
+</ul>
+<p>If league spending patterns diverge materially from these assumptions, auction pricing may not align perfectly with model output.</p>
+<hr />
+<p>Role Volatility</p>
+<p>Reliever value is particularly sensitive to role clarity. Save and hold distributions can change rapidly, impacting realized value beyond projection stability.</p>
+<hr />
+<p>Strategy Sensitivity</p>
+<p>Adj and Delta depend entirely on user-defined weights.</p>
+<p>Poor calibration of strategy weights can distort valuation signals. The model reflects your build — it does not validate whether that build is optimal.</p>
+<hr />
+<p>Market Modeling Is Approximate</p>
+<p>Flags are structured approximations of auction psychology and pricing patterns. They improve contextual awareness but cannot perfectly predict draft room behavior.</p>
+<hr />
+<p>Not a Live Auction Automation Tool</p>
+<p>The Toolkit is intended for planning and valuation reference.<br />
+Auction rooms are dynamic and adaptive. Final bidding decisions should reflect room flow, roster composition, and real-time information.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            <div class="sum-left">
+              <div class="sum-title">Ongoing Refinement</div>
+              <div class="sum-desc">How the model evolves over time.</div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
+          <div class="content">
+<p>The HaG Toolkit is an evolving valuation system.</p>
+<p>Projection inputs, market behavior, and league dynamics change over time. Flags, weighting structures, and budget allocations are periodically reviewed and adjusted to reflect:</p>
+<ul>
+<li>Observed auction pricing trends</li>
+<li>Projection system bias patterns</li>
+<li>Category scarcity shifts</li>
+<li>Role volatility and usage evolution</li>
+</ul>
+<p>The goal is not static precision, but disciplined improvement.</p>
+<p>As more draft data and season outcomes accumulate, refinements are made to better align projection, market modeling, and strategic valuation.</p>
+<hr />
+<p>Closing Note</p>
+<p>The Toolkit is built around separation of forces:</p>
+<ul>
+<li>Talent (Projection)</li>
+<li>Market Psychology (Flags)</li>
+<li>Strategy (Adj)</li>
+</ul>
+<p>Keeping these layers independent allows users to make clearer, more disciplined decisions in a volatile auction environment.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+  
+    <section id="legends" class="card" style="margin-top:24px;">
+      <h2>Legends & Column Definitions</h2>
+
+      <div style="margin-top:10px; line-height:1.65;">
+        <div><strong>Val</strong> — Baseline value (Proj Anchor or Market Estimate).</div>
+        <div><strong>Δ</strong> — Strategy delta (Adj − Val).</div>
+        <div><strong>Adj</strong> — Strategy-adjusted value.</div>
+        <div><strong>Plan $</strong> — Intended bid target.</div>
+        <div><strong>Hard Max $</strong> — Absolute bid ceiling.</div>
+        <div><strong>Enforce Up To $</strong> — Auto-raise ceiling (optional).</div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <h3 style="margin:0 0 8px 0; font-size:16px;">Delta Color Legend</h3>
+        <div id="deltaLegend">
+          <div class="legendRow">
+            <span class="chip delta-pp">Big + ≥ +8</span>
+            <span class="chip delta-p">+3 to +7.9</span>
+            <span class="chip delta-0">Even −2.9 to +2.9</span>
+            <span class="chip delta-n">−3 to −7.9</span>
+            <span class="chip delta-nn">Big − ≤ −8</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+</main>
+
+  <script type="module">
+    import { setActiveTab, hydrateHeader } from "./js/nav.js";
+
+    // highlight active tab + fill header pills
+    setActiveTab();
+    hydrateHeader();
+
+    // Expand/Collapse All
+    const acc = document.getElementById("accordion");
+    document.getElementById("expandAll").addEventListener("click", () => {
+      acc.querySelectorAll("details").forEach(d => d.open = true);
+    });
+    document.getElementById("collapseAll").addEventListener("click", () => {
+      acc.querySelectorAll("details").forEach(d => d.open = false);
+    });
+  </script>
+</body>
+</html>

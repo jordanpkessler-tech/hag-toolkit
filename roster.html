@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HaG Toolkit — Roster</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="wrap">
+        <div class="topline">
+          <div class="brand">HaG Toolkit</div>
+          <div class="stats">
+            <div class="pill" id="hdrBudget">Budget: —</div>
+            <div class="pill" id="hdrSlots">Slots: —</div>
+          </div>
+        </div>
+
+        <nav class="navrow">
+        <a href="index.html" data-tab="index.html">Dashboard</a>
+        <a href="auction.html" data-tab="auction.html">Auction Board</a>
+        <a href="strategy.html" data-tab="strategy.html">Strategy</a>
+        <a href="roster.html" data-tab="roster.html">Roster</a>
+        <a href="projections.html" data-tab="projections.html">Projections</a>
+        <a href="methodology.html" data-tab="methodology.html">Methodology</a>
+       </nav>
+      </div>
+    </header>
+
+    <main class="wrap wide">
+      <section class="card">
+        <h1>Roster</h1>
+        <!-- Add from CSV -->
+        <section class="panel" style="margin-top:14px;">
+          <strong>Add from CSV</strong>
+
+          <label class="small" for="rosterAddSearch" style="display:block; margin-top:10px;">
+            Search player name
+          </label>
+          <input
+            id="rosterAddSearch"
+            type="text"
+            placeholder="Type a name… (e.g., Soto, Ohtani)"
+            style="width:100%; padding:10px; border-radius:10px;"
+          />
+
+          <div id="rosterAddMeta" class="small" style="margin-top:8px; opacity:.7;"></div>
+
+          <div style="overflow:auto; margin-top:10px;">
+            <table class="table" style="min-width: 900px;">
+              <thead>
+                <tr>
+                  <th style="text-align:left;">Name</th>
+                  <th>Type</th>
+                  <th>Team</th>
+                  <th>POS</th>
+                  <th style="text-align:right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="rosterAddTbody">
+                <tr>
+                  <td colspan="5" class="small" style="padding:12px;">Loading player pool…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Lineup planner -->
+        <section class="panel" style="margin-top:14px;">
+          <strong>Lineup Planner (Fantrax Starting Slots)</strong>
+          <div class="small" style="margin-top:6px; opacity:.75;">
+            Assign starters. Others move to bench.
+          </div>
+
+          <div class="planner-grid" style="margin-top:12px;">
+            <div class="planner-col">
+              <div class="planner-title">Starting Lineup</div>
+              <div class="planner-sub">Hitting</div>
+              <div id="plannerHit"></div>
+              <div class="planner-sub" style="margin-top:10px;">Pitching (9 P slots)</div>
+              <div id="plannerPit"></div>
+            </div>
+
+            <div class="planner-col">
+              <div class="planner-title">Bench</div>
+              <div class="planner-sub">Hitters Bench</div>
+              <div id="benchHit" class="planner-list"></div>
+              <div class="planner-sub" style="margin-top:10px;">Pitchers Bench</div>
+              <div id="benchPit" class="planner-list"></div>
+            </div>
+
+            <div class="planner-col">
+              <div class="planner-title">Minors</div>
+              <div class="small" style="opacity:.75; margin-top:6px;">Players here don’t affect position requirements.</div>
+              <div style="margin-top:10px; display:flex; gap:8px; align-items:center;">
+                <select id="minorsAddSelect" style="flex:1; padding:8px; border-radius:10px;"></select>
+                <button id="minorsAddBtn" type="button">Add</button>
+              </div>
+              <div id="minorsList" class="planner-list" style="margin-top:10px;"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recommended Targets (mini) -->
+        <section class="panel" style="margin-top:14px;">
+          <strong>Recommended Targets (Quick)</strong>
+          <div class="small" style="margin-top:6px; opacity:.8;">
+            Strategy-weighted suggestions that prioritize your currently empty starting slots.
+          </div>
+          <div id="rosterRecMini" style="margin-top:10px;"></div>
+        </section>
+
+        <!-- Your roster -->
+        <section class="panel" style="margin-top:14px;">
+          <strong>Your Roster</strong>
+          <div id="rosterMeta" class="small" style="margin-top:8px; opacity:.7;"></div>
+
+          <div style="overflow:auto; margin-top:10px;">
+            <table class="table" style="min-width: 1100px;">
+              <thead>
+                <tr>
+                  <th style="text-align:left;">Name</th>
+                  <th>Type</th>
+                  <th>Team</th>
+                  <th>POS</th>
+                  <th>Contract?</th>
+                  <th>Year</th>
+                  <th>Total</th>
+                  <th>Price</th>
+                  <th style="text-align:left;">Notation</th>
+                  <th style="text-align:right;">Remove</th>
+                </tr>
+              </thead>
+              <tbody id="rosterTbody">
+                <tr>
+                  <td colspan="10" class="small" style="padding:12px;">No players yet. Add someone above.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./js/roster-page.js"></script>
+
+    <script type="module">
+      import { setActiveTab, hydrateHeader } from "./js/nav.js";
+      setActiveTab();
+      hydrateHeader();
+    </script>
+  </body>
+</html>

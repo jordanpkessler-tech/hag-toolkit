@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HaG Toolkit — Strategy</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="wrap">
+        <div class="topline">
+          <div class="brand">HaG Toolkit</div>
+          <div class="stats">
+            <div class="pill" id="hdrBudget">Budget: —</div>
+            <div class="pill" id="hdrSlots">Slots: —</div>
+          </div>
+        </div>
+
+        <nav class="navrow">
+        <a href="index.html" data-tab="index.html">Dashboard</a>
+        <a href="auction.html" data-tab="auction.html">Auction Board</a>
+        <a href="strategy.html" data-tab="strategy.html">Strategy</a>
+        <a href="roster.html" data-tab="roster.html">Roster</a>
+        <a href="projections.html" data-tab="projections.html">Projections</a>
+        <a href="methodology.html" data-tab="methodology.html">Methodology</a>
+       </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="card">
+        <h1>Strategy Weights</h1>
+        <p class="small">
+          Set your category priorities here. Saving updates <strong>Adj</strong> values on the Auction Board.
+          <strong>Plan $</strong> stays the same unless you change it.
+        </p>
+
+        <div class="grid" style="margin-top: 14px;">
+          <section class="panel" style="grid-column: span 6;">
+            <strong>Hitters</strong>
+            <div id="weightsHit" class="weightsGrid" style="margin-top: 10px;"></div>
+          </section>
+
+          <section class="panel" style="grid-column: span 6;">
+            <strong>Pitchers</strong>
+            <div id="weightsPit" class="weightsGrid" style="margin-top: 10px;"></div>
+          </section>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; align-items:center;">
+          <button id="btnSaveWeights" class="ghost" type="button">Save Strategy</button>
+          <button id="btnResetWeights" class="ghost" type="button">Reset to Defaults</button>
+          <span id="weightsStatus" class="small" style="opacity:.75;"></span>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./js/strategy-page.js"></script>
+    <script type="module">
+      import { setActiveTab, hydrateHeader } from "./js/nav.js";
+      setActiveTab();
+      hydrateHeader();
+    </script>
+  </body>
+</html>

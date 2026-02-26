@@ -1,0 +1,945 @@
+player,type,auction_value_26,auction_price_25,draftable,flags,display_role,auction_price_25_imputed
+Aaron Judge,hit,69.13001863,71,TRUE,,,
+Juan Soto,hit,56.86383929,58,TRUE,,,
+Mookie Betts,hit,54.33364399,53,TRUE,Overpay (Severe),,
+Kyle Tucker,hit,53.11476777,49,TRUE,Overpay (Moderate),,
+Fernando Tatis Jr.,hit,47.10609466,41,TRUE,Overpay (Moderate),,
+Vladimir Guerrero Jr.,hit,46.64090106,50,TRUE,,,
+Freddie Freeman,hit,43.67315857,43,TRUE,Aging Cliff,,
+Austin Riley,hit,42.93558571,45,TRUE,Overpay (Moderate),,
+Rafael Devers,hit,42.84906042,40,TRUE,,,
+Jarren Duran,hit,40.52136752,43,TRUE,Overpay (Moderate),,
+Pete Alonso,hit,39.84324508,37,TRUE,,,
+Matt Olson,hit,39.43269231,38,TRUE,,,
+Francisco Lindor,hit,38.75374762,39,TRUE,,,
+Yoshinobu Yamamoto,pit,38.50543478,25,TRUE,Overpay (Moderate),starter,
+Bo Bichette,hit,36.37307883,22,TRUE,,,
+Trea Turner,hit,35.28435469,35,TRUE,,,
+Kyle Schwarber,hit,35.24341139,32,TRUE,,,
+Yordan Alvarez,hit,33.96079692,49,TRUE,,,
+Mike Trout,hit,32.57246546,22,TRUE,Overpay (Severe),,
+Jazz Chisholm Jr.,hit,32.19396752,31,TRUE,,,
+Manny Machado,hit,31.98254141,32,TRUE,,,
+Corey Seager,hit,31.90974118,35,TRUE,,,
+Framber Valdez,pit,29.69953052,28,TRUE,Overpay (Mild),starter,
+Kodai Senga,pit,28.42344132,9,TRUE,Overpay (Severe),starter,
+Max Fried,pit,25.97562658,24,TRUE,,starter,
+Cole Ragans,pit,25.48692153,30,TRUE,Undershoot (Mild),reliever,
+Ozzie Albies,hit,24.90066656,22,TRUE,Overpay (Moderate),,
+Jose Altuve,hit,23.22291317,23,TRUE,Aging Cliff,,
+Kevin Gausman,pit,22.84268126,22,TRUE,,starter,
+Seiya Suzuki,hit,22.72670415,21,TRUE,,,
+Randy Arozarena,hit,22.07643312,20,TRUE,,,
+Corbin Burnes,pit,21.97009128,33,TRUE,Overpay (Severe),starter,
+Luis Castillo,pit,21.88499238,22,TRUE,,starter,
+Cody Bellinger,hit,21.41592326,19,TRUE,,,
+Alex Bregman,hit,20.37235574,22,TRUE,,,
+Xander Bogaerts,hit,20.27602309,19,TRUE,Overpay (Moderate),,
+Willson Contreras,hit,19.95031205,17,TRUE,,,
+Aaron Nola,pit,19.24540352,27,TRUE,,starter,
+Christian Walker,hit,19.01268217,19,TRUE,Aging Cliff (mild),,
+Bailey Ober,pit,18.91568421,23,TRUE,,starter,
+Christian Yelich,hit,18.47900917,14,TRUE,,,
+Pete Crow-Armstrong,hit,18.27362832,13,TRUE,,,
+Zac Gallen,pit,17.80477223,16,TRUE,Overpay (Moderate),starter,
+Hunter Greene,pit,17.73953249,20,TRUE,,starter,
+Bryan Reynolds,hit,17.55564586,19,TRUE,,,
+Josh Naylor,hit,17.08449333,18,TRUE,,,
+Steven Kwan,hit,16.9495549,17,TRUE,,,
+Bryan Woo,pit,16.92089393,12,TRUE,,starter,
+Joe Ryan,pit,16.71620864,15,TRUE,,starter,
+Marcus Semien,hit,16.64634948,19,TRUE,Aging Cliff,,
+Robbie Ray,pit,16.49141791,9,TRUE,,starter,
+Salvador Perez,hit,15.82417582,16,TRUE,Aging Cliff,,
+Anthony Santander,hit,15.35436383,24,TRUE,,,
+Jake Burger,hit,15.27050847,18,TRUE,,,
+Nick Castellanos,hit,14.88400839,16,TRUE,,,
+Tanner Bibee,pit,14.80479943,15,TRUE,,starter,
+Will Smith,hit,14.49277978,15,TRUE,,,
+Spencer Steer,hit,14.42114675,15,TRUE,,,
+Yainer Diaz,hit,14.27214813,15,TRUE,,,
+Nick Pivetta,pit,13.8592233,12,TRUE,,starter,
+Tyler Glasnow,pit,13.66390641,17,TRUE,,starter,
+Alec Bohm,hit,13.385885,15,TRUE,,,
+Ian Happ,hit,12.6810363,13,TRUE,,,
+Shea Langeliers,hit,12.61187,12,TRUE,,,
+George Kirby,pit,12.53237556,15,TRUE,,starter,
+Jung Hoo Lee,hit,12.10304409,7,TRUE,,,
+Shane Baz,pit,11.96974281,8,TRUE,,starter,
+Brice Turang,hit,11.94028723,10,TRUE,,,
+Ezequiel Tovar,hit,11.6983739,15,TRUE,,,
+Merrill Kelly,pit,11.46454768,6,TRUE,Aging Cliff,starter,
+Yu Darvish,pit,11.44475568,8,TRUE,,reliever,
+Brandon Pfaadt,pit,11.40581717,12,TRUE,,starter,
+Isaac Paredes,hit,11.34181002,12,TRUE,,,
+Freddy Peralta,pit,11.296415,11,TRUE,,starter,
+Paul Goldschmidt,hit,11.04985773,12,TRUE,,,
+Masyn Winn,hit,10.98015267,12,TRUE,,,
+Christopher Morel,hit,10.30399313,12,TRUE,,,
+Mitch Keller,pit,10.01740947,10,TRUE,,starter,
+George Springer,hit,9.897062786,8,TRUE,Aging Cliff|Undershoot (Moderate),,
+Seth Lugo,pit,9.885768501,12,TRUE,Aging Cliff,starter,
+MacKenzie Gore,pit,9.234645275,9,TRUE,,starter,
+Tanner Scott,pit,9.174259681,10,TRUE,Role Change,closer,
+Maikel Garcia,hit,9.065760307,8,TRUE,,,
+Zach Eflin,pit,8.539994685,12,TRUE,,starter,
+Kyle Manzardo,hit,8.385107015,5,TRUE,,,
+Jeffrey Springs,pit,8.344227504,5,TRUE,,starter,
+Josh Jung,hit,8.238045466,6,TRUE,,,
+TJ Friedl,hit,8.155957635,7,TRUE,,,
+J.T. Realmuto,hit,8.111795358,8,TRUE,Aging Cliff,,
+Brandon Nimmo,hit,8.102283903,8,TRUE,,,
+Tyler O'Neill,hit,8.084239746,11,TRUE,,,
+Logan O'Hoppe,hit,8.044149809,9,TRUE,,,
+Brandon Lowe,hit,8.000271407,7,TRUE,,,
+Nolan Arenado,hit,7.953932151,9,TRUE,Aging Cliff,,
+Sean Manaea,pit,7.74582643,9,TRUE,,reliever,
+Gabriel Moreno,hit,7.280972597,7,TRUE,,,
+Gleyber Torres,hit,7.153397303,7,TRUE,,,
+Dansby Swanson,hit,6.400999616,6,TRUE,Replacement Illusion,,
+Jorge Soler,hit,6.348033373,8,TRUE,,,
+Walker Buehler,pit,6.111426188,7,TRUE,,starter,
+Lane Thomas,hit,6.061698271,9,TRUE,,,
+Colt Keith,hit,5.964637422,6,TRUE,,,
+Alec Burleson,hit,5.769064748,6,TRUE,,,
+Ryan McMahon,hit,5.734390993,6,TRUE,,,
+Austin Wells,hit,5.520712989,5,TRUE,,,
+Michael Toglia,hit,5.508970665,7,TRUE,,,
+AJ Smith-Shawver,pit,5.504889976,2,TRUE,,reliever,
+Lars Nootbaar,hit,5.360457123,5,TRUE,,,
+Luis Rengifo,hit,5.340047866,5,TRUE,,,
+Max Muncy,hit,5.339775561,5,TRUE,,,
+Bryson Stott,hit,5.22233127,5,TRUE,,,
+Nico Hoerner,hit,5.210631896,5,TRUE,,,
+Nathaniel Lowe,hit,5.127067769,5,TRUE,,,
+Casey Mize,pit,5.126588235,4,TRUE,,starter,
+JJ Bleday,hit,5.1255256,6,TRUE,,,
+Ceddanne Rafaela,hit,5.102943117,5,TRUE,,,
+Sal Frelick,hit,4.826641651,4,TRUE,,,
+Brendan Donovan,hit,4.664078542,5,TRUE,,,
+Bryan Abreu,pit,4.589828527,5,TRUE,,reliever,
+Grant Holmes,pit,4.582777314,5,TRUE,,starter,
+Luis Severino,pit,4.521641438,5,TRUE,,starter,
+Jonathan India,hit,4.471271788,5,TRUE,Replacement Illusion,,
+Trevor Story,hit,4.291469194,2,TRUE,,,
+Connor Norby,hit,4.282873927,4,TRUE,,,
+Clay Holmes,pit,4.049802096,5,TRUE,,starter,
+Max Muncy,hit,3.997817955,5,TRUE,,,
+Chris Bassitt,pit,3.948679621,4,TRUE,Undershoot (Mild),starter,
+Lucas Erceg,pit,3.932098765,4,TRUE,,reliever,
+Cedric Mullins,hit,3.910925539,4,TRUE,,,
+Lourdes Gurriel Jr.,hit,3.872988576,4,TRUE,,,
+Cade Smith,pit,3.815454545,4,TRUE,,reliever,
+Jason Adam,pit,3.804337794,4,TRUE,,reliever,
+Jake McCarthy,hit,3.745121585,5,TRUE,,,
+Andrew Vaughn,hit,3.686958838,4,TRUE,,,
+Jordan Walker,hit,3.596514745,3,TRUE,,,
+Michael Conforto,hit,3.48455804,4,TRUE,,,
+Christian Encarnacion-Strand,hit,3.399960846,3,TRUE,,,
+Ryan Mountcastle,hit,3.364596903,4,TRUE,,,
+Reese Olson,pit,3.347597476,3,TRUE,,reliever,
+Jordan Romano,pit,3.338213046,2,TRUE,Role Change,closer,
+Erick Fedde,pit,3.263418254,4,TRUE,,starter,
+Brayan Bello,pit,3.120987654,3,TRUE,,starter,
+Griffin Jax,pit,3.065950171,3,TRUE,Role Change,reliever,
+Orion Kerkering,pit,3.045779221,3,TRUE,,reliever,
+Michael Wacha,pit,2.936453577,3,TRUE,Undershoot (Mild),starter,
+Garrett Mitchell,hit,2.905628438,4,TRUE,,,
+Daulton Varsho,hit,2.886129905,3,TRUE,,,
+Ryan Weathers,pit,2.834349453,3,TRUE,,reliever,
+Ben Joyce,pit,2.832496863,5,TRUE,,reliever,
+Joey Ortiz,hit,2.764970734,3,TRUE,,,
+Luke Weaver,pit,2.698208544,3,TRUE,,reliever,
+David Festa,pit,2.649152542,3,TRUE,,reliever,
+Yennier Cano,pit,2.56651719,3,TRUE,,reliever,
+Parker Meadows,hit,2.504573474,3,TRUE,,,
+Gavin Sheets,hit,2.417455896,2,TRUE,,,
+Seth Halvorsen,pit,2.271396056,1,TRUE,,closer,
+Zack Gelof,hit,2.010472405,3,TRUE,,,
+Max Scherzer,pit,1.977637131,2,TRUE,,starter,
+Will Warren,pit,1.929235294,1,TRUE,,starter,
+Jordan Beck,hit,1.847719563,1,TRUE,,,
+Jameson Taillon,pit,1.814296617,2,TRUE,,starter,
+Ryan Jeffers,hit,1.810100735,2,TRUE,,,
+A.J. Puk,pit,1.733776817,3,TRUE,,closer,
+Luis Gil,pit,1.665372671,2,TRUE,,reliever,
+Rhys Hoskins,hit,1.655475522,2,TRUE,,,
+Kirby Yates,pit,1.58237046,2,TRUE,,reliever,
+Jack Leiter,pit,1.576757469,1,TRUE,,starter,
+Matthew Boyd,pit,1.575735294,1,TRUE,Undershoot (Moderate),starter,
+Brooks Lee,hit,1.57266881,1,TRUE,,,
+Edwin Uceta,pit,1.527308838,1,TRUE,,reliever,
+Tyler Fitzgerald,hit,1.510081916,2,TRUE,,,
+Jonathan Aranda,hit,1.470234917,1,TRUE,Undershoot (Moderate),,
+Clarke Schmidt,pit,1.449966711,2,TRUE,,starter,
+Ben Brown,pit,1.44352483,1,TRUE,,reliever,
+Austin Hays,hit,1.392821535,1,TRUE,,,
+Joel Payamps,pit,1.341294783,2,TRUE,,reliever,
+Jeimer Candelario,hit,1.25840552,2,TRUE,,,
+Curtis Mead,hit,1.249894381,1,TRUE,,,
+Andy Pages,hit,1.212793734,1,TRUE,Undershoot (Moderate),,
+Jo Adell,hit,1.207800603,1,TRUE,Undershoot (Moderate),,
+David Peterson,pit,1.186198791,1,TRUE,Undershoot (Mild),starter,
+Jeremiah Estrada,pit,1.177738928,1,TRUE,,reliever,
+Kris Bubic,pit,1.175227273,1,TRUE,,starter,
+Michael Busch,hit,1.128184615,1,TRUE,Undershoot (Severe),,
+Nick Martinez,pit,1.112407211,1,TRUE,Role Change,starter,
+Matt Wallner,hit,1.088292944,1,TRUE,Undershoot (Mild),,
+Spencer Horwitz,hit,1.042941176,1,TRUE,Undershoot (Mild),,
+Wilyer Abreu,hit,1.03670761,1,TRUE,Undershoot (Moderate),,
+Landen Roupp,pit,1.014597902,1,TRUE,,starter,
+Tyler Rogers,pit,1.013050154,1,TRUE,,reliever,
+Hunter Gaddis,pit,1.007048872,1,TRUE,,reliever,
+Joey Loperfido,hit,1.004689175,1,TRUE,Small-Sample,,
+Zebby Matthews,pit,0.972473997,1,TRUE,,starter,
+JoJo Romero,pit,0.9664241746,1,TRUE,,reliever,
+Francisco Alvarez,hit,0.9650179856,1,TRUE,,,
+Camilo Doval,pit,0.9600129793,1,TRUE,Role Change,closer,
+Keegan Akin,pit,0.9585635359,1,TRUE,,reliever,
+Tyler Holton,pit,0.9569978632,1,TRUE,,reliever,
+Jake Irvin,pit,0.8990909091,1,TRUE,Replacement Illusion,starter,
+Porter Hodge,pit,0.8986615679,1,TRUE,,reliever,
+Miles Mikolas,pit,0.8861882716,1,TRUE,,starter,
+Tyler Stephenson,hit,0.8727145759,1,TRUE,,,
+Jacob Young,hit,0.8488720479,1,TRUE,,,
+Ryan Thompson,pit,0.8361814968,1,TRUE,,reliever,
+Blake Treinen,pit,0.8068356375,1,TRUE,,reliever,
+Keibert Ruiz,hit,0.7824250456,1,TRUE,,,
+Frankie Montas,pit,0.7562704471,1,TRUE,,reliever,
+Michael Soroka,pit,0.7409296657,1,TRUE,,starter,
+Luke Raley,hit,0.7310767591,1,TRUE,,,
+Michael Kopech,pit,0.6051034178,1,TRUE,,reliever,
+Bobby Miller,pit,0.5535714286,1,TRUE,,reliever,
+A.J. Minter,pit,,,FALSE,inputted,reliever,4
+Aaron Ashby,pit,,,FALSE,inputted,reliever,0
+Aaron Bummer,pit,,,FALSE,inputted,reliever,1
+Aaron Civale,pit,,,FALSE,inputted,reliever,5
+Aaron Schunk,hit,,,FALSE,inputted,,0
+Abner Uribe,pit,,,FALSE,inputted|Role Change (Mild),reliever,5
+Abraham Toro,hit,,,FALSE,inputted,,0
+Adael Amador,hit,,,FALSE,inputted,,1
+Adam Frazier,hit,,,FALSE,inputted,,0
+Adam Mazur,pit,,,FALSE,inputted,reliever,0
+Addison Barger,hit,,,FALSE,inputted,,8
+Adley Rutschman,hit,,,FALSE,inputted,,15
+Adolis García,hit,,,FALSE,inputted,,14
+Adrian Del Castillo,hit,,,FALSE,inputted,,2
+Adrian Houser,pit,,,FALSE,inputted,starter,5
+Adrian Morejon,pit,,,FALSE,inputted,reliever,2
+Alejandro Kirk,hit,,,FALSE,inputted,,7
+Alek Jacob,pit,,,FALSE,inputted,reliever,0
+Alek Thomas,hit,,,FALSE,inputted,,2
+Alex Call,hit,,,FALSE,inputted,,0
+Alex Jackson,hit,,,FALSE,inputted,,0
+Alex Lange,pit,,,FALSE,inputted,reliever,0
+Alex Verdugo,hit,,,FALSE,inputted,,1
+Alex Vesia,pit,,,FALSE,inputted,reliever,5
+Alexander Canario,hit,,,FALSE,inputted,,0
+Amed Rosario,hit,,,FALSE,inputted,,1
+Andre Pallante,pit,,,FALSE,inputted,starter,7
+Andrés Chaparro,hit,,,FALSE,inputted,,1
+Andrés Giménez,hit,,,FALSE,inputted,,7
+Andrew Abbott,pit,,,FALSE,inputted,starter,13
+Andrew Benintendi,hit,,,FALSE,inputted,,3
+Andrew Chafin,pit,,,FALSE,inputted,reliever,0
+Andrew Kittredge,pit,,,FALSE,inputted,reliever,1
+Andrew Knizner,hit,,,FALSE,inputted,,0
+Andrew McCutchen,hit,,,FALSE,inputted,,1
+Andrew Walters,pit,,,FALSE,inputted,reliever,0
+Andruw Monasterio,hit,,,FALSE,inputted,,0
+Andy Ibáñez,hit,,,FALSE,inputted,,0
+Angel Chivilli,pit,,,FALSE,inputted,reliever,0
+Ángel Martínez,hit,,,FALSE,inputted,,0
+Angel Zerpa,pit,,,FALSE,inputted,reliever,1
+Anthony Banda,pit,,,FALSE,inputted,reliever,1
+Anthony Bender,pit,,,FALSE,inputted,reliever,1
+Anthony Volpe,hit,,,FALSE,inputted,,8
+Antonio Senzatela,pit,,,FALSE,inputted,reliever,0
+Aroldis Chapman,pit,,,FALSE,inputted,closer,16
+Austin Barnes,hit,,,FALSE,inputted,,0
+Austin Hedges,hit,,,FALSE,inputted,,0
+Austin Martin,hit,,,FALSE,inputted,,1
+Austin Slater,hit,,,FALSE,inputted,,0
+Austin Warren,pit,,,FALSE,inputted,reliever,0
+Austin Wynns,hit,,,FALSE,inputted,,0
+Bailey Falter,pit,,,FALSE,inputted,starter,0
+Bailey Horn,pit,,,FALSE,inputted,reliever,0
+Beau Brieske,pit,,,FALSE,inputted,reliever,0
+Ben Casparius,pit,,,FALSE,inputted,reliever,0
+Ben Rice,hit,,,FALSE,inputted,,22
+Ben Rortvedt,hit,,,FALSE,inputted,,0
+Blake Dunn,hit,,,FALSE,inputted,,0
+Blake Perkins,hit,,,FALSE,inputted,,0
+Blake Snell,pit,,,FALSE,inputted,starter,21
+Blaze Alexander,hit,,,FALSE,inputted,,1
+Bo Naylor,hit,,,FALSE,inputted,,3
+Bobby Witt Jr.,hit,,,FALSE,inputted,,42
+Bowden Francis,pit,,,FALSE,inputted,reliever,0
+Brad Keller,pit,,,FALSE,inputted,reliever,4
+Bradley Blalock,pit,,,FALSE,inputted,reliever,0
+Brady Basso,pit,,,FALSE,inputted,reliever,0
+Brady Singer,pit,,,FALSE,inputted,starter,12
+Brandon Eisert,pit,,,FALSE,inputted,reliever,0
+Brandon Lockridge,hit,,,FALSE,inputted,,0
+Brandon Marsh,hit,,,FALSE,inputted,,5
+Brant Hurter,pit,,,FALSE,inputted,reliever,0
+Brayan Rocchio,hit,,,FALSE,inputted,,1
+Brenan Hanifee,pit,,,FALSE,inputted,reliever,0
+Brendan Rodgers,hit,,,FALSE,inputted,,0
+Brendon Little,pit,,,FALSE,inputted,reliever,0
+Brennan Bernardino,pit,,,FALSE,inputted,reliever,0
+Brent Headrick,pit,,,FALSE,inputted,reliever,0
+Brent Rooker,hit,,,FALSE,inputted,,36
+Brent Suter,pit,,,FALSE,inputted,reliever,0
+Brenton Doyle,hit,,,FALSE,inputted,,10
+Brett Baty,hit,,,FALSE,inputted,,4
+Brett Harris,hit,,,FALSE,inputted,,0
+Brett Wisely,hit,,,FALSE,inputted,,0
+Brock Burke,pit,,,FALSE,inputted,reliever,1
+Brock Stewart,pit,,,FALSE,inputted,reliever,0
+Brooks Baldwin,hit,,,FALSE,inputted,,2
+Brooks Raley,pit,,,FALSE,inputted,reliever,1
+Bryan Baker,pit,,,FALSE,inputted,reliever,1
+Bryan De La Cruz,hit,,,FALSE,inputted,,0
+Bryan Hoeing,pit,,,FALSE,inputted,reliever,0
+Bryan Hudson,pit,,,FALSE,inputted,reliever,0
+Bryan King,pit,,,FALSE,inputted,reliever,5
+Bryce Elder,pit,,,FALSE,inputted,starter,0
+Bryce Harper,hit,,,FALSE,inputted,,40
+Bryce Johnson,hit,,,FALSE,inputted,,0
+Bryce Miller,pit,,,FALSE,inputted,reliever,11
+Bryce Teodosio,hit,,,FALSE,inputted,,0
+Buddy Kennedy,hit,,,FALSE,inputted,,0
+Byron Buxton,hit,,,FALSE,inputted,,22
+Cade Povich,pit,,,FALSE,inputted,reliever,0
+Caden Dana,pit,,,FALSE,inputted,reliever,3
+Cal Quantrill,pit,,,FALSE,inputted,reliever,0
+Cal Raleigh,hit,,,FALSE,inputted,,37
+Caleb Ferguson,pit,,,FALSE,inputted,reliever,0
+Caleb Thielbar,pit,,,FALSE,inputted,reliever,3
+Calvin Faucher,pit,,,FALSE,inputted,closer,1
+Carlos Correa,hit,,,FALSE,inputted,,17
+Carlos Narváez,hit,,,FALSE,inputted,,5
+Carlos Rodriguez,pit,,,FALSE,inputted,reliever,0
+Carlos Santana,hit,,,FALSE,inputted,,1
+Carmen Mlodzinski,pit,,,FALSE,inputted,reliever,0
+Carson Kelly,hit,,,FALSE,inputted,,5
+Casey Legumina,pit,,,FALSE,inputted,reliever,0
+Casey Schmitt,hit,,,FALSE,inputted,,2
+Charlie Morton,pit,,,FALSE,inputted,starter,5
+Chas McCormick,hit,,,FALSE,inputted,,0
+Chase Shugart,pit,,,FALSE,inputted,reliever,0
+Chase Silseth,pit,,,FALSE,inputted,reliever,0
+Chayce McDermott,pit,,,FALSE,inputted,reliever,0
+Chris Martin,pit,,,FALSE,inputted,reliever,2
+Chris Paddack,pit,,,FALSE,inputted,starter,2
+Chris Roycroft,pit,,,FALSE,inputted,reliever,0
+Chris Sale,pit,,,FALSE,inputted|Aging Cliff,starter,23
+Chris Taylor,hit,,,FALSE,inputted,,0
+Christian Vázquez,hit,,,FALSE,inputted,,0
+CJ Abrams,hit,,,FALSE,inputted,,20
+Clayton Beeter,pit,,,FALSE,inputted,reliever,2
+Coby Mayo,hit,,,FALSE,inputted,,0
+Cole Sands,pit,,,FALSE,inputted,reliever,3
+Cole Sulser,pit,,,FALSE,inputted,reliever,0
+Cole Winn,pit,,,FALSE,inputted,reliever,0
+Colin Holderman,pit,,,FALSE,inputted,reliever,0
+Colin Poche,pit,,,FALSE,inputted,reliever,0
+Colin Rea,pit,,,FALSE,inputted,starter,0
+Colin Selby,pit,,,FALSE,inputted,reliever,1
+Collin Snider,pit,,,FALSE,inputted,reliever,0
+Colton Cowser,hit,,,FALSE,inputted,,9
+Connor Brogdon,pit,,,FALSE,inputted,reliever,0
+Connor Joe,hit,,,FALSE,inputted,,0
+Connor Wong,hit,,,FALSE,inputted,,0
+Cooper Criswell,pit,,,FALSE,inputted,reliever,0
+Cooper Hummel,hit,,,FALSE,inputted,,0
+Corbin Carroll,hit,,,FALSE,inputted,,39
+Craig Kimbrel,pit,,,FALSE,inputted,reliever,0
+Cristian Javier,pit,,,FALSE,inputted,reliever,11
+Dane Myers,hit,,,FALSE,inputted,,0
+Daniel Lynch IV,pit,,,FALSE,inputted,reliever,0
+Daniel Palencia,pit,,,FALSE,inputted,closer,6
+Daniel Schneemann,hit,,,FALSE,inputted,,0
+Danny Coulombe,pit,,,FALSE,inputted,reliever,0
+Danny Jansen,hit,,,FALSE,inputted,,3
+Danny Young,pit,,,FALSE,inputted,reliever,0
+Darell Hernaiz,hit,,,FALSE,inputted,,0
+DaShawn Keirsey Jr.,hit,,,FALSE,inputted,,0
+David Bednar,pit,,,FALSE,inputted,closer,12
+David Fry,hit,,,FALSE,inputted,,0
+David Hamilton,hit,,,FALSE,inputted,,0
+David Robertson,pit,,,FALSE,inputted,reliever,0
+Davis Martin,pit,,,FALSE,inputted,starter,5
+Davis Schneider,hit,,,FALSE,inputted,,2
+Daz Cameron,hit,,,FALSE,inputted,,0
+Dean Kremer,pit,,,FALSE,inputted|Replacement Illusion,starter,7
+Dennis Santana,pit,,,FALSE,inputted,closer,4
+Derek Hill,hit,,,FALSE,inputted,,0
+Devin Williams,pit,,,FALSE,inputted,closer,14
+Dillon Dingler,hit,,,FALSE,inputted,,5
+DJ LeMahieu,hit,,,FALSE,inputted,,0
+DL Hall,pit,,,FALSE,inputted,reliever,0
+Dominic Canzone,hit,,,FALSE,inputted,,3
+Dominic Fletcher,hit,,,FALSE,inputted,,0
+Dominic Smith,hit,,,FALSE,inputted,,0
+Drew Millas,hit,,,FALSE,inputted,,0
+Drew Rasmussen,pit,,,FALSE,inputted,starter,14
+Drew Waters,hit,,,FALSE,inputted,,0
+Dustin Harris,hit,,,FALSE,inputted,,0
+Dylan Carlson,hit,,,FALSE,inputted,,0
+Dylan Cease,pit,,,FALSE,inputted,starter,22
+Dylan Crews,hit,,,FALSE,inputted,,7
+Dylan Lee,pit,,,FALSE,inputted,reliever,4
+Dylan Moore,hit,,,FALSE,inputted,,0
+Edgardo Henriquez,pit,,,FALSE,inputted,reliever,0
+Edmundo Sosa,hit,,,FALSE,inputted,,0
+Edouard Julien,hit,,,FALSE,inputted,,0
+Eduard Bazardo,pit,,,FALSE,inputted,reliever,2
+Eduardo Rodriguez,pit,,,FALSE,inputted,starter,11
+Edward Cabrera,pit,,,FALSE,inputted,starter,10
+Eli Morgan,pit,,,FALSE,inputted,reliever,0
+Eli White,hit,,,FALSE,inputted,,0
+Elias Díaz,hit,,,FALSE,inputted,,0
+Elly De La Cruz,hit,,,FALSE,inputted,,33
+Emerson Hancock,pit,,,FALSE,inputted,starter,0
+Emmanuel Rivera,hit,,,FALSE,inputted,,0
+Enmanuel Valdéz,hit,,,FALSE,inputted,,0
+Enyel De Los Santos,pit,,,FALSE,inputted,reliever,1
+Eric Haase,hit,,,FALSE,inputted,,0
+Eric Wagaman,hit,,,FALSE,inputted,,0
+Erik Miller,pit,,,FALSE,inputted,reliever,1
+Erik Sabrowski,pit,,,FALSE,inputted,reliever,1
+Ernie Clement,hit,,,FALSE,inputted,,7
+Esteury Ruiz,hit,,,FALSE,inputted,,0
+Ethan Roberts,pit,,,FALSE,inputted,reliever,0
+Eugenio Suárez,hit,,,FALSE,inputted,,26
+Evan Carter,hit,,,FALSE,inputted,,5
+Evan Phillips,pit,,,FALSE,inputted,reliever,1
+Ezequiel Durán,hit,,,FALSE,inputted,,1
+Fernando Cruz,pit,,,FALSE,inputted,reliever,4
+Freddy Fermin,hit,,,FALSE,inputted,,4
+Gabe Speier,pit,,,FALSE,inputted,reliever,3
+Gabriel Arias,hit,,,FALSE,inputted,,1
+Garrett Cleavinger,pit,,,FALSE,inputted,reliever,1
+Garrett Crochet,pit,,,FALSE,inputted,starter,33
+Garrett Hampson,hit,,,FALSE,inputted,,0
+Garrett Whitlock,pit,,,FALSE,inputted,reliever,2
+Gary Sánchez,hit,,,FALSE,inputted,,1
+Gavin Lux,hit,,,FALSE,inputted,,3
+Gavin Williams,pit,,,FALSE,inputted,starter,14
+George Soriano,pit,,,FALSE,inputted,closer,0
+Geraldo Perdomo,hit,,,FALSE,inputted,,25
+Giancarlo Stanton,hit,,,FALSE,inputted|Aging Cliff,,15
+Gio Urshela,hit,,,FALSE,inputted,,0
+Gordon Graceffo,pit,,,FALSE,inputted,closer,0
+Graham Ashcraft,pit,,,FALSE,inputted,reliever,0
+Graham Pauley,hit,,,FALSE,inputted,,4
+Grant Anderson,pit,,,FALSE,inputted,reliever,0
+Grant Holman,pit,,,FALSE,inputted,reliever,0
+Grant McCray,hit,,,FALSE,inputted,,0
+Greg Weissert,pit,,,FALSE,inputted,reliever,3
+Gregory Santos,pit,,,FALSE,inputted,reliever,0
+Gregory Soto,pit,,,FALSE,inputted,reliever,2
+Griffin Canning,pit,,,FALSE,inputted,reliever,5
+Griffin Conine,hit,,,FALSE,inputted,,2
+Gunnar Henderson,hit,,,FALSE,inputted,,39
+Gustavo Campero,hit,,,FALSE,inputted,,0
+Ha-Seong Kim,hit,,,FALSE,inputted,,5
+Harrison Bader,hit,,,FALSE,inputted,,6
+Hayden Birdsong,pit,,,FALSE,inputted,reliever,3
+Hayden Wesneski,pit,,,FALSE,inputted,reliever,0
+Heliot Ramos,hit,,,FALSE,inputted,,13
+Henry Davis,hit,,,FALSE,inputted,,0
+Heston Kjerstad,hit,,,FALSE,inputted,,0
+Hoby Milner,pit,,,FALSE,inputted,reliever,2
+Hogan Harris,pit,,,FALSE,inputted,closer,0
+Hunter Bigge,pit,,,FALSE,inputted,reliever,0
+Hunter Brown,pit,,,FALSE,inputted,starter,22
+Hunter Feduccia,hit,,,FALSE,inputted,,0
+Hunter Goodman,hit,,,FALSE,inputted,,15
+Hunter Harvey,pit,,,FALSE,inputted,reliever,3
+Hunter Renfroe,hit,,,FALSE,inputted,,0
+Hunter Stratton,pit,,,FALSE,inputted,reliever,0
+Hunter Strickland,pit,,,FALSE,inputted,reliever,0
+Hurston Waldrep,pit,,,FALSE,inputted,starter,11
+Ian Hamilton,pit,,,FALSE,inputted,reliever,0
+Ildemaro Vargas,hit,,,FALSE,inputted,,0
+Isaac Collins,hit,,,FALSE,inputted,,3
+Isaac Mattson,pit,,,FALSE,inputted,reliever,1
+Isaiah Campbell,pit,,,FALSE,inputted,reliever,0
+Isiah Kiner-Falefa,hit,,,FALSE,inputted,,0
+Iván Herrera,hit,,,FALSE,inputted,,20
+J.P. Crawford,hit,,,FALSE,inputted|Replacement Illusion,,5
+J.P. France,pit,,,FALSE,inputted,reliever,0
+J.T. Ginn,pit,,,FALSE,inputted,reliever,3
+Jace Jung,hit,,,FALSE,inputted,,0
+Jack Flaherty,pit,,,FALSE,inputted,starter,17
+Jack Kochanowicz,pit,,,FALSE,inputted,starter,0
+Jack Suwinski,hit,,,FALSE,inputted,,1
+Jackson Chourio,hit,,,FALSE,inputted,,26
+Jackson Holliday,hit,,,FALSE,inputted,,13
+Jackson Merrill,hit,,,FALSE,inputted,,28
+Jackson Rutledge,pit,,,FALSE,inputted,reliever,0
+Jacob Amaya,hit,,,FALSE,inputted,,0
+Jacob deGrom,pit,,,FALSE,inputted|Aging Cliff,starter,23
+Jacob Latz,pit,,,FALSE,inputted,reliever,3
+Jacob Lopez,pit,,,FALSE,inputted,starter,6
+Jacob Webb,pit,,,FALSE,inputted,reliever,0
+Jacob Wilson,hit,,,FALSE,inputted,,15
+Jaden Hill,pit,,,FALSE,inputted,reliever,0
+Jahmai Jones,hit,,,FALSE,inputted,,0
+Jake Bauers,hit,,,FALSE,inputted,,4
+Jake Bird,pit,,,FALSE,inputted,reliever,0
+Jake Cronenworth,hit,,,FALSE,inputted|Replacement Illusion,,3
+Jake Fraley,hit,,,FALSE,inputted,,3
+Jake Meyers,hit,,,FALSE,inputted,,2
+Jake Rogers,hit,,,FALSE,inputted,,0
+Jalen Beeks,pit,,,FALSE,inputted,reliever,0
+James McCann,hit,,,FALSE,inputted,,0
+James Outman,hit,,,FALSE,inputted,,0
+James Wood,hit,,,FALSE,inputted,,30
+Janson Junk,pit,,,FALSE,inputted,starter,0
+Jared Koenig,pit,,,FALSE,inputted,reliever,4
+Jared Triolo,hit,,,FALSE,inputted,,2
+Jarred Kelenic,hit,,,FALSE,inputted,,0
+Jasson Domínguez,hit,,,FALSE,inputted,,10
+Javier Assad,pit,,,FALSE,inputted,reliever,0
+Javier Báez,hit,,,FALSE,inputted,,0
+Javier Sanoja,hit,,,FALSE,inputted,,1
+Jeff Hoffman,pit,,,FALSE,inputted,closer,6
+Jeff McNeil,hit,,,FALSE,inputted,,2
+Jerar Encarnación,hit,,,FALSE,inputted,,0
+Jeremy Peña,hit,,,FALSE,inputted,,19
+Jesse Winker,hit,,,FALSE,inputted,,2
+Jesús Sánchez,hit,,,FALSE,inputted,,6
+Jhoan Duran,pit,,,FALSE,inputted,closer,10
+Jhonkensy Noel,hit,,,FALSE,inputted,,0
+Jhonny Pereda,hit,,,FALSE,inputted,,0
+Ji Hwan Bae,hit,,,FALSE,inputted,,0
+Jimmy Herget,pit,,,FALSE,inputted,reliever,1
+Joc Pederson,hit,,,FALSE,inputted,,6
+Joe Boyle,pit,,,FALSE,inputted,reliever,3
+Joe La Sorsa,pit,,,FALSE,inputted,reliever,0
+Joey Bart,hit,,,FALSE,inputted,,3
+Joey Cantillo,pit,,,FALSE,inputted,reliever,8
+Joey Estes,pit,,,FALSE,inputted,reliever,0
+Joey Lucchesi,pit,,,FALSE,inputted,reliever,0
+Joey Wentz,pit,,,FALSE,inputted,reliever,0
+Joey Wiemer,hit,,,FALSE,inputted,,0
+Johan Rojas,hit,,,FALSE,inputted,,0
+John Brebbia,pit,,,FALSE,inputted,reliever,0
+John King,pit,,,FALSE,inputted,reliever,0
+John Schreiber,pit,,,FALSE,inputted,reliever,2
+Johnathan Rodríguez,hit,,,FALSE,inputted,,1
+Jon Berti,hit,,,FALSE,inputted,,0
+Jon Gray,pit,,,FALSE,inputted,reliever,5
+Jonah Bride,hit,,,FALSE,inputted,,0
+Jonah Heim,hit,,,FALSE,inputted,,0
+Jonatan Clase,hit,,,FALSE,inputted,,0
+Jonathan Bowlan,pit,,,FALSE,inputted,reliever,0
+Jonathan Cannon,pit,,,FALSE,inputted,reliever,3
+Jonny DeLuca,hit,,,FALSE,inputted,,1
+Jordan Hicks,pit,,,FALSE,inputted,reliever,1
+Jordan Leasure,pit,,,FALSE,inputted,reliever,2
+Jordan Westburg,hit,,,FALSE,inputted,,20
+Jordan Wicks,pit,,,FALSE,inputted,reliever,1
+Jorge Alcala,pit,,,FALSE,inputted,reliever,0
+Jorge Barrosa,hit,,,FALSE,inputted,,0
+Jorge Mateo,hit,,,FALSE,inputted,,0
+Jorge Polanco,hit,,,FALSE,inputted,,16
+Jose A. Ferrer,pit,,,FALSE,inputted,reliever,4
+José Caballero,hit,,,FALSE,inputted,,0
+José Fermín,hit,,,FALSE,inputted,,0
+Jose Iglesias,hit,,,FALSE,inputted,,0
+José Miranda,hit,,,FALSE,inputted,,0
+Jose Quintana,pit,,,FALSE,inputted,starter,4
+José Ramírez,hit,,,FALSE,inputted,,37
+Jose Siri,hit,,,FALSE,inputted,,0
+José Tena,hit,,,FALSE,inputted,,0
+Jose Trevino,hit,,,FALSE,inputted,,0
+Josh Bell,hit,,,FALSE,inputted,,5
+Josh Hader,pit,,,FALSE,inputted,closer,19
+Josh Lowe,hit,,,FALSE,inputted,,5
+Josh Rojas,hit,,,FALSE,inputted,,0
+Josh Smith,hit,,,FALSE,inputted,,3
+Joshua Palacios,hit,,,FALSE,inputted,,0
+JP Sears,pit,,,FALSE,inputted|Replacement Illusion,starter,5
+Julio Rodríguez,hit,,,FALSE,inputted,,37
+Junior Caminero,hit,,,FALSE,inputted,,38
+Jurickson Profar,hit,,,FALSE,inputted,,14
+Justin Bruihl,pit,,,FALSE,inputted,reliever,0
+Justin Lawrence,pit,,,FALSE,inputted,reliever,1
+Justin Martinez,pit,,,FALSE,inputted,closer,0
+Justin Slaten,pit,,,FALSE,inputted,reliever,1
+Justin Steele,pit,,,FALSE,inputted,reliever,13
+Justin Sterner,pit,,,FALSE,inputted,reliever,2
+Justin Topa,pit,,,FALSE,inputted,reliever,2
+Justin Turner,hit,,,FALSE,inputted,,0
+Justin Verlander,pit,,,FALSE,inputted,starter,10
+Justin Wilson,pit,,,FALSE,inputted,reliever,0
+Justin Wrobleski,pit,,,FALSE,inputted,reliever,0
+Justyn-Henry Malloy,hit,,,FALSE,inputted,,1
+Kai-Wei Teng,pit,,,FALSE,inputted,reliever,0
+Kaleb Ort,pit,,,FALSE,inputted,reliever,1
+Kameron Misner,hit,,,FALSE,inputted,,0
+Ke'Bryan Hayes,hit,,,FALSE,inputted,,2
+Keaton Winn,pit,,,FALSE,inputted,reliever,0
+Keider Montero,pit,,,FALSE,inputted,reliever,0
+Kenley Jansen,pit,,,FALSE,inputted|Role Change (Mild),closer,5
+Kerry Carpenter,hit,,,FALSE,inputted,,16
+Ketel Marte,hit,,,FALSE,inputted,,40
+Kevin Ginkel,pit,,,FALSE,inputted,reliever,2
+Kevin Kelly,pit,,,FALSE,inputted,reliever,0
+Kevin Newman,hit,,,FALSE,inputted,,0
+Kiké Hernández,hit,,,FALSE,inputted,,0
+Kody Clemens,hit,,,FALSE,inputted,,2
+Kody Funderburk,pit,,,FALSE,inputted,reliever,0
+Kolby Allard,pit,,,FALSE,inputted,reliever,0
+Korey Lee,hit,,,FALSE,inputted,,0
+Kris Bryant,hit,,,FALSE,inputted,,0
+Kumar Rocker,pit,,,FALSE,inputted,reliever,5
+Kyle Bradish,pit,,,FALSE,inputted,reliever,15
+Kyle Farmer,hit,,,FALSE,inputted,,0
+Kyle Finnegan,pit,,,FALSE,inputted|Role Change,closer,1
+Kyle Freeland,pit,,,FALSE,inputted,starter,3
+Kyle Harrison,pit,,,FALSE,inputted|Role Change,reliever,1
+Kyle Higashioka,hit,,,FALSE,inputted,,0
+Kyle Isbel,hit,,,FALSE,inputted,,1
+Kyle Leahy,pit,,,FALSE,inputted,reliever,0
+Kyle Nicolas,pit,,,FALSE,inputted,reliever,0
+Kyle Stowers,hit,,,FALSE,inputted,,17
+Kyren Paris,hit,,,FALSE,inputted,,0
+Lake Bachar,pit,,,FALSE,inputted,reliever,0
+LaMonte Wade Jr.,hit,,,FALSE,inputted,,0
+Landon Knack,pit,,,FALSE,inputted,reliever,0
+Lawrence Butler,hit,,,FALSE,inputted,,15
+Lenyn Sosa,hit,,,FALSE,inputted,,5
+Leo Jiménez,hit,,,FALSE,inputted,,0
+Leo Rivas,hit,,,FALSE,inputted,,0
+Leody Taveras,hit,,,FALSE,inputted,,0
+Liover Peguero,hit,,,FALSE,inputted,,0
+Logan Allen,pit,,,FALSE,inputted|Replacement Illusion,starter,5
+Logan Gilbert,pit,,,FALSE,inputted,starter,20
+Logan Webb,pit,,,FALSE,inputted,starter,28
+Louis Varland,pit,,,FALSE,inputted,reliever,3
+Lucas Sims,pit,,,FALSE,inputted,reliever,0
+Luis Arráez,hit,,,FALSE,inputted,,6
+Luis Campusano,hit,,,FALSE,inputted,,2
+Luis García Jr.,hit,,,FALSE,inputted,,8
+Luis Guerrero,pit,,,FALSE,inputted,reliever,0
+Luis Matos,hit,,,FALSE,inputted,,2
+Luis Peralta,pit,,,FALSE,inputted,reliever,0
+Luis Robert Jr.,hit,,,FALSE,inputted,,11
+Luis Torrens,hit,,,FALSE,inputted,,0
+Luis Urías,hit,,,FALSE,inputted,,0
+Luis Vázquez,hit,,,FALSE,inputted,,0
+Luisangel Acuña,hit,,,FALSE,inputted,,0
+Luke Jackson,pit,,,FALSE,inputted,closer,0
+Luke Little,pit,,,FALSE,inputted,reliever,0
+Luke Maile,hit,,,FALSE,inputted,,0
+Luken Baker,hit,,,FALSE,inputted,,0
+Marcell Ozuna,hit,,,FALSE,inputted,,16
+Mark Canha,hit,,,FALSE,inputted,,0
+Mark Leiter Jr.,pit,,,FALSE,inputted,reliever,1
+Mark Vientos,hit,,,FALSE,inputted,,15
+Masataka Yoshida,hit,,,FALSE,inputted,,3
+Mason Black,pit,,,FALSE,inputted,reliever,0
+Mason Englert,pit,,,FALSE,inputted,reliever,0
+Mason McCoy,hit,,,FALSE,inputted,,0
+Mason Miller,pit,,,FALSE,inputted,closer,20
+Mason Montgomery,pit,,,FALSE,inputted,reliever,1
+Matt Chapman,hit,,,FALSE,inputted,,20
+Matt Festa,pit,,,FALSE,inputted,reliever,1
+Matt Mervis,hit,,,FALSE,inputted,,0
+Matt Strahm,pit,,,FALSE,inputted,reliever,5
+Matt Thaiss,hit,,,FALSE,inputted,,0
+Matt Vierling,hit,,,FALSE,inputted,,1
+Matt Waldron,pit,,,FALSE,inputted,reliever,0
+Matthew Liberatore,pit,,,FALSE,inputted,starter,6
+Mauricio Dubón,hit,,,FALSE,inputted,,0
+Max Kepler,hit,,,FALSE,inputted,,0
+Max Lazar,pit,,,FALSE,inputted,reliever,0
+Max Meyer,pit,,,FALSE,inputted,starter,7
+Max Schuemann,hit,,,FALSE,inputted,,0
+Michael Harris II,hit,,,FALSE,inputted,,18
+Michael Helman,hit,,,FALSE,inputted,,0
+Michael Kelly,pit,,,FALSE,inputted,reliever,1
+Michael King,pit,,,FALSE,inputted,reliever,19
+Michael Lorenzen,pit,,,FALSE,inputted|Replacement Illusion,starter,4
+Michael Massey,hit,,,FALSE,inputted,,1
+Michael McGreevy,pit,,,FALSE,inputted,starter,8
+Michael Petersen,pit,,,FALSE,inputted,reliever,0
+Michael Stefanic,hit,,,FALSE,inputted,,0
+Michael Tonkin,pit,,,FALSE,inputted,reliever,0
+Mickey Gasper,hit,,,FALSE,inputted,,0
+Mickey Moniak,hit,,,FALSE,inputted,,7
+Miguel Amaya,hit,,,FALSE,inputted,,1
+Miguel Andujar,hit,,,FALSE,inputted,,7
+Miguel Castro,pit,,,FALSE,inputted,reliever,0
+Miguel Rojas,hit,,,FALSE,inputted,,0
+Miguel Vargas,hit,,,FALSE,inputted,,2
+Mike Burrows,pit,,,FALSE,inputted,reliever,5
+Mike Tauchman,hit,,,FALSE,inputted,,4
+Mike Yastrzemski,hit,,,FALSE,inputted,,3
+Miles Mastrobuoni,hit,,,FALSE,inputted,,0
+Mitch Garver,hit,,,FALSE,inputted,,1
+Mitch Spence,pit,,,FALSE,inputted|Role Change,reliever,0
+Mitchell Parker,pit,,,FALSE,inputted,starter,3
+MJ Melendez,hit,,,FALSE,inputted,,0
+Myles Straw,hit,,,FALSE,inputted,,0
+Nacho Alvarez Jr.,hit,,,FALSE,inputted,,0
+Nasim Nuñez,hit,,,FALSE,inputted,,0
+Nate Pearson,pit,,,FALSE,inputted,reliever,0
+Nathan Eovaldi,pit,,,FALSE,inputted|Aging Cliff,starter,16
+Nathan Lukes,hit,,,FALSE,inputted,,1
+Nick Allen,hit,,,FALSE,inputted,,0
+Nick Anderson,pit,,,FALSE,inputted,reliever,0
+Nick Fortes,hit,,,FALSE,inputted,,1
+Nick Gonzales,hit,,,FALSE,inputted,,1
+Nick Lodolo,pit,,,FALSE,inputted,starter,13
+Nick Loftin,hit,,,FALSE,inputted,,0
+Nick Mears,pit,,,FALSE,inputted,reliever,1
+Nick Sandlin,pit,,,FALSE,inputted,reliever,0
+Nick Sogard,hit,,,FALSE,inputted,,0
+Nick Yorke,hit,,,FALSE,inputted,,0
+Nicky Lopez,hit,,,FALSE,inputted,,0
+Niko Kavadas,hit,,,FALSE,inputted,,0
+Noelvi Marté,hit,,,FALSE,inputted,,7
+Nolan Gorman,hit,,,FALSE,inputted,,7
+Nolan Jones,hit,,,FALSE,inputted,,0
+Nolan Schanuel,hit,,,FALSE,inputted,,11
+Oliver Dunn,hit,,,FALSE,inputted,,0
+Oneil Cruz,hit,,,FALSE,inputted,,16
+Orlando Arcia,hit,,,FALSE,inputted,,0
+Orlando Ribalta,pit,,,FALSE,inputted,reliever,0
+Osvaldo Bido,pit,,,FALSE,inputted,closer,0
+Oswald Peraza,hit,,,FALSE,inputted,,0
+Oswaldo Cabrera,hit,,,FALSE,inputted,,1
+Otto López,hit,,,FALSE,inputted,,4
+Pablo Reyes,hit,,,FALSE,inputted,,0
+Patrick Bailey,hit,,,FALSE,inputted,,1
+Patrick Corbin,pit,,,FALSE,inputted,starter,6
+Paul Blackburn,pit,,,FALSE,inputted,closer,0
+Paul DeJong,hit,,,FALSE,inputted,,0
+Paul Sewald,pit,,,FALSE,inputted,reliever,0
+Paul Skenes,pit,,,FALSE,inputted,starter,35
+Pavin Smith,hit,,,FALSE,inputted,,2
+Pedro Pagés,hit,,,FALSE,inputted,,1
+Pete Fairbanks,pit,,,FALSE,inputted,closer,4
+Phil Maton,pit,,,FALSE,inputted,reliever,2
+Pierce Johnson,pit,,,FALSE,inputted,reliever,1
+Quinn Priester,pit,,,FALSE,inputted,starter,6
+Rafael Marchán,hit,,,FALSE,inputted,,0
+Rafael Montero,pit,,,FALSE,inputted,reliever,0
+Raisel Iglesias,pit,,,FALSE,inputted,closer,10
+Ramón Laureano,hit,,,FALSE,inputted,,13
+Ramón Urías,hit,,,FALSE,inputted,,1
+Randal Grichuk,hit,,,FALSE,inputted,,2
+Randy Dobnak,pit,,,FALSE,inputted,reliever,0
+Rece Hinds,hit,,,FALSE,inputted,,0
+Reese McGuire,hit,,,FALSE,inputted,,0
+Reid Detmers,pit,,,FALSE,inputted,reliever,9
+Richard Fitts,pit,,,FALSE,inputted,reliever,4
+Richard Lovelady,pit,,,FALSE,inputted,reliever,0
+Richie Palacios,hit,,,FALSE,inputted,,0
+Riley Adams,hit,,,FALSE,inputted,,0
+Riley Greene,hit,,,FALSE,inputted,,31
+Rob Refsnyder,hit,,,FALSE,inputted,,2
+Rob Zastryzny,pit,,,FALSE,inputted,reliever,0
+Robert Garcia,pit,,,FALSE,inputted,reliever,3
+Robert Gasser,pit,,,FALSE,inputted,reliever,0
+Robert Suarez,pit,,,FALSE,inputted|Role Change,closer,6
+Romy González,hit,,,FALSE,inputted,,4
+Ron Marinaccio,pit,,,FALSE,inputted,reliever,0
+Ronald Acuña Jr.,hit,,,FALSE,inputted,,49
+Ronel Blanco,pit,,,FALSE,inputted,starter,0
+Rowdy Tellez,hit,,,FALSE,inputted,,4
+Royce Lewis,hit,,,FALSE,inputted,,16
+Ryan Bliss,hit,,,FALSE,inputted,,0
+Ryan Borucki,pit,,,FALSE,inputted,reliever,0
+Ryan Brasier,pit,,,FALSE,inputted,reliever,0
+Ryan Feltner,pit,,,FALSE,inputted,reliever,4
+Ryan Fernandez,pit,,,FALSE,inputted,reliever,1
+Ryan Helsley,pit,,,FALSE,inputted|Role Change (Mild),closer,8
+Ryan Kreidler,hit,,,FALSE,inputted,,0
+Ryan Noda,hit,,,FALSE,inputted,,0
+Ryan O'Hearn,hit,,,FALSE,inputted,,13
+Ryan Pepiot,pit,,,FALSE,inputted,starter,11
+Ryan Walker,pit,,,FALSE,inputted,closer,7
+Ryan Yarbrough,pit,,,FALSE,inputted,reliever,0
+Ryan Zeferjahn,pit,,,FALSE,inputted,reliever,1
+Ryne Nelson,pit,,,FALSE,inputted,starter,6
+Ryne Stanek,pit,,,FALSE,inputted,reliever,1
+Sam Aldegheri,pit,,,FALSE,inputted,reliever,0
+Sam Haggerty,hit,,,FALSE,inputted,,0
+Sam Hilliard,hit,,,FALSE,inputted,,0
+Sam Huff,hit,,,FALSE,inputted,,0
+Sam Moll,pit,,,FALSE,inputted,reliever,0
+Sammy Peralta,pit,,,FALSE,inputted,reliever,0
+Santiago Espinal,hit,,,FALSE,inputted,,0
+Scott Alexander,pit,,,FALSE,inputted,reliever,0
+Scott Barlow,pit,,,FALSE,inputted,reliever,0
+Scott Effross,pit,,,FALSE,inputted,reliever,0
+Scott McGough,pit,,,FALSE,inputted,reliever,0
+Sean Burke,pit,,,FALSE,inputted,starter,5
+Sean Guenther,pit,,,FALSE,inputted,reliever,0
+Sean Murphy,hit,,,FALSE,inputted,,5
+Sean Newcomb,pit,,,FALSE,inputted,reliever,3
+Shane Bieber,pit,,,FALSE,inputted,reliever,15
+Shawn Armstrong,pit,,,FALSE,inputted,reliever,5
+Shay Whitcomb,hit,,,FALSE,inputted,,0
+Shohei Ohtani,hit,,,FALSE,inputted,,60
+Shota Imanaga,pit,,,FALSE,inputted,starter,13
+Simeon Woods Richardson,pit,,,FALSE,inputted,reliever,4
+Slade Cecconi,pit,,,FALSE,inputted,starter,6
+Sonny Gray,pit,,,FALSE,inputted|Aging Cliff,starter,20
+Spencer Arrighetti,pit,,,FALSE,inputted,reliever,3
+Spencer Bivens,pit,,,FALSE,inputted,reliever,2
+Spencer Schwellenbach,pit,,,FALSE,inputted,starter,18
+Spencer Strider,pit,,,FALSE,inputted,starter,19
+Spencer Torkelson,hit,,,FALSE,inputted,,23
+Spencer Turnbull,pit,,,FALSE,inputted,reliever,0
+Starling Marte,hit,,,FALSE,inputted,,1
+Stephen Kolek,pit,,,FALSE,inputted,starter,0
+Steven Cruz,pit,,,FALSE,inputted,reliever,0
+Steven Matz,pit,,,FALSE,inputted|Replacement Illusion,reliever,6
+Steven Okert,pit,,,FALSE,inputted,reliever,2
+Steven Wilson,pit,,,FALSE,inputted,reliever,0
+Stuart Fairchild,hit,,,FALSE,inputted,,0
+Taijuan Walker,pit,,,FALSE,inputted|Replacement Illusion,starter,2
+Taj Bradley,pit,,,FALSE,inputted,starter,6
+Tanner Banks,pit,,,FALSE,inputted,reliever,1
+Tanner Gordon,pit,,,FALSE,inputted|Replacement Illusion,starter,3
+Tanner Rainey,pit,,,FALSE,inputted,reliever,0
+Tarik Skubal,pit,,,FALSE,inputted,starter,38
+Tayler Saucedo,pit,,,FALSE,inputted,reliever,0
+Taylor Rogers,pit,,,FALSE,inputted,reliever,2
+Taylor Trammell,hit,,,FALSE,inputted,,0
+Taylor Walls,hit,,,FALSE,inputted,,0
+Taylor Ward,hit,,,FALSE,inputted,,22
+Teoscar Hernández,hit,,,FALSE,inputted,,22
+Thairo Estrada,hit,,,FALSE,inputted,,1
+Thomas Saggese,hit,,,FALSE,inputted,,2
+Tim Anderson,hit,,,FALSE,inputted,,0
+Tim Herrin,pit,,,FALSE,inputted,reliever,0
+Tim Hill,pit,,,FALSE,inputted,reliever,1
+Tim Mayza,pit,,,FALSE,inputted,reliever,0
+Tobias Myers,pit,,,FALSE,inputted,reliever,1
+Tomás Nido,hit,,,FALSE,inputted,,0
+Tommy Edman,hit,,,FALSE,inputted,,6
+Tommy Kahnle,pit,,,FALSE,inputted,reliever,0
+Tommy Nance,pit,,,FALSE,inputted,reliever,1
+Tommy Pham,hit,,,FALSE,inputted,,2
+Tony Santillan,pit,,,FALSE,inputted,reliever,1
+Travis d'Arnaud,hit,,,FALSE,inputted,,0
+Travis Jankowski,hit,,,FALSE,inputted,,0
+Trent Grisham,hit,,,FALSE,inputted,,14
+Trent Thornton,pit,,,FALSE,inputted,reliever,0
+Trevor Larnach,hit,,,FALSE,inputted,,5
+Trevor Megill,pit,,,FALSE,inputted|Role Change,closer,3
+Trevor Rogers,pit,,,FALSE,inputted,starter,12
+Trevor Williams,pit,,,FALSE,inputted,reliever,0
+Trey Sweeney,hit,,,FALSE,inputted,,0
+Tristan Beck,pit,,,FALSE,inputted,reliever,0
+Tristan Gray,hit,,,FALSE,inputted,,0
+Triston Casas,hit,,,FALSE,inputted,,3
+Troy Taylor,pit,,,FALSE,inputted,reliever,0
+Ty Adcock,pit,,,FALSE,inputted,reliever,0
+Ty France,hit,,,FALSE,inputted,,5
+Tyler Alexander,pit,,,FALSE,inputted,reliever,2
+Tyler Anderson,pit,,,FALSE,inputted,starter,5
+Tyler Ferguson,pit,,,FALSE,inputted,reliever,0
+Tyler Freeman,hit,,,FALSE,inputted,,3
+Tyler Gilbert,pit,,,FALSE,inputted,reliever,0
+Tyler Heineman,hit,,,FALSE,inputted,,0
+Tyler Kinley,pit,,,FALSE,inputted,reliever,1
+Tyler Locklear,hit,,,FALSE,inputted,,1
+Tyler Mahle,pit,,,FALSE,inputted,starter,8
+Tyler Phillips,pit,,,FALSE,inputted,reliever,0
+Tyler Soderstrom,hit,,,FALSE,inputted,,20
+Tyler Wade,hit,,,FALSE,inputted,,0
+Tyler Wells,pit,,,FALSE,inputted,reliever,4
+Tyrone Taylor,hit,,,FALSE,inputted,,1
+Victor Caratini,hit,,,FALSE,inputted,,3
+Victor Mederos,pit,,,FALSE,inputted,reliever,0
+Victor Scott II,hit,,,FALSE,inputted,,0
+Victor Vodnik,pit,,,FALSE,inputted|Role Change (Mild),closer,2
+Vidal Bruján,hit,,,FALSE,inputted,,0
+Vinnie Pasquantino,hit,,,FALSE,inputted,,31
+Vinny Capra,hit,,,FALSE,inputted,,0
+Wade Miley,pit,,,FALSE,inputted,reliever,0
+Wandy Peralta,pit,,,FALSE,inputted,reliever,1
+Wenceel Pérez,hit,,,FALSE,inputted,,3
+Weston Wilson,hit,,,FALSE,inputted,,0
+Will Benson,hit,,,FALSE,inputted,,1
+Will Klein,pit,,,FALSE,inputted,reliever,0
+Will Vest,pit,,,FALSE,inputted|Role Change,closer,1
+Will Wagner,hit,,,FALSE,inputted,,0
+Willi Castro,hit,,,FALSE,inputted,,6
+William Contreras,hit,,,FALSE,inputted,,30
+Willy Adames,hit,,,FALSE,inputted,,16
+Wilmer Flores,hit,,,FALSE,inputted,,1
+Wyatt Langford,hit,,,FALSE,inputted,,29
+Xavier Edwards,hit,,,FALSE,inputted,,14
+Yandy Díaz,hit,,,FALSE,inputted,,36
+Yoán Moncada,hit,,,FALSE,inputted,,1
+Yosver Zulueta,pit,,,FALSE,inputted,reliever,0
+Yuki Matsui,pit,,,FALSE,inputted,reliever,0
+Yuli Gurriel,hit,,,FALSE,inputted,,0
+Yusei Kikuchi,pit,,,FALSE,inputted,starter,14
+Zach Brzykcy,pit,,,FALSE,inputted,reliever,0
+Zach Dezenzo,hit,,,FALSE,inputted,,0
+Zach McKinstry,hit,,,FALSE,inputted,,3
+Zach Neto,hit,,,FALSE,inputted,,25
+Zach Pop,pit,,,FALSE,inputted,reliever,0
+Zack Kelly,pit,,,FALSE,inputted,reliever,0
+Zack Littell,pit,,,FALSE,inputted,starter,11
+Zack Short,hit,,,FALSE,inputted,,0
+Zack Wheeler,pit,,,FALSE,inputted|Aging Cliff (mild),starter,19
+Roman Anthony,hit,,,FALSE,inputted,,19
+Konnor Griffin,hit,,,FALSE,inputted,,3
+Walker Jenkins,hit,,,FALSE,inputted,,3
+Sebastian Walcott,hit,,,FALSE,inputted,,3
+Max Clark,hit,,,FALSE,inputted,,3
+Samuel Basallo,hit,,,FALSE,inputted,,3
+Colt Emerson,hit,,,FALSE,inputted,,3
+Jordan Lawlar,hit,,,FALSE,inputted,,3
+Munetaka Murakami,hit,,,FALSE,inputted|Overpay (Mild),,28
+Tatsuya Imai,pit,,,FALSE,inputted|Overpay (Mild),starter,13
+Kazuma Okamoto,hit,,,FALSE,inputted|Overpay (Mild),,18
+Alan Roden,hit,,,FALSE,inputted,,0
+Alexis Díaz,pit,,,FALSE,inputted,reliever,1
+Brady House,hit,,,FALSE,inputted,,2
+Caleb Durbin,hit,,,FALSE,inputted,,5
+Cam Smith,hit,,,FALSE,inputted,,5
+Carson Williams,hit,,,FALSE,inputted,,2
+Christian Moore,hit,,,FALSE,inputted,,3
+Clarke Schmidt,pit,,,FALSE,inputted,starter,0
+Colson Montgomery,hit,,,FALSE,inputted|Small-Sample,,13
+Deyvison De Los Santos,hit,,,FALSE,inputted,,0
+Drake Baldwin,hit,,,FALSE,inputted,,9
+Gerrit Cole,pit,,,FALSE,inputted|Aging Cliff,starter,20
+Hyeseong Kim,hit,,,FALSE,inputted,,0
+Jac Caglianone,hit,,,FALSE,inputted,,6
+Kristian Campbell,hit,,,FALSE,inputted,,3
+Victor Robles,hit,,,FALSE,inputted,,1
+Leo De Vries,hit,,,FALSE,inputted,,2
+Luis García,pit,,,FALSE,inputted,reliever,1
+Max Scherzer,pit,,,FALSE,inputted,starter,8
+Nick Kurtz,hit,,,FALSE,inputted,,32
+Roki Sasaki,pit,,,FALSE,inputted|Role Change|Overpay (Mild),starter,10
+Tirso Ornelas,hit,,,FALSE,inputted,,0
+Travis Bazzana,hit,,,FALSE,inputted,,3
+Seranthony Domínguez,pit,,,FALSE,inputted|Role Change,closer,1
+Robert Stephenson,pit,,,FALSE,inputted|Role Change (Mild),closer,2
+Chase Meidroth,hit,,,FALSE,inputted|Replacement Illusion,,3
+Robby Snelling,pit,,,FALSE,inputted|Replacement Illusion,starter,1
+Braxton Ashcraft,pit,,,FALSE,inputted|Role Change|Replacement Illusion,starter,1
+Randy Vásquez,pit,,,FALSE,inputted|Role Change|Replacement Illusion,starter,1
+Jeremiah Jackson,hit,,,FALSE,inputted|Small-Sample,,2
+Luke Keaschall,hit,,,FALSE,inputted|Small-Sample,,5
+Jakob Marsee,hit,,,FALSE,inputted|Small-Sample,,2
+Heriberto Hernández,hit,,,FALSE,inputted|Small-Sample,,2
+Kyle Teel,hit,,,FALSE,inputted|Small-Sample,,4
+

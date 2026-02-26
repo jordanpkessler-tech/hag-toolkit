@@ -1,0 +1,981 @@
+player,type,display_role,auction_value_26,auction_value_26_shadow,tier,flags,flags_count,auction_price_25,auction_price_25_imputed,adj_multiplier
+Aaron Judge,hit,,69.13001863,,1,,0,71,,0.9736622342
+Juan Soto,hit,,56.86383929,,2,,0,58,,0.9804110222
+Mookie Betts,hit,,54.33364399,,2,,0,53,,1.025163094
+Kyle Tucker,hit,,53.11476777,,2,,0,49,,1.083974852
+Fernando Tatis Jr.,hit,,47.10609466,,2,,0,41,,1.148929138
+Vladimir Guerrero Jr.,hit,,46.64090106,,2,,0,50,,0.9328180212
+Freddie Freeman,hit,,43.67315857,,2,,0,43,,1.01565485
+Austin Riley,hit,,42.93558571,,2,,0,45,,0.9541241268
+Rafael Devers,hit,,42.84906042,,2,,0,40,,1.07122651
+Jarren Duran,hit,,40.52136752,,2,,0,43,,0.9423573842
+Pete Alonso,hit,,39.84324508,,2,,0,37,,1.076844462
+Matt Olson,hit,,39.43269231,,2,,0,38,,1.037702429
+Francisco Lindor,hit,,38.75374762,,2,,0,39,,0.9936858363
+Yoshinobu Yamamoto,pit,starter,38.50543478,,2,,0,25,,1.540217391
+Bo Bichette,hit,,36.37307883,,2,,0,22,,1.653321765
+Trea Turner,hit,,35.28435469,,2,,0,35,,1.00812442
+Kyle Schwarber,hit,,35.24341139,,2,,0,32,,1.101356606
+Yordan Alvarez,hit,,33.96079692,,2,,0,49,,0.6930774881
+Mike Trout,hit,,32.57246546,,2,,0,22,,1.480566612
+Jazz Chisholm Jr.,hit,,32.19396752,,2,,0,31,,1.038515081
+Manny Machado,hit,,31.98254141,,2,,0,32,,0.9994544192
+Corey Seager,hit,,31.90974118,,2,,0,35,,0.9117068909
+Framber Valdez,pit,starter,29.69953052,,2,,0,28,,1.060697518
+Kodai Senga,pit,starter,28.42344132,,2,Injury Baseline Distortion|Role Change,2,9,,3.158160147
+Max Fried,pit,starter,25.97562658,,2,,0,24,,1.082317774
+Cole Ragans,pit,reliever,25.48692153,,2,Role Change,1,30,,0.849564051
+Ozzie Albies,hit,,24.90066656,,2,,0,22,,1.13184848
+Jose Altuve,hit,,23.22291317,,2,,0,23,,1.009691877
+Kevin Gausman,pit,starter,22.84268126,,2,,0,22,,1.038303694
+Seiya Suzuki,hit,,22.72670415,,2,,0,21,,1.082224007
+Randy Arozarena,hit,,22.07643312,,2,,0,20,,1.103821656
+Corbin Burnes,pit,starter,21.97009128,,2,,0,33,,0.6657603418
+Luis Castillo,pit,starter,21.88499238,,2,,0,22,,0.9947723807
+Cody Bellinger,hit,,21.41592326,,2,,0,19,,1.127153856
+Alex Bregman,hit,,20.37235574,,2,,0,22,,0.9260161701
+Xander Bogaerts,hit,,20.27602309,,2,,0,19,,1.06715911
+Willson Contreras,hit,,19.95031205,,2,,0,17,,1.173547768
+Aaron Nola,pit,starter,19.24540352,,2,,0,27,,0.7127927231
+Christian Walker,hit,,19.01268217,,2,,0,19,,1.000667482
+Bailey Ober,pit,starter,18.91568421,,2,,0,23,,0.8224210526
+Christian Yelich,hit,,18.47900917,,2,,0,14,,1.319929226
+Pete Crow-Armstrong,hit,,18.27362832,,2,,0,13,,1.405663717
+Zac Gallen,pit,starter,17.80477223,,2,,0,16,,1.112798265
+Hunter Greene,pit,starter,17.73953249,,2,,0,20,,0.8869766247
+Bryan Reynolds,hit,,17.55564586,,2,,0,19,,0.9239813611
+Josh Naylor,hit,,17.08449333,,2,,0,18,,0.9491385184
+Steven Kwan,hit,,16.9495549,,2,,0,17,,0.9970326409
+Bryan Woo,pit,starter,16.92089393,,2,,0,12,,1.410074495
+Joe Ryan,pit,starter,16.71620864,,2,,0,15,,1.114413909
+Marcus Semien,hit,,16.64634948,,2,,0,19,,0.8761236571
+Robbie Ray,pit,starter,16.49141791,,2,Role Change,1,9,,1.832379768
+Salvador Perez,hit,,15.82417582,,2,,0,16,,0.989010989
+Anthony Santander,hit,,15.35436383,,2,,0,24,,0.6397651595
+Jake Burger,hit,,15.27050847,,2,,0,18,,0.8483615819
+Nick Castellanos,hit,,14.88400839,,2,,0,16,,0.9302505242
+Tanner Bibee,pit,starter,14.80479943,,2,,0,15,,0.9869866285
+Will Smith,hit,,14.49277978,,2,,0,15,,0.9661853189
+Spencer Steer,hit,,14.42114675,,2,,0,15,,0.9614097831
+Yainer Diaz,hit,,14.27214813,,2,,0,15,,0.951476542
+Nick Pivetta,pit,starter,13.8592233,,2,,0,12,,1.154935275
+Tyler Glasnow,pit,starter,13.66390641,,2,,0,17,,0.8037592008
+Alec Bohm,hit,,13.385885,,2,,0,15,,0.8923923332
+Ian Happ,hit,,12.6810363,,2,,0,13,,0.9754643309
+Shea Langeliers,hit,,12.61187,,2,,0,12,,1.050989166
+George Kirby,pit,starter,12.53237556,,2,,0,15,,0.8354917038
+Jung Hoo Lee,hit,,12.10304409,,2,,0,7,,1.729006298
+Shane Baz,pit,starter,11.96974281,,2,,0,8,,1.496217852
+Brice Turang,hit,,11.94028723,,2,,0,10,,1.194028723
+Ezequiel Tovar,hit,,11.6983739,,2,,0,15,,0.7798915932
+Merrill Kelly,pit,starter,11.46454768,,2,,0,6,,1.910757946
+Yu Darvish,pit,reliever,11.44475568,,2,Role Change,1,8,,1.43059446
+Brandon Pfaadt,pit,starter,11.40581717,,2,,0,12,,0.9504847645
+Isaac Paredes,hit,,11.34181002,,2,,0,12,,0.9451508352
+Freddy Peralta,pit,starter,11.296415,,2,,0,11,,1.026946819
+Paul Goldschmidt,hit,,11.04985773,,2,,0,12,,0.9208214772
+Masyn Winn,hit,,10.98015267,,2,,0,12,,0.9150127226
+Christopher Morel,hit,,10.30399313,,2,,0,12,,0.8586660942
+Mitch Keller,pit,starter,10.01740947,,2,,0,10,,1.001740947
+George Springer,hit,,9.897062786,,2,,0,8,,1.237132848
+Seth Lugo,pit,starter,9.885768501,,2,,0,12,,0.8238140417
+MacKenzie Gore,pit,starter,9.234645275,,2,,0,9,,1.026071697
+Tanner Scott,pit,closer,9.174259681,,2,,0,10,,0.9174259681
+Maikel Garcia,hit,,9.065760307,,2,,0,8,,1.133220038
+Zach Eflin,pit,starter,8.539994685,,2,,0,12,,0.7116662238
+Kyle Manzardo,hit,,8.385107015,,2,,0,5,,1.677021403
+Jeffrey Springs,pit,starter,8.344227504,,2,Role Change,1,5,,1.668845501
+Josh Jung,hit,,8.238045466,,2,,0,6,,1.373007578
+TJ Friedl,hit,,8.155957635,,2,,0,7,,1.165136805
+J.T. Realmuto,hit,,8.111795358,,2,,0,8,,1.01397442
+Brandon Nimmo,hit,,8.102283903,,2,,0,8,,1.012785488
+Tyler O'Neill,hit,,8.084239746,,2,,0,11,,0.734930886
+Logan O'Hoppe,hit,,8.044149809,,2,,0,9,,0.8937944232
+Brandon Lowe,hit,,8.000271407,,2,,0,7,,1.142895915
+Nolan Arenado,hit,,7.953932151,,2,,0,9,,0.883770239
+Sean Manaea,pit,reliever,7.74582643,,2,Role Change,1,9,,0.8606473812
+Gabriel Moreno,hit,,7.280972597,,2,,0,7,,1.040138942
+Gleyber Torres,hit,,7.153397303,,2,,0,7,,1.0219139
+Dansby Swanson,hit,,6.400999616,,2,,0,6,,1.066833269
+Jorge Soler,hit,,6.348033373,,2,,0,8,,0.7935041716
+Walker Buehler,pit,starter,6.111426188,,2,Role Change,1,7,,0.8730608841
+Lane Thomas,hit,,6.061698271,,2,,0,9,,0.6735220301
+Colt Keith,hit,,5.964637422,,2,,0,6,,0.9941062369
+Alec Burleson,hit,,5.769064748,,2,,0,6,,0.9615107914
+Ryan McMahon,hit,,5.734390993,,2,,0,6,,0.9557318321
+Austin Wells,hit,,5.520712989,,2,,0,5,,1.104142598
+Michael Toglia,hit,,5.508970665,,2,,0,7,,0.7869958093
+AJ Smith-Shawver,pit,reliever,5.504889976,,2,Injury Baseline Distortion,1,2,,2.752444988
+Lars Nootbaar,hit,,5.360457123,,2,,0,5,,1.072091425
+Luis Rengifo,hit,,5.340047866,,2,,0,5,,1.068009573
+Max Muncy,hit,,5.339775561,,2,,0,5,,1.067955112
+Bryson Stott,hit,,5.22233127,,2,,0,5,,1.044466254
+Nico Hoerner,hit,,5.210631896,,2,,0,5,,1.042126379
+Nathaniel Lowe,hit,,5.127067769,,2,,0,5,,1.025413554
+Casey Mize,pit,starter,5.126588235,,2,,0,4,,1.281647059
+JJ Bleday,hit,,5.1255256,,2,,0,6,,0.8542542666
+Ceddanne Rafaela,hit,,5.102943117,,2,,0,5,,1.020588623
+Sal Frelick,hit,,4.826641651,,2,,0,4,,1.206660413
+Brendan Donovan,hit,,4.664078542,,2,,0,5,,0.9328157084
+Bryan Abreu,pit,reliever,4.589828527,,2,,0,5,,0.9179657054
+Grant Holmes,pit,starter,4.582777314,,2,Role Change,1,5,,0.9165554629
+Luis Severino,pit,starter,4.521641438,,2,,0,5,,0.9043282876
+Jonathan India,hit,,4.471271788,,2,,0,5,,0.8942543577
+Trevor Story,hit,,4.291469194,,2,,0,2,,2.145734597
+Connor Norby,hit,,4.282873927,,2,,0,4,,1.070718482
+Clay Holmes,pit,starter,4.049802096,,2,Role Change,1,5,,0.8099604192
+Max Muncy,hit,,5.339775561,,2,,0,5,,1.067955112
+Chris Bassitt,pit,starter,3.948679621,,2,,0,4,,0.9871699053
+Lucas Erceg,pit,reliever,3.932098765,,2,,0,4,,0.9830246914
+Cedric Mullins,hit,,3.910925539,,2,,0,4,,0.9777313848
+Lourdes Gurriel Jr.,hit,,3.872988576,,2,,0,4,,0.9682471441
+Cade Smith,pit,reliever,3.815454545,,2,,0,4,,0.9538636364
+Jason Adam,pit,reliever,3.804337794,,2,,0,4,,0.9510844485
+Jake McCarthy,hit,,3.745121585,,2,,0,5,,0.749024317
+Andrew Vaughn,hit,,3.686958838,,2,,0,4,,0.9217397096
+Jordan Walker,hit,,3.596514745,,2,,0,3,,1.198838248
+Michael Conforto,hit,,3.48455804,,2,,0,4,,0.8711395101
+Christian Encarnacion-Strand,hit,,3.399960846,,2,,0,3,,1.133320282
+Ryan Mountcastle,hit,,3.364596903,,2,,0,4,,0.8411492256
+Reese Olson,pit,reliever,3.347597476,,2,Role Change,1,3,,1.115865825
+Jordan Romano,pit,closer,3.338213046,,2,,0,2,,1.669106523
+Erick Fedde,pit,starter,3.263418254,,2,,0,4,,0.8158545634
+Brayan Bello,pit,starter,3.120987654,,2,,0,3,,1.040329218
+Griffin Jax,pit,reliever,3.065950171,,2,,0,3,,1.02198339
+Orion Kerkering,pit,reliever,3.045779221,,2,,0,3,,1.01525974
+Michael Wacha,pit,starter,2.936453577,,2,,0,3,,0.978817859
+Garrett Mitchell,hit,,2.905628438,,2,,0,4,,0.7264071096
+Daulton Varsho,hit,,2.886129905,,2,,0,3,,0.9620433018
+Ryan Weathers,pit,reliever,2.834349453,,2,Role Change,1,3,,0.9447831509
+Ben Joyce,pit,reliever,2.832496863,,2,,0,5,,0.5664993726
+Joey Ortiz,hit,,2.764970734,,2,,0,3,,0.9216569113
+Luke Weaver,pit,reliever,2.698208544,,2,,0,3,,0.899402848
+David Festa,pit,reliever,2.649152542,,2,,0,3,,0.8830508475
+Yennier Cano,pit,reliever,2.56651719,,2,,0,3,,0.8555057299
+Parker Meadows,hit,,2.504573474,,2,,0,3,,0.8348578246
+Gavin Sheets,hit,,2.417455896,,2,,0,2,,1.208727948
+Seth Halvorsen,pit,closer,2.271396056,,2,Role Change,1,1,,2.271396056
+Zack Gelof,hit,,2.010472405,,2,,0,3,,0.6701574683
+Max Scherzer,pit,starter,1.977637131,,2,Role Change,1,2,,0.9888185654
+Will Warren,pit,starter,1.929235294,,2,Role Change,1,1,,1.929235294
+Jordan Beck,hit,,1.847719563,,2,,0,1,,1.847719563
+Jameson Taillon,pit,starter,1.814296617,,2,,0,2,,0.9071483083
+Ryan Jeffers,hit,,1.810100735,,2,,0,2,,0.9050503675
+A.J. Puk,pit,closer,1.733776817,,2,Role Change,1,3,,0.5779256056
+Luis Gil,pit,reliever,1.665372671,,2,Role Change,1,2,,0.8326863354
+Rhys Hoskins,hit,,1.655475522,,2,,0,2,,0.827737761
+Kirby Yates,pit,reliever,1.58237046,,2,Role Change,1,2,,0.7911852301
+Jack Leiter,pit,starter,1.576757469,,2,Role Change,1,1,,1.576757469
+Matthew Boyd,pit,starter,1.575735294,,2,Role Change,1,1,,1.575735294
+Brooks Lee,hit,,1.57266881,,2,,0,1,,1.57266881
+Edwin Uceta,pit,reliever,1.527308838,,2,,0,1,,1.527308838
+Tyler Fitzgerald,hit,,1.510081916,,2,,0,2,,0.7550409578
+Jonathan Aranda,hit,,1.470234917,,2,,0,1,,1.470234917
+Clarke Schmidt,pit,starter,1.449966711,,2,Role Change,1,2,,0.7249833555
+Ben Brown,pit,reliever,1.44352483,,2,,0,1,,1.44352483
+Austin Hays,hit,,1.392821535,,2,,0,1,,1.392821535
+Joel Payamps,pit,reliever,1.341294783,,2,,0,2,,0.6706473916
+Jeimer Candelario,hit,,1.25840552,,2,,0,2,,0.6292027602
+Curtis Mead,hit,,1.249894381,,2,,0,1,,1.249894381
+Andy Pages,hit,,1.212793734,,2,,0,1,,1.212793734
+Jo Adell,hit,,1.207800603,,2,,0,1,,1.207800603
+David Peterson,pit,starter,1.186198791,,2,,0,1,,1.186198791
+Jeremiah Estrada,pit,reliever,1.177738928,,2,,0,1,,1.177738928
+Kris Bubic,pit,starter,1.175227273,,2,Role Change,1,1,,1.175227273
+Michael Busch,hit,,1.128184615,,2,,0,1,,1.128184615
+Nick Martinez,pit,starter,1.112407211,,2,,0,1,,1.112407211
+Matt Wallner,hit,,1.088292944,,2,,0,1,,1.088292944
+Spencer Horwitz,hit,,1.042941176,,2,,0,1,,1.042941176
+Wilyer Abreu,hit,,1.03670761,,2,,0,1,,1.03670761
+Landen Roupp,pit,starter,1.014597902,,2,Role Change,1,1,,1.014597902
+Tyler Rogers,pit,reliever,1.013050154,,2,,0,1,,1.013050154
+Hunter Gaddis,pit,reliever,1.007048872,,2,,0,1,,1.007048872
+Joey Loperfido,hit,,1.004689175,,2,,0,1,,1.004689175
+Zebby Matthews,pit,starter,0.972473997,,2,Role Change,1,1,,0.972473997
+JoJo Romero,pit,reliever,0.9664241746,,2,,0,1,,0.9664241746
+Francisco Alvarez,hit,,0.9650179856,,2,,0,1,,0.9650179856
+Camilo Doval,pit,closer,0.9600129793,,2,,0,1,,0.9600129793
+Keegan Akin,pit,reliever,0.9585635359,,2,,0,1,,0.9585635359
+Tyler Holton,pit,reliever,0.9569978632,,2,,0,1,,0.9569978632
+Jake Irvin,pit,starter,0.8990909091,,2,,0,1,,0.8990909091
+Porter Hodge,pit,reliever,0.8986615679,,2,,0,1,,0.8986615679
+Miles Mikolas,pit,starter,0.8861882716,,2,,0,1,,0.8861882716
+Tyler Stephenson,hit,,0.8727145759,,2,,0,1,,0.8727145759
+Jacob Young,hit,,0.8488720479,,2,,0,1,,0.8488720479
+Ryan Thompson,pit,reliever,0.8361814968,,2,,0,1,,0.8361814968
+Blake Treinen,pit,reliever,0.8068356375,,2,,0,1,,0.8068356375
+Keibert Ruiz,hit,,0.7824250456,,2,,0,1,,0.7824250456
+Frankie Montas,pit,reliever,0.7562704471,,2,Role Change,1,1,,0.7562704471
+Michael Soroka,pit,starter,0.7409296657,,2,Role Change,1,1,,0.7409296657
+Luke Raley,hit,,0.7310767591,,2,,0,1,,0.7310767591
+Michael Kopech,pit,reliever,0.6051034178,,3,Role Change,1,1,,0.6051034178
+Bobby Miller,pit,reliever,0.5535714286,,3,,0,1,,0.5535714286
+A.J. Minter,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Aaron Ashby,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Aaron Bummer,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Aaron Civale,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Aaron Schunk,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Abner Uribe,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Abraham Toro,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Adael Amador,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Adam Frazier,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Adam Mazur,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Addison Barger,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Adley Rutschman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Adolis García,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Adrian Del Castillo,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Adrian Houser,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Adrian Morejon,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Alan Trejo,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Alejandro Kirk,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Alek Jacob,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Alek Thomas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Alex Call,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Alex Jackson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Alex Lange,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Alex Verdugo,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Alex Vesia,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Alexander Canario,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Allan Winans,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Amed Rosario,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Andre Pallante,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Andrew Abbott,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Andrew Benintendi,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Andrew Chafin,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Andrew Heaney,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Andrew Kittredge,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Andrew Knizner,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Andrew McCutchen,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Andrew Walters,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Andruw Monasterio,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Andrés Chaparro,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Andrés Giménez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Andy Ibáñez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Angel Chivilli,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Angel Zerpa,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Anthony Banda,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Anthony Bender,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Anthony Maldonado,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Anthony Molina,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Anthony Veneziano,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Anthony Volpe,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Antonio Senzatela,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Aroldis Chapman,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Austin Barnes,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Austin Gomber,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Austin Hedges,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Austin Martin,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Austin Slater,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Austin Warren,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Austin Wynns,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Bailey Falter,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Bailey Horn,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Beau Brieske,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ben Casparius,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ben Lively,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Ben Rice,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ben Rortvedt,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Blake Dunn,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Blake Perkins,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Blake Snell,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Blaze Alexander,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Bo Naylor,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Bobby Witt Jr.,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Bowden Francis,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Brad Keller,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Bradley Blalock,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brady Basso,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brady Singer,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brandon Eisert,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Brandon Lockridge,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Brandon Marsh,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Brant Hurter,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brayan Rocchio,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Brenan Hanifee,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brendan Rodgers,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Brendon Little,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brennan Bernardino,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brent Headrick,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Brent Rooker,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Brent Suter,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brenton Doyle,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Brett Baty,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Brett Harris,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Brett Wisely,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Brett de Geus,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Brock Burke,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brock Stewart,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Brooks Baldwin,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Brooks Raley,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Bryan Baker,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Bryan De La Cruz,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Bryan Hoeing,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Bryan Hudson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Bryan King,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Bryce Elder,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Bryce Harper,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Bryce Jarvis,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Bryce Johnson,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Bryce Miller,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Bryce Teodosio,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Buddy Kennedy,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Byron Buxton,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+CJ Abrams,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Cade Povich,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Caden Dana,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Cal Quantrill,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Cal Raleigh,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Caleb Ferguson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Caleb Thielbar,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Calvin Faucher,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Cam Booser,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Carlos Carrasco,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Carlos Correa,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Carlos Narváez,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Carlos Rodriguez,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Carlos Santana,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Carmen Mlodzinski,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Carson Fulmer,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Carson Kelly,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Carson Spiers,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Casey Kelly,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Role Change|Imputed Anchor,3,,3,
+Casey Legumina,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Casey Schmitt,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Cavan Biggio,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Charlie Morton,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Chas McCormick,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Chase Shugart,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Chase Silseth,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Chayce McDermott,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Chris Martin,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Chris Paddack,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Chris Roycroft,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Chris Sale,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Chris Taylor,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Christian Vázquez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Clayton Beeter,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Clayton Kershaw,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Coby Mayo,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Cody Bolton,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Cole Sands,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Cole Sulser,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Cole Winn,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Colin Holderman,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Colin Poche,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Colin Rea,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Colin Selby,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Collin Snider,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Colton Cowser,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Connor Brogdon,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Connor Gillispie,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Connor Joe,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Connor Wong,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Cooper Criswell,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Cooper Hummel,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Corbin Carroll,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Craig Kimbrel,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Cristian Javier,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+DJ LeMahieu,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+DL Hall,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+DaShawn Keirsey Jr.,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Dane Myers,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Daniel Lynch IV,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Daniel Palencia,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Daniel Robert,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Daniel Schneemann,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Danny Coulombe,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Danny Jansen,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Danny Young,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Darell Hernaiz,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+David Bednar,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+David Fry,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+David Hamilton,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+David Robertson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+David Villar,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Davis Daniel,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Davis Martin,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Davis Schneider,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Daz Cameron,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Dean Kremer,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Dennis Santana,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Derek Hill,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Devin Williams,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Dillon Dingler,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Dillon Tate,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Dominic Canzone,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Dominic Fletcher,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Dominic Smith,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Donovan Solano,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Drew Millas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Drew Rasmussen,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Drew Waters,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Dustin Harris,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Dylan Carlson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Dylan Cease,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Dylan Crews,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Dylan Lee,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Dylan Moore,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Easton Lucas,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Edgardo Henriquez,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Role Change|Imputed Anchor,3,,3,
+Edmundo Sosa,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Edouard Julien,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Eduard Bazardo,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Eduardo Rodriguez,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Eduardo Salazar,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Edward Cabrera,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Eli Morgan,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Eli White,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Elias Díaz,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Elly De La Cruz,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Elvis Peguero,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Emerson Hancock,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Emmanuel Clase,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Emmanuel Rivera,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Enmanuel Valdéz,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Enyel De Los Santos,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Eric Haase,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Eric Wagaman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Erik Miller,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Erik Sabrowski,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Ernie Clement,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Esteury Ruiz,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ethan Roberts,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Eugenio Suárez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Evan Carter,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Evan Phillips,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Ezequiel Durán,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Fernando Cruz,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Forrest Whitley,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Fraser Ellard,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Freddy Fermin,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Gabe Speier,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Gabriel Arias,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Garrett Cleavinger,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Garrett Crochet,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Garrett Hampson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Garrett Whitlock,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Gary Sánchez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Gavin Lux,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Gavin Williams,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Geoff Hartlieb,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+George Soriano,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Geraldo Perdomo,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Giancarlo Stanton,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Gio Urshela,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Gordon Graceffo,pit,closer,,3,,Contract Adjustment Required|Injury Baseline Distortion|Role Change|Imputed Anchor,3,,3,
+Graham Ashcraft,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Graham Pauley,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Grant Anderson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Grant Holman,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Grant McCray,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Greg Weissert,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Gregory Santos,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Gregory Soto,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Griffin Canning,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Griffin Conine,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Gunnar Henderson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Gustavo Campero,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ha-Seong Kim,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Harrison Bader,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Hayden Birdsong,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Hayden Wesneski,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Heliot Ramos,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Henry Davis,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Heston Kjerstad,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Hoby Milner,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Hogan Harris,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Hunter Bigge,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Hunter Brown,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Hunter Feduccia,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Hunter Goodman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Hunter Harvey,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Hunter Renfroe,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Hunter Stratton,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Hunter Strickland,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Hurston Waldrep,pit,starter,,3,,Contract Adjustment Required|Injury Baseline Distortion|Role Change|Imputed Anchor,3,,3,
+Ian Hamilton,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ildemaro Vargas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Isaac Collins,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Isaac Mattson,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Isaiah Campbell,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Isiah Kiner-Falefa,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Iván Herrera,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+J.P. Crawford,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+J.P. France,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+J.T. Ginn,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+JP Sears,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jace Jung,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jack Flaherty,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jack Kochanowicz,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jack Suwinski,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jackson Chourio,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jackson Holliday,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jackson Merrill,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jackson Rutledge,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Jacob Amaya,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Jacob Barnes,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jacob Latz,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jacob Lopez,pit,starter,,3,,Contract Adjustment Required|Injury Baseline Distortion|Role Change|Imputed Anchor,3,,3,
+Jacob Stallings,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jacob Webb,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jacob Wilson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jacob deGrom,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Jaden Hill,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jahmai Jones,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jake Bauers,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jake Bird,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jake Cronenworth,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jake Fraley,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jake Meyers,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jake Rogers,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jakob Junis,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jalen Beeks,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+James McCann,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+James Outman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+James Wood,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Janson Junk,pit,starter,,3,,Contract Adjustment Required|Injury Baseline Distortion|Role Change|Imputed Anchor,3,,3,
+Jared Koenig,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jared Shuster,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jared Triolo,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jarred Kelenic,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jason Heyward,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jasson Domínguez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Javier Assad,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Javier Báez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Javier Sanoja,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Jeff Hoffman,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Jeff McNeil,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jerar Encarnación,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jeremy Peña,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jesse Winker,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jesus Tinoco,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jesús Sánchez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jhoan Duran,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jhonkensy Noel,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jhonny Pereda,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Ji Hwan Bae,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Jimmy Herget,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Joc Pederson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Joe Boyle,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Joe La Sorsa,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Joe Mantiply,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Joey Bart,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Joey Cantillo,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Joey Estes,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Joey Lucchesi,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Joey Wentz,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Joey Wiemer,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Johan Rojas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+John Brebbia,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+John King,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+John Schreiber,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Johnathan Rodríguez,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Jon Berti,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jon Gray,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Jonah Bride,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jonah Heim,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jonatan Clase,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jonathan Bowlan,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Jonathan Cannon,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Jonny DeLuca,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jordan Hicks,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jordan Leasure,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jordan Westburg,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jordan Wicks,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jorge Alcala,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jorge Barrosa,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Jorge Mateo,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jorge Polanco,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jose A. Ferrer,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jose Iglesias,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jose Quintana,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Jose Siri,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jose Trevino,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Josh Bell,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Josh Hader,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Josh Lowe,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Josh Rojas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Josh Smith,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Josh Walker,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Josh Winckowski,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Joshua Palacios,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+José Caballero,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+José Fermín,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+José Herrera,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+José Miranda,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+José Ramírez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+José Tena,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Julian Merryweather,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Julio Rodríguez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Junior Caminero,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Jurickson Profar,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Justin Bruihl,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Justin Lawrence,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Justin Martinez,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Justin Slaten,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Justin Steele,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Justin Sterner,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Justin Topa,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Justin Turner,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Justin Verlander,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Justin Wilson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Justin Wrobleski,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Justyn-Henry Malloy,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kai-Wei Teng,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Kaleb Ort,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kameron Misner,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Ke'Bryan Hayes,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Keaton Winn,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Keider Montero,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Kenley Jansen,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kenta Maeda,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kerry Carpenter,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ketel Marte,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kevin Ginkel,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kevin Kelly,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kevin Newman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kevin Pillar,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kiké Hernández,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kody Clemens,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kody Funderburk,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kolby Allard,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Korey Lee,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kris Bryant,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kumar Rocker,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kyle Bradish,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kyle Farmer,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kyle Finnegan,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kyle Freeland,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kyle Harrison,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Kyle Hendricks,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kyle Higashioka,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kyle Isbel,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kyle Leahy,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kyle Nelson,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Kyle Nicolas,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Kyle Stowers,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Kyren Paris,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+LaMonte Wade Jr.,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Lake Bachar,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Landon Knack,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Lawrence Butler,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Lenyn Sosa,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Leo Jiménez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Leo Rivas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Leody Taveras,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Liover Peguero,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Logan Allen,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Logan Allen,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Logan Gilbert,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Logan Gillaspie,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Logan Webb,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Louis Varland,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Lucas Sims,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Luis Arráez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Luis Campusano,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Luis Contreras,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Luis García Jr.,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Luis Guerrero,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Luis Matos,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Luis Peralta,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Luis Robert Jr.,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Luis Torrens,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Luis Urías,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Luis Vázquez,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Luisangel Acuña,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Luke Jackson,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Luke Little,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Luke Maile,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Luke Williams,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Luken Baker,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+MJ Melendez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Marcell Ozuna,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Mark Canha,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Mark Leiter Jr.,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Mark Vientos,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Martín Maldonado,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Masataka Yoshida,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Mason Black,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Mason Englert,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Mason McCoy,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Mason Miller,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Mason Montgomery,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Matt Bowman,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Matt Chapman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Matt Festa,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Matt Krook,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Matt Mervis,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Matt Sauer,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Matt Strahm,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Matt Thaiss,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Matt Vierling,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Matt Waldron,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Matthew Liberatore,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Mauricio Dubón,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Max Kepler,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Max Lazar,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Max Meyer,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Max Schuemann,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Michael A. Taylor,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Michael Harris II,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Michael Helman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Michael Kelly,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Michael King,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Michael Lorenzen,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Michael Massey,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Michael McGreevy,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Michael Mercado,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Michael Petersen,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Michael Stefanic,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Michael Tonkin,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Mickey Gasper,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Mickey Moniak,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Miguel Amaya,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Miguel Andujar,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Miguel Castro,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Miguel Rojas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Miguel Vargas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Mike Burrows,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Mike Tauchman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Mike Yastrzemski,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Miles Mastrobuoni,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Mitch Garver,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Mitch Spence,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Mitchell Parker,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Myles Straw,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Nacho Alvarez Jr.,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Nasim Nuñez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nate Pearson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Nathan Eovaldi,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Nathan Lukes,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nestor Cortes,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Nick Allen,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Nick Anderson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Nick Fortes,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nick Gonzales,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nick Lodolo,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Nick Loftin,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nick Martini,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nick Maton,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Nick Mears,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Nick Sandlin,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Nick Sogard,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nick Yorke,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nicky Lopez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Niko Kavadas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Noelvi Marté,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nolan Gorman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nolan Jones,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Nolan Schanuel,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Oliver Dunn,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Oneil Cruz,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Orlando Arcia,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Orlando Ribalta,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Osvaldo Bido,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Oswald Peraza,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Oswaldo Cabrera,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Otto López,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Pablo Reyes,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Patrick Bailey,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Patrick Corbin,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Paul Blackburn,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Paul DeJong,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Paul Sewald,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Paul Skenes,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Pavin Smith,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Pedro Pagés,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Pete Fairbanks,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Phil Maton,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Pierce Johnson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Quinn Priester,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Rafael Marchán,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Rafael Montero,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Raisel Iglesias,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ramón Laureano,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ramón Urías,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Randal Grichuk,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Randy Dobnak,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Rece Hinds,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Reed Garrett,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Reese McGuire,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Reid Detmers,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Richard Fitts,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Richard Lovelady,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Richie Palacios,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Riley Adams,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Riley Greene,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Roansy Contreras,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Rob Refsnyder,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Rob Zastryzny,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Robert Garcia,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Robert Gasser,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Robert Suarez,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Romy González,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ron Marinaccio,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ronald Acuña Jr.,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ronel Blanco,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ronny Henriquez,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Rowdy Tellez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Royce Lewis,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ryan Bliss,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ryan Borucki,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ryan Brasier,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ryan Burr,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ryan Feltner,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Ryan Fernandez,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ryan Helsley,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ryan Kreidler,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Ryan Noda,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Ryan O'Hearn,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Ryan Pepiot,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ryan Walker,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Ryan Yarbrough,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ryan Zeferjahn,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ryne Nelson,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ryne Stanek,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Sam Aldegheri,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Sam Haggerty,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Sam Hilliard,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Sam Huff,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Sam Long,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Sam Moll,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Sammy Peralta,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Santiago Espinal,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Scott Alexander,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Scott Barlow,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Scott Effross,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Scott McGough,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Sean Bouchard,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Sean Burke,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Sean Guenther,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Sean Hjelle,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Sean Murphy,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Sean Newcomb,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Sean Reynolds,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Seth Brown,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Shane Bieber,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Shaun Anderson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Shawn Armstrong,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Shawn Dubin,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Shay Whitcomb,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Shelby Miller,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Shohei Ohtani,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Shota Imanaga,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Simeon Woods Richardson,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Slade Cecconi,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Sonny Gray,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Spencer Arrighetti,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Spencer Bivens,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Spencer Schwellenbach,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Spencer Strider,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Spencer Torkelson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Spencer Turnbull,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Starling Marte,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Stephen Kolek,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Steven Cruz,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Steven Matz,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Steven Okert,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Steven Wilson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Stuart Fairchild,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Taijuan Walker,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Taj Bradley,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tanner Banks,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tanner Gordon,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Tanner Houck,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Tanner Rainey,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tarik Skubal,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tayler Saucedo,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Taylor Rogers,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Taylor Trammell,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Taylor Walls,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Taylor Ward,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Teoscar Hernández,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Thairo Estrada,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Thomas Saggese,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tim Anderson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tim Herrin,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tim Hill,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tim Mayza,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tobias Myers,pit,reliever,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Tom Cosgrove,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tommy Edman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tommy Henry,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tommy Kahnle,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tommy Nance,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tommy Pham,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tomás Nido,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tony Santillan,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Touki Toussaint,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Travis Jankowski,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Travis d'Arnaud,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Trent Grisham,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Trent Thornton,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Trenton Brooks,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Trevor Larnach,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Trevor Megill,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Trevor Rogers,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Trevor Williams,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Trey Sweeney,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tristan Beck,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tristan Gray,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Triston Casas,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Troy Taylor,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ty Adcock,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Ty France,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tyler Alexander,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tyler Anderson,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tyler Ferguson,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tyler Freeman,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tyler Gilbert,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Tyler Heineman,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Tyler Kinley,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tyler Locklear,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Tyler Mahle,pit,starter,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Tyler Matzek,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tyler Phillips,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tyler Soderstrom,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tyler Wade,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Tyler Wells,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tyler Zuber,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Tylor Megill,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Tyrone Taylor,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Valente Bellozo,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Victor Caratini,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Victor Mederos,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Victor Scott II,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Victor Vodnik,pit,closer,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Vidal Bruján,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Vinnie Pasquantino,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Vinny Capra,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Víctor Robles,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Wade Miley,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Wandy Peralta,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Wenceel Pérez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Weston Wilson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Will Benson,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Will Klein,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Will Vest,pit,closer,,3,,Contract Adjustment Required|Role Change|Imputed Anchor,2,,3,
+Will Wagner,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Willi Castro,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+William Contreras,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Willy Adames,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Wilmer Flores,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Wyatt Langford,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Xavier Edwards,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Xzavion Curry,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Yandy Díaz,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Yosver Zulueta,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Yoán Moncada,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Yuki Matsui,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Yuli Gurriel,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Yusei Kikuchi,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Zach Brzykcy,pit,reliever,,3,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,3,
+Zach Dezenzo,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Zach McKinstry,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Zach Neto,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,
+Zach Pop,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Zack Kelly,pit,reliever,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Zack Littell,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Zack Short,hit,,,,,Contract Adjustment Required|Injury Baseline Distortion|Imputed Anchor,2,,,
+Zack Wheeler,pit,starter,,3,,Contract Adjustment Required|Imputed Anchor,1,,3,
+Ángel Martínez,hit,,,,,Contract Adjustment Required|Imputed Anchor,1,,,

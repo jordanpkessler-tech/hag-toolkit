@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HaG Toolkit — Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="wrap">
+        <div class="topline">
+          <div class="brand">HaG Toolkit</div>
+          <div class="stats">
+            <div class="pill" id="hdrBudget">Budget: —</div>
+            <div class="pill" id="hdrSlots">Slots: —</div>
+          </div>
+        </div>
+
+        <nav class="navrow">
+          <a href="index.html" data-tab="index.html">Dashboard</a>
+          <a href="auction.html" data-tab="auction.html">Auction Board</a>
+          <a href="strategy.html" data-tab="strategy.html">Strategy</a>
+          <a href="roster.html" data-tab="roster.html">Roster</a>
+          <a href="projections.html" data-tab="projections.html">Projections</a>
+          <a href="methodology.html" data-tab="methodology.html">Methodology</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="wrap">
+      <section class="card">
+        <h1>Dashboard</h1>
+        <p>
+          
+        </p>
+
+        <!-- SETTINGS PANEL -->
+        <section class="panel">
+          <strong>Settings</strong>
+          <p class="small"></p>
+
+          <div class="grid">
+            <label class="panel half">
+              <div class="small">Budget Total</div>
+              <input id="setBudgetTotal" type="number" min="0" step="1" />
+            </label>
+
+            <label class="panel half">
+              <div class="small">Budget Remaining</div>
+              <input id="setBudgetRemaining" type="number" min="0" step="1" />
+            </label>
+
+            <label class="panel half">
+              <div class="small">Hitter Slots Total</div>
+              <input id="setHSlots" type="number" min="0" step="1" />
+            </label>
+
+            <label class="panel half">
+              <div class="small">Pitcher Slots Total</div>
+              <input id="setPSlots" type="number" min="0" step="1" />
+            </label>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+            <button id="btnSaveSettings">Save Settings</button>
+            <button id="btnResetSettings" class="ghost" type="button">
+              Reset to Defaults
+            </button>
+            <span id="settingsStatus" class="small"></span>
+          </div>
+        </section>
+
+        <!-- DASHBOARD CARDS -->
+        <section class="grid">
+          <div class="panel third">
+            <strong>Budget</strong>
+            <div class="small" id="budgetText">Loading…</div>
+          </div>
+
+          <div class="panel third">
+            <strong>Roster Slots</strong>
+            <div class="small" id="slotsText">Loading…</div>
+          </div>
+
+          <div class="panel third">
+            <strong>Portfolio Edge</strong>
+            <div class="small" id="portfolioText">Loading…</div>
+          </div>
+        </section>
+
+        <!-- TOP TARGETS SNAPSHOT (SIMPLE) -->
+        <section class="panel" style="margin-top:14px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px;">
+            <div>
+              <strong>Top Targets</strong>
+              <div class="small" style="opacity:.85;">
+                Best values from your saved targets (top 8 by Delta).
+              </div>
+            </div>
+            <a class="small" href="./auction.html">View all →</a>
+          </div>
+
+          <div id="dashTopTargets" class="small" style="margin-top:10px;">
+            Loading targets…
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- SCRIPT -->
+    <script type="module">
+      import { setActiveTab, hydrateHeader } from "./js/nav.js";
+      import { getSettings, setSettings, getAuctionTargets } from "./js/storage.js";
+
+
+      // --- init nav + header ---
+      setActiveTab();
+      hydrateHeader();
+
+      // --- grab elements ---
+      const els = {
+        total: document.getElementById("setBudgetTotal"),
+        remaining: document.getElementById("setBudgetRemaining"),
+        hSlots: document.getElementById("setHSlots"),
+        pSlots: document.getElementById("setPSlots"),
+        save: document.getElementById("btnSaveSettings"),
+        reset: document.getElementById("btnResetSettings"),
+        status: document.getElementById("settingsStatus"),
+        budgetText: document.getElementById("budgetText"),
+        slotsText: document.getElementById("slotsText"),
+        portfolioText: document.getElementById("portfolioText"),
+        topTargets: document.getElementById("dashTopTargets"),
+      };
+
+      // --- update dashboard cards ---
+      function hydrateDashboardCards() {
+        const s = getSettings();
+        els.budgetText.textContent =
+          `Remaining: $${s.budget_remaining} / Total: $${s.budget_total}`;
+        els.slotsText.textContent =
+          `Hitters: ${s.hitter_slots_total} • Pitchers: ${s.pitcher_slots_total}`;
+
+        // Portfolio Edge (prep board snapshot)
+        try {
+          const targets = getAuctionTargets?.() || [];
+          const plannedSpend = (targets || []).reduce((sum, t) => {
+            const plan = Number(t?.plan);
+            const adj = Number(t?.adj);
+            const use = Number.isFinite(plan) && plan > 0 ? plan : (Number.isFinite(adj) ? adj : 0);
+            return sum + use;
+          }, 0);
+
+          const adjustedValue = (targets || []).reduce((sum, t) => {
+            const adj = Number(t?.adj);
+            return sum + (Number.isFinite(adj) ? adj : 0);
+          }, 0);
+
+          const edge = adjustedValue - plannedSpend;
+
+          const fmt = (n) => `$${Math.round(n)}`;
+          const sign = edge > 0 ? "+" : "";
+
+          if (els.portfolioText) {
+            els.portfolioText.textContent =
+              `Planned: ${fmt(plannedSpend)} • Adj: ${fmt(adjustedValue)} • Edge: ${sign}${fmt(edge)}`;
+          }
+        } catch (e) {
+          if (els.portfolioText) els.portfolioText.textContent = "—";
+        }
+      }
+
+      // --- load settings into form ---
+      function loadSettingsIntoForm() {
+        const s = getSettings();
+        els.total.value = s.budget_total;
+        els.remaining.value = s.budget_remaining;
+        els.hSlots.value = s.hitter_slots_total;
+        els.pSlots.value = s.pitcher_slots_total;
+      }
+
+      // --- SAVE ---
+      els.save.addEventListener("click", () => {
+        const next = {
+          budget_total: Number(els.total.value),
+          budget_remaining: Number(els.remaining.value),
+          hitter_slots_total: Number(els.hSlots.value),
+          pitcher_slots_total: Number(els.pSlots.value),
+        };
+
+        setSettings(next);
+        hydrateHeader();
+        hydrateDashboardCards();
+        loadSettingsIntoForm();
+
+        els.status.textContent = "Saved ✓";
+        setTimeout(() => (els.status.textContent = ""), 1500);
+      });
+
+      // --- RESET ---
+      els.reset.addEventListener("click", () => {
+        // IMPORTANT: must match key used in storage.js
+        localStorage.removeItem("hag_settings");
+
+        hydrateHeader();
+        hydrateDashboardCards();
+        loadSettingsIntoForm();
+
+        els.status.textContent = "Reset ✓";
+        setTimeout(() => (els.status.textContent = ""), 1500);
+      });
+
+      // ----------------------------
+      // Top Targets Snapshot (simple)
+      // ----------------------------
+
+      function esc(s) {
+        return String(s)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;");
+      }
+
+      function money(v) {
+      const n = Number(v);
+      if (!Number.isFinite(n)) return "—";
+      // If it's literally 0, we usually mean "not computed"
+      return n === 0 ? "—" : `$${Math.round(n)}`;
+      }
+
+
+      function indexByName(players) {
+        const map = new Map();
+        for (const p of players || []) {
+          const key = normalizeName(p.player || p.name || "");
+          if (key) map.set(key, p);
+        }
+        return map;
+      }
+
+      // Tries multiple possible keys so this doesn't break if pricing object changes
+      function pickNum(obj, keys) {
+        for (const k of keys) {
+          const v = obj?.[k];
+          const n = Number(v);
+          if (Number.isFinite(n)) return n;
+        }
+        return null;
+      }
+
+      async function hydrateTopTargets() {
+  const mount = els.topTargets;
+  if (!mount) return;
+
+  try {
+    const targets = getAuctionTargets?.() || [];
+
+    if (!Array.isArray(targets)) {
+      mount.innerHTML = `<div style="opacity:.8;">Targets data is not an array (storage mismatch).</div>`;
+      return;
+    }
+
+    if (!targets.length) {
+      mount.innerHTML = `<div style="opacity:.8;">No targets yet. Add some on the Auction Board.</div>`;
+      return;
+    }
+
+    // Keep dashboard simple: only use what is already stored on targets.
+    const rows = targets
+      .map(t => {
+        const player = t.player || t.name || "";
+        const pos = t.pos || t.position || "";
+        const team = t.team || "";
+
+        const adj =
+          num(t.adj) ??
+          num(t.adj_price) ??
+          num(t.target_price) ??
+          num(t.price) ??
+          null;
+
+        const val =
+          num(t.val) ??
+          num(t.value) ??
+          num(t.base_val) ??
+          num(t.auction_value_26) ??
+          null;
+
+        const delta =
+          num(t.delta) ??
+          (adj != null && val != null ? adj - val : null);
+
+        return { player, pos, team, adj, delta };
+      })
+      .filter(r => r.player)
+      .sort((a, b) => (b.delta ?? -9999) - (a.delta ?? -9999))
+      .slice(0, 8);
+
+    if (!rows.length) {
+      mount.innerHTML = `<div style="opacity:.8;">No usable targets found.</div>`;
+      return;
+    }
+
+    mount.innerHTML = `
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        ${rows.map(r => `
+          <div style="
+            display:grid;
+            grid-template-columns: 1fr 70px 70px;
+            gap:10px;
+            align-items:center;
+            padding:10px;
+            border-radius:10px;
+            background: rgba(0,0,0,0.08);
+          ">
+            <div>
+              <div style="font-weight:600;">${esc(r.player)}</div>
+              <div class="small" style="opacity:.8;">${esc([r.pos, r.team].filter(Boolean).join(" · "))}</div>
+            </div>
+            <div style="text-align:right; font-variant-numeric:tabular-nums;">${money(r.adj)}</div>
+            <div style="text-align:right; font-variant-numeric:tabular-nums;">${money(r.delta)}</div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  } catch (err) {
+    console.error("[dashboard] hydrateTopTargets failed:", err);
+    mount.textContent = `Could not load targets: ${err?.message || err}`;
+  }
+}
+
+function num(v) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+      // --- initial load ---
+      loadSettingsIntoForm();
+      hydrateDashboardCards();
+      hydrateTopTargets();
+    </script>
+  </body>
+</html>
