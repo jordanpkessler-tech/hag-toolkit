@@ -1,19 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
 :root {
-  --bg: #FFFFFF;
-  --card: #FBFCFE;
-  --text: #111111;
-  --muted: #6B7280;
-  --border: #F1F4F8;
-  --accent: #002BFF;
-  --accent2: #C9A227;
-}
-
-@media (max-width: 520px) {
-  :root {
-    /* Header wraps more on small screens */
-  }
+  --bg: #0b1020;
+  --card: rgba(255, 255, 255, 0.08);
+  --text: #e6e8eb;          /* brushed silver */
+  --muted: rgba(230,232,235,0.65); /* softer silver */
+  --border: rgba(255, 255, 255, 0.14);
+  --accent: #4f8cff;
+  --accent2: #7c4dff;
 }
 
 * { box-sizing: border-box; }
@@ -30,17 +22,46 @@ body {
     Arial,
     sans-serif;
 
-  font-weight: 300;
   color: var(--text);
-  background: var(--bg);
   min-height: 100vh;
 
+  /* 🔒 Lock bronze background */
+  background-color: #9b6b3f;
+
+  /* 🔒 Stabilize font rendering */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+
 body {
-  background: var(--bg);
+  background:
+    linear-gradient(
+      180deg,
+      #b07a44 0%,   /* light reflection */
+      #9b6a3d 35%,  /* true bronze */
+      #7f552f 70%,  /* shadow */
+      #6a4728 100%  /* deep edge */
+    );
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.02),
+      rgba(255,255,255,0.08)
+    );
+
+  opacity: 0.35;
+  mix-blend-mode: soft-light;
 }
 
 
@@ -51,7 +72,7 @@ body {
 .wrap {
   width: min(980px, 100%);
   margin: 0 auto;
-  padding: 28px 22px;
+  padding: 22px;
 }
 
 /* Opt-in wide layout (tables) */
@@ -76,15 +97,22 @@ main {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: var(--accent);
-  color: #FFFFFF;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.06),
+      rgba(0,0,0,0.18)
+    ),
+    rgba(42, 27, 18, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
 }
+
 
 .header .wrap {
   width: min(980px, 100%);
   margin: 0 auto;
-  padding: 28px 22px;
+  padding: 14px 18px;
 }
 
 .topline {
@@ -96,9 +124,9 @@ main {
 }
 
 .brand {
-  font-weight: 600;
+  font-weight: 900;
   letter-spacing: 0.2px;
-  color: #FFFFFF;
+  color: var(--text);
 }
 
 .stats {
@@ -108,13 +136,12 @@ main {
 }
 
 .pill {
-  border: 1px solid var(--border);
-  background: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
   padding: 6px 10px;
   border-radius: 999px;
   font-size: 13px;
-  font-weight: 400;
-  color: var(--text);
+  color: rgba(233, 236, 241, 0.9);
 }
 
 /* ============================
@@ -136,7 +163,7 @@ main {
   min-width: 34px;
   padding: 2px 8px;
   border-radius: 999px;
-  font-weight: 500;
+  font-weight: 900;
   font-size: 12px;
   text-align: center;
   color: rgba(15,18,22,0.95); /* dark text for readability */
@@ -151,145 +178,15 @@ main {
 
 /* Delta value badge (color comes from tier) */
 .delta-chip {
-  font-weight: 500;
+  font-weight: 800;
 }
 
 /* Delta tier colors (subtle) */
 .delta-chip.up-strong   { color: rgba(120, 255, 155, 0.95); }
 .delta-chip.up          { color: rgba(110, 168, 255, 0.95); }
-.delta-chip.flat        { color: var(--text); }
+.delta-chip.flat        { color: rgba(233,236,241,0.65); }
 .delta-chip.down        { color: rgba(255, 176, 103, 0.95); }
 .delta-chip.down-strong { color: rgba(255, 107, 107, 0.95); }
-
-/* ============================
-   Badges (shared)
-   ============================ */
-
-.hag-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 12px;
-  line-height: 1;
-  white-space: nowrap;
-  border: 1px solid var(--border);
-  background: #FFFFFF;
-  color: var(--text);
-}
-
-.hag-badge--rostered {
-  border-color: rgba(255,255,255,0.18);
-  background: rgba(0,0,0,0.20);
-  opacity: 0.95;
-}
-
-/* ===============================
-   Roster lineup planner
-   =============================== */
-
-.planner-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.9fr 0.9fr;
-  gap: 12px;
-}
-
-@media (max-width: 980px) {
-  .planner-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.planner-col {
-  border: 1px solid var(--border);
-  background: var(--card);
-  border: 1px solid var(--border);
-  
-  border-radius: 14px;
-  padding: 12px;
-}
-
-.planner-title {
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  margin-bottom: 6px;
-}
-
-.planner-sub {
-  margin-top: 8px;
-  font-weight: 500;
-  font-size: 12px;
-  opacity: 0.85;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-}
-
-.slot-row {
-  display: grid;
-  grid-template-columns: 54px 1fr;
-  gap: 10px;
-  align-items: center;
-  padding: 6px 0;
-  border-bottom: 1px dashed rgba(255,255,255,0.10);
-}
-
-.slot-row:last-child {
-  border-bottom: none;
-}
-
-.slot-label {
-  font-weight: 500;
-  font-size: 13px;
-}
-
-.slot-row select {
-  width: 100%;
-  padding: 8px;
-  border-radius: 10px;
-}
-
-.planner-list {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.planner-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 8px 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.06);
-}
-
-.planner-item .meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.planner-item .name {
-  font-weight: 500;
-}
-
-.planner-item .sub {
-  font-size: 12px;
-  opacity: 0.75;
-}
-
-.planner-item .actions {
-  display: flex;
-  gap: 6px;
-}
-
-.planner-item button {
-  padding: 6px 10px;
-  border-radius: 10px;
-}
 
 /* ============================
    Delta Legend (static key)
@@ -308,14 +205,14 @@ main {
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(0,0,0,0.18);
-  font-weight: 500;
+  font-weight: 800;
   font-size: 12px;
 }
 
 /* Legend color buckets */
 #deltaLegend .delta-pp { color: rgba(120, 255, 155, 0.95); } /* big up */
 #deltaLegend .delta-p  { color: rgba(110, 168, 255, 0.95); } /* up */
-#deltaLegend .delta-0  { color: var(--text); }   /* even */
+#deltaLegend .delta-0  { color: rgba(233,236,241,0.75); }   /* even */
 #deltaLegend .delta-n  { color: rgba(255, 176, 103, 0.95); } /* down */
 #deltaLegend .delta-nn { color: rgba(255, 107, 107, 0.95); } /* big down */
 
@@ -323,7 +220,7 @@ main {
 #deltaLegend .chipSub {
   margin-left: 4px;
   opacity: 0.7;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 11px;
 }
 
@@ -340,25 +237,31 @@ main {
 
 .navrow a {
   text-decoration: none;
-  color: #FFFFFF;
+  color: rgba(235,238,242,0.7);
   padding: 8px 12px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.15);
-  font-weight: 400;
+  border: 1px solid rgba(255,255,255,0.12);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.06),
+      rgba(0,0,0,0.18)
+    );
+  font-weight: 700;
   transition:
     background 0.15s ease,
-    transform 0.15s ease;
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .navrow a:hover {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.12);
   transform: translateY(-1px);
-  
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .navrow a.active {
-  color: var(--text);
+  color: rgba(235,238,242,0.95);
   border-color: rgba(255,255,255,0.25);
   background:
     linear-gradient(
@@ -370,7 +273,7 @@ main {
 
 .navrow a.active:hover {
   transform: none;
-  
+  box-shadow: none;
 }
 
 /* ===============================
@@ -383,84 +286,15 @@ main {
   border-radius: 18px;
   padding: 18px;
   backdrop-filter: blur(10px);
-  
-}
-
-/* --- Summary Row layout (Tier Summary left, Legends right) --- */
-.summaryRow {
-  display: grid;
-  /* Key/Legend stack | Recommended | Allocation | Compare */
-  grid-template-columns: 1fr 1.35fr 1.05fr 1.6fr;
-  gap: 14px;
-  margin-top: 14px;
-  align-items: stretch;
-}
-
-/* Column Key + Color Legend stacked (two separate boxes, split the column height) */
-.keyStack{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  height:100%;
-}
-
-.keyHalf{
-  flex:1;
-  min-height: 150px;
-}
-
-.legendCol{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-
-/* Right panel stacks its blocks (matches your HTML: #legendCard + .legendBlock) */
-#legendCard {
-  display: flex;
-  flex-direction: column;
-  gap: 12px; /* remove manual spacer div in HTML if you want */
-}
-
-/* Slight heading spacing for these panels */
-#tierSummaryCard > strong,
-#legendCard .legendBlock > strong {
-  display: block;
-  margin-bottom: 6px;
-}
-
-/* Column Key compact rows */
-.columnKeyGrid {
-  display: grid;
-  grid-template-columns: 70px 1fr;
-  gap: 6px 10px;
-  font-size: 12px;
-  line-height: 1.25;
-  opacity: 0.92;
-}
-
-.columnKeyGrid .k { font-weight: 500; opacity: 0.95; }
-.columnKeyGrid .v { opacity: 0.85; }
-
-/* Small note under the key */
-.columnKeyNote {
-  margin-top: 8px;
-  font-size: 11px;
-  opacity: 0.7;
-}
-
-/* Responsive: stack on small screens */
-@media (max-width: 1200px) {
-  .summaryRow { grid-template-columns: 1fr; }
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 /* Full-width table card */
 .card.full-width {
-  border-bottom: 1px solid var(--border);
   padding: 0;
   border-radius: 0;
-  
-  background: #F0F3F8;
+  box-shadow: none;
+  background: transparent;
   border-left: none;
   border-right: none;
 }
@@ -473,17 +307,12 @@ main {
 }
 
 .panel {
+  grid-column: span 12;
   padding: 14px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.10);
   background: rgba(0,0,0,0.18);
 }
-
-/* Only panels inside your 12-col .grid should auto-span */
-.grid .panel {
-  grid-column: span 12;
-}
-
 
 @media (min-width: 780px) {
   .panel.half { grid-column: span 6; }
@@ -497,18 +326,23 @@ main {
 h1 {
   margin: 0 0 8px 0;
   font-size: 26px;
-  color: var(--text);
+  color: rgba(235, 238, 242, 0.95);
 }
 
 p {
   margin: 0;
-  color: var(--text);
+  color: rgba(235, 238, 242, 0.75);
   line-height: 1.5;
 }
 
 .small {
   font-size: 13px;
-  color: var(--text);
+  color: rgba(235, 238, 242, 0.6);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* ===============================
@@ -518,7 +352,6 @@ p {
 .table-wrap {
   width: 100%;
   overflow-x: auto;
-  overflow-y: visible;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -538,16 +371,23 @@ p {
 }
 
 .data-table thead th {
-  border-bottom: 1px solid var(--border);
-  background: #F0F3F8;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(150, 108, 63, 0.95),
+      rgba(115, 78, 42, 0.95)
+    );
   backdrop-filter: blur(6px);
-  color: #111111;
+  color: rgba(235, 238, 242, 0.9);
   letter-spacing: 0.4px;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 .data-table thead tr {
-  
+  box-shadow: inset 0 -1px rgba(255, 215, 160, 0.25);
 }
 
 .data-table tbody tr:hover {
@@ -562,86 +402,28 @@ input, select, button {
   font: inherit;
 }
 
-/* Apply generic styling to all inputs EXCEPT range sliders */
-input:not([type="range"]), select {
+input, select {
   width: 100%;
   padding: 10px;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.12);
   background: rgba(0,0,0,0.22);
-  color: var(--text);
+  color: rgba(233,236,241,0.95);
   outline: none;
 }
 
 input::placeholder {
-  color: var(--text);
-}
-
-/* ===============================
-   Projections eligibility row
-   =============================== */
-
-.elig-row {
-  display: inline-flex;
-  max-width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 14px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.18);
-}
-
-.elig-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.elig-toggle input {
-  width: 18px;
-  height: 18px;
-}
-
-.elig-title {
-  font-weight: 500;
-  color: var(--text);
-}
-
-.elig-meta {
-  font-size: 13px;
-  color: var(--text);
-  white-space: nowrap;
-}
-
-.mono {
-  font-variant-numeric: tabular-nums;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  color: var(--text);
-}
-
-@media (max-width: 720px) {
-  .elig-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .elig-meta {
-    white-space: normal;
-  }
+  color: rgba(233,236,241,0.45);
 }
 
 button {
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.10);
-  color: var(--text);
+  color: rgba(233,236,241,0.95);
   padding: 9px 12px;
   border-radius: 12px;
-  font-weight: 500;
+  font-weight: 800;
   cursor: pointer;
-  position: relative;
 }
 
 button.ghost {
@@ -653,6 +435,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
+button {
+  position: relative;
+}
+
 button:hover {
   background:
     linear-gradient(180deg, rgba(255,255,255,0.18), rgba(0,0,0,0.18));
@@ -662,1288 +448,64 @@ button:active {
   transform: translateY(1px);
 }
 
-/* Delta colors (table + legend) */
-.delta-pp { color: rgba(120, 255, 155, 0.95); }
-.delta-p  { color: rgba(110, 168, 255, 0.95); }
-.delta-0  { color: var(--text); }
-.delta-n  { color: rgba(255, 176, 103, 0.95); }
-.delta-nn { color: rgba(255, 107, 107, 0.95); }
+/* ===============================
+   Eligibility rows (unchanged)
+   =============================== */
 
-.adj-cell { font-weight: 500; white-space: nowrap; }
-
-/* =========================================
-   Strategy Weights (FINAL, CLEAN)
-   ========================================= */
-
-.weightsGrid{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
+.elig-row{
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.035);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.weightRow{
-  display:grid;
-  grid-template-columns: 170px 1fr 86px;
-  gap:14px;
-  align-items:center;
-}
-
-.weightKey{
-  font-weight: 500;
-  letter-spacing: .2px;
-}
-
-.weightHelp{
-  opacity: .75;
-}
-
-.sliderWrap{
-  position: relative;
-  width: 100%;
-  padding: 6px 0;
-}
-
-/* small tick at 0 (left edge) */
-.sliderWrap .tick0{
-  position:absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(-1px, -50%);
-  width: 2px;
-  height: 14px;
-  border-radius: 2px;
-  background: rgba(255,255,255,0.45);
-  pointer-events:none;
-}
-
-.weightValue{
-  font-weight: 500;
-  text-align:center;
-  min-width: 72px;
-}
-
-/* ===== Strategy Weights — Range Sliders (Safari-safe) ===== */
-
-.weightSlider[type="range"]{
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  display: block !important;
-
-  width: 100% !important;
-  height: 32px !important;
-
-  background: transparent !important;
-  border: 0 !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  
-
+.elig-toggle{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
 }
 
-.weightSlider[type="range"]::-webkit-slider-runnable-track{
-  -webkit-appearance: none !important;
-  height: 14px !important;
-  border-radius: 999px !important;
-  background: rgba(255,255,255,0.14) !important;
-  border: 1px solid rgba(255,255,255,0.18) !important;
+.elig-title{
+  font-weight: 800;
+  color: rgba(233,236,241,0.92);
 }
 
-.weightSlider[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance: none !important;
-  width: 28px !important;
-  height: 28px !important;
-  border-radius: 50% !important;
-  background: rgba(255,255,255,0.90) !important;
-  border: 2px solid rgba(0,0,0,0.25) !important;
-  margin-top: -8px !important;
-  
+.elig-meta{
+  font-size: 12px;
+  opacity: .75;
+  text-align: right;
+  white-space: nowrap;
 }
 
-/* Firefox */
-.weightSlider[type="range"]::-moz-range-track{
-  height: 14px !important;
-  border-radius: 999px !important;
-  background: rgba(255,255,255,0.14) !important;
-  border: 1px solid rgba(255,255,255,0.18) !important;
-}
-
-.weightSlider[type="range"]::-moz-range-thumb{
-  width: 28px !important;
-  height: 28px !important;
-  border-radius: 50% !important;
-  background: rgba(255,255,255,0.90) !important;
-  border: 2px solid rgba(0,0,0,0.25) !important;
-  
-}
-
-/* Unsaved indicator dot */
-.unsavedDot{
-  display:inline-block;
-  width:8px;
-  height:8px;
-  border-radius: 50%;
-  background: rgba(255, 210, 90, 0.95);
-  margin-right: 8px;
-  transform: translateY(-1px);
+.mono{
+  font-variant-numeric: tabular-nums;
 }
 
 @media (max-width: 720px){
-  .weightRow{
-    grid-template-columns: 1fr;
+  .elig-row{
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .weightValue{
-    justify-self: start;
+  .elig-meta{
     text-align: left;
+    white-space: normal;
   }
 }
 
-/* Strategy badge states */
-.pill.strategy-neutral { opacity: 0.75; }
-.pill.strategy-active  { font-weight: 500; }
 
-/* Strategy effect marker (Adj column) */
-.strat-mark {
-  opacity: 0.9;
-  font-weight: 500;
-  margin-left: 6px;
-  font-size: 12px;
-}
-/* =========================
-   2.2 Tier / Val / Δ / Adj / Plan$ / HardMax$ polish
-   ========================= */
-
-/* Table basics — use your existing .data-table/.table-wrap system */
-.table-wrap td.num,
-.table-wrap th.num {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Draftable fade */
-tr.isUndraftable {
-  opacity: 0.55;
-}
-/* ----- Tier badge ----- */
-.tierBadge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 22px;
-  padding: 0 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  font-weight: 500;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.06);
-  opacity: 0.95;
-}
-
-/* Tier flavors (subtle) */
-.tier-elite { border-color: rgba(110,168,255,0.55); background: rgba(110,168,255,0.10); }
-.tier-high  { border-color: rgba(120,255,155,0.45); background: rgba(120,255,155,0.08); }
-.tier-mid   { border-color: var(--text); background: rgba(233,236,241,0.06); }
-.tier-low   { border-color: rgba(255,176,103,0.40); background: rgba(255,176,103,0.08); }
-.tier-spec  { border-color: rgba(255,107,107,0.45); background: rgba(255,107,107,0.08); font-style: italic; }
-
-/* ----- Delta chip ----- */
-.deltaChip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 52px;
-  height: 22px;
-  padding: 0 10px;
-  border-radius: 999px;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.05);
-}
-
-/* Reuse your existing color buckets by applying them to the chip */
-.deltaChip.delta-pp { color: rgba(120, 255, 155, 0.95); border-color: rgba(120,255,155,0.35); background: rgba(120,255,155,0.08); }
-.deltaChip.delta-p  { color: rgba(110, 168, 255, 0.95); border-color: rgba(110,168,255,0.35); background: rgba(110,168,255,0.08); }
-.deltaChip.delta-0  { color: var(--text); border-color: var(--text); background: rgba(233,236,241,0.04); }
-.deltaChip.delta-n  { color: rgba(255, 176, 103, 0.95); border-color: rgba(255,176,103,0.35); background: rgba(255,176,103,0.08); }
-.deltaChip.delta-nn { color: rgba(255, 107, 107, 0.95); border-color: rgba(255,107,107,0.35); background: rgba(255,107,107,0.08); }
-
-/* ----- Value hierarchy ----- */
-td.valCell { color: var(--text); }        /* calm baseline */
-td.adjCell { font-weight: 500; color: var(--text); } /* your truth */
-td.planCell { color: var(--text); font-style: italic; }
-td.hardMaxCell { color: rgba(255,107,107,0.95); font-weight: 500; }
-
-/* Hard max warning when plan >= hardmax */
-tr.planOverMax {
-  background: rgba(255, 107, 107, 0.06);
-}
-
-tr.planOverMax:hover {
-  background: rgba(255, 107, 107, 0.09);
-}
-
-tr.planOverMax td.planCell,
-tr.planOverMax td.hardMaxCell {
-  color: rgba(255, 107, 107, 0.95);
-  font-weight: 500;
-}
-/* Optional: tiny lock badge */
-.maxLock {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.maxLock .lockIcon {
-  opacity: 0.75;
-  font-size: 12px;
-}
-.dash-table { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
-.dash-row { display: grid; grid-template-columns: 1fr 70px 70px; gap: 10px; padding: 10px; border-radius: 10px; background: rgba(0,0,0,0.08); align-items: center; }
-.dash-name { font-weight: 600; }
-.dash-num { text-align: right; font-variant-numeric: tabular-nums; }
-.dash-footer { margin-top: 8px; text-align: right; }
-.subtle { opacity: 0.75; }
-
-/* ==============================
-   Recommended Targets
-   ============================== */
-.recTabs{
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.recTabBtn {
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.recTabBtn.active {
-  background: rgba(255,255,255,.10);
-}
-
-.recPanel { margin-top: 10px; }
-
-.recControls{
-  margin-top: 10px;
-  display: grid !important;
-  grid-template-columns: minmax(240px, 1fr) 240px;
-  gap: 12px 16px;
-  align-items: start;
-  max-width: 520px;
-}
-
-/* IMPORTANT: prevent the checkbox control from shrinking and overflowing into Max$ */
-.recControls .recCtl{
-  flex: 0 0 auto;
-}
-
-.recCtl{
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  border: 1px solid var(--border);
-  
-  box-sizing: border-box;
-}
-
-.recCtlRow{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 6px;
-}
-
-.recCheck{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: normal; /* allow wrapping */
-  max-width: 100%;
-  overflow: hidden;
-}
-
-.recCheck .small{
-  white-space: normal;
-  line-height: 1.2;
-  display: block;
-}
-
-#recMaxBid{
-  width: 120px;
-}
-
-.recRow {
-  padding: 10px 10px;
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 12px;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.recActions {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 110px;
-}
-
-.recActionBtn {
-  width: 100%;
-  padding: 8px 10px;
-  font-weight: 500;
-}
-
-.recName { font-weight: 500; }
-
-.recMeta {
-  font-weight: 600;
-  opacity: .75;
-  margin-left: 6px;
-  font-size: 12px;
-}
-
-.recSub {
-  margin-top: 8px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.chipNeed { background: rgba(110,168,255,.12); }
-.chipDelta { background: rgba(233,236,241,.06); }
-
-
-
-/* ===== Auction Board layout tightening (Picker+Filters and half-width Allocation) ===== */
-.abTwoCol{
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 14px;
-  align-items: start;
-}
-.abCol{ min-width: 0; }
-
-@media (max-width: 980px){
-  .abTwoCol{ grid-template-columns: 1fr; }
-}
-/* Allocation Visualizer: true center pie within panel */
-.allocRow{
-  display:flex;
-  gap:16px;
-  align-items:center;
-  justify-content:center;
-  flex-wrap:wrap;
-
-  /* KEY: let this section consume remaining panel height */
-  flex: 1;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-/* force the pie into the CENTER column */
-.allocPieWrap{
-  flex: 1 1 220px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding-top: 0; /* remove the manual nudge */
-}
-/* Allocation panel: allow vertical centering */
-.allocPanel{
-  display:flex;
-  flex-direction:column;
-  min-height: 320px; /* adjust if you want more/less vertical space */
-}
-
-/* Allocation Visualizer: split left (pie+snapshot) / right (compare) */
-.allocSplit{
-  display:grid;
-  grid-template-columns: 360px 1fr;
-  gap: 14px;
-  margin-top: 12px;
-  align-items: start;
-}
-
-@media (max-width: 1100px){
-  .allocSplit{ grid-template-columns: 1fr; }
-}
-
-/* Roster Snapshot (compact + scrollable, fits under Allocation Visualizer) */
-.snapHeader{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:10px;
-  margin-top: 10px;
-}
-
-.rosterSnapshot{
-  margin-top: 8px;
-  max-height: 190px;
-  overflow: auto;
-  padding-right: 6px;
-}
-
-.snapSection{
-  padding: 10px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  
-  margin-bottom: 8px;
-}
-
-.snapRow{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding: 6px 0;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-.snapRow:first-child{ border-top: 0; padding-top: 0; }
-
-.snapChips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top: 8px;
-}
-
-/* Compare panel (compact + scrollable) */
-.cmpControls{
-  display:flex;
-  gap:8px;
-  align-items:stretch;
-  margin-top: 8px;
-}
-
-.cmpInputWrap{
-  position: relative;
-  flex: 1;
-  min-width: 140px;
-}
-
-.cmpSuggest{
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(100% + 6px);
-  z-index: 9999;
-  background: #FFFFFF;
-  border: 1px solid var(--border, #E6EBF2);
-  border-radius: 12px;
-  overflow: hidden;
-  max-height: 260px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  
-}
-
-.cmpSuggestItem{
-  padding: 10px 12px;
-  cursor: pointer;
-  font-size: 13px;
-  color: rgba(17,17,17,0.92);
-}
-
-.cmpSuggestItem:hover{
-  background: rgba(16,110,255,0.06);
-}
-
-.cmpInput{
-  flex:1;
-  min-width: 140px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(0,0,0,.14);
-  color: rgba(255,255,255,.92);
-  outline: none;
-}
-
-.cmpPanel{
-  margin-top: 10px;
-  max-height: 330px;
-  overflow: auto;
-  padding-right: 6px;
-}
-
-.cmpEmpty{
-  opacity:.75;
-  padding: 10px;
-  border: 1px dashed rgba(255,255,255,.14);
-  border-radius: 12px;
-}
-
-.cmpGrid{
-  display:grid;
-  grid-template-columns: 110px repeat(var(--cmpCols), minmax(140px, 1fr));
-  gap: 8px 10px;
-  align-items: start;
-}
-
-.cmpMetric{
-  font-size: 12px;
-  opacity: .8;
-  padding: 6px 0;
-}
-
-.cmpCell{
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 12px;
-  background: rgba(0,0,0,.12);
-  padding: 8px 10px;
-}
-
-.cmpNameRow{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  align-items:flex-start;
-}
-
-.cmpName{
-  font-weight: 500;
-  line-height: 1.15;
-}
-
-.cmpMeta{
-  margin-top: 4px;
-  font-size: 11px;
-  opacity: .75;
-}
-
-.cmpFlags{
-  margin-top: 8px;
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-}
-
-.cmpRemove{
-  border: 0;
-  background: transparent;
-  color: rgba(255,255,255,.75);
-  cursor: pointer;
-  font-weight: 500;
-  line-height: 1;
-}
-
-
-/* keep legend on the RIGHT column */
-#allocLegend{
-  grid-column: 3;
-  justify-self: end;
-  min-width: 240px;
-}
-
-/* mobile: stack cleanly */
-@media (max-width: 700px){
-  .allocRow{
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-  .allocPieWrap{ grid-column: 1; }
-  #allocLegend{
-    grid-column: 1;
-    justify-self: center;
-    min-width: 0;
-    width: 100%;
-    max-width: 320px;
-  }
-}
-
-/* Recommended Targets: keep panel compact */
-#recTargets{
-  max-height: 360px;
-  overflow: auto;
-  padding-right: 6px;
-}
-.recRow{
-  padding: 8px 10px;
-  margin-bottom: 6px;
-}
-/* Auction Board: Player Picker + Filters in one panel */
-.abTwoCol{
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 14px;
-  align-items: start;
-}
-
-@media (max-width: 980px){
-  .abTwoCol{ grid-template-columns: 1fr; }
-}
-/* Column Key + Color Legend side by side */
-.keyRow{
-  display:grid;
-  grid-template-columns: 1fr 1fr 0.9fr;
-  gap:16px;
-}
-
-@media (max-width: 1200px){
-  .keyRow{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Compare panel container (separate from Allocation Visualizer) */
-.comparePanelOuter{
-  display:flex;
-  flex-direction:column;
-  min-height: 320px;
-}
-/* ===== Force Header Nav Text White (All States) ===== */
-
-.header .navrow a,
-.header .navrow a:hover,
-.header .navrow a.active,
-.header .navrow a.active:hover {
-  color: #FFFFFF !important;
-}
-
-
-/* === Force dropdowns and search bars white === */
-select,
-input[type="search"],
-input[type="text"],
-input[type="number"],
-input[type="email"] {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-}
-
-select:focus,
-input:focus {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  outline: 2px solid #cccccc;
-}
-
-
-/* === Remove remaining gray UI bits (legend pills, compare input, eligibility box) === */
-
-/* Compare search bar: input has no explicit type attribute, so target class + no-type inputs */
-input:not([type]),
-.cmpInput {
-  background: #ffffff !important;
-  color: #111111 !important;
-  border: 1px solid var(--border, #E6EBF2) !important;
-  border-radius: 10px !important;
-  box-shadow: none !important;
-}
-
-/* If the wrapper is tinted, neutralize it too */
-.cmpInputWrap {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* Color legend pills (Delta legend chips) */
-#deltaLegend .chip,
-#deltaLegend .pill,
-.legendRow .chip {
-  background: #ffffff !important;
-  border: 1px solid var(--border, #E6EBF2) !important;
-  box-shadow: none !important;
-}
-
-/* Keep the colored text cues for delta buckets (don’t gray-fill them) */
-#deltaLegend .delta-pp,
-#deltaLegend .delta-p,
-#deltaLegend .delta-0,
-#deltaLegend .delta-n,
-#deltaLegend .delta-nn {
-  background: #ffffff !important;
-}
-
-/* Projections eligibility box */
-.elig-row {
-  background: #ffffff !important;
-  border: 1px solid var(--border, #E6EBF2) !important;
-  box-shadow: none !important;
-}
-
-/* Make eligibility meta text less heavy on white */
-.elig-meta {
-  color: rgba(17,17,17,0.65) !important;
-}
-
-
-
-/* =========================================================
-   HaG UI Clean Overhaul (lightweight, sleek, fast)
-   - Removes heavy gray slabs & glass blur
-   - Establishes a simple 3-layer system: bg / cards / controls
-   ========================================================= */
-
-:root{
-  --hag-bg: #F6F8FB;
-  --hag-card: #FFFFFF;
-  --hag-tint: #F9FAFB;      /* subtle fill for control group boxes */
-  --hag-border: #E6EBF2;
-  --hag-text: #111111;
-  --hag-muted: rgba(17,17,17,.62);
-  --hag-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
-}
-
-/* Page background */
-body{ background: var(--hag-bg) !important; color: var(--hag-text) !important; }
-
-/* Core surfaces */
-.card,
-.panel{
-  background: var(--hag-card) !important;
-  border: 1px solid var(--hag-border) !important;
-  box-shadow: var(--hag-shadow) !important;
-  backdrop-filter: none !important;
-}
-
-/* Nested "panel" labels used as control boxes (Auction Board picker/filter blocks) */
-label.panel,
-.panel label.panel{
-  background: var(--hag-tint) !important;
-  border: 1px solid var(--hag-border) !important;
-  box-shadow: none !important;
-}
-
-/* Remove extra heavy full-width table strip background */
-.card.full-width{
-  background: var(--hag-card) !important;
-}
-
-/* Small text consistency */
-.small{ color: var(--hag-muted) !important; }
-.muted, .elig-meta{ color: var(--hag-muted) !important; }
-
-/* Header: slightly tighter so it doesn’t dominate */
-header, .header{
-  padding-top: 14px !important;
-  padding-bottom: 14px !important;
-}
-.header .bar, header .bar{
-  box-shadow: none !important;
-}
-
-/* Buttons: slimmer + consistent */
-button, .btn{
-  border-radius: 10px !important;
-  padding: 8px 10px !important;
-}
-button.ghost, .btn.ghost{
-  background: transparent !important;
-  border: 1px solid var(--hag-border) !important;
-}
-
-/* Inputs: consistent, white, light */
-select,
-input:not([type]),
-input[type="search"],
-input[type="text"],
-input[type="number"],
-input[type="email"]{
-  background: #ffffff !important;
-  color: var(--hag-text) !important;
-  border: 1px solid var(--hag-border) !important;
-  border-radius: 10px !important;
-  padding: 8px 10px !important;
-  box-shadow: none !important;
-}
-
-select:focus,
-input:focus{
-  outline: none !important;
-  border-color: rgba(0, 43, 255, 0.45) !important;
-  box-shadow: 0 0 0 3px rgba(0, 43, 255, 0.10) !important;
-}
-
-/* Compare: make wrapper not look like a gray slab */
-.comparePanelOuter,
-.cmpInputWrap{
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* Color legend pills: subtle tint so they aren’t “white on white” */
-#deltaLegend .chip,
-#deltaLegend .pill,
-.legendRow .chip{
-  background: var(--hag-tint) !important;
-  border: 1px solid var(--hag-border) !important;
-  box-shadow: none !important;
-}
-
-/* Projections eligibility row: match card system */
-.elig-row{
-  background: var(--hag-card) !important;
-  border: 1px solid var(--hag-border) !important;
-  box-shadow: none !important;
-  border-radius: 12px !important;
-  padding: 10px 12px !important;
-}
-
-/* Reduce “chunky” chip look in several places */
-.chip, .pill{
-  border-radius: 999px !important;
-  padding: 6px 10px !important;
-}
-
-/* Tables: keep headers crisp but not heavy */
-table thead th{
-  color: rgba(17,17,17,.75) !important;
-}
-
-
-/* === Strategy Weights slider visibility (range track + thumb) === */
-input[type="range"]{
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  background: transparent;
-}
-
-input[type="range"]::-webkit-slider-runnable-track{
-  height: 10px;
-  background: #ffffff;
-  border: 1px solid var(--hag-border, #E6EBF2);
-  border-radius: 999px;
-}
-
-input[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: #ffffff;
-  border: 2px solid rgba(0,43,255,.55);
-  box-shadow: 0 1px 2px rgba(16,24,40,.12);
-  margin-top: -5px;
-}
-
-input[type="range"]:focus{ outline: none; }
-input[type="range"]:focus::-webkit-slider-runnable-track{
-  box-shadow: 0 0 0 3px rgba(0,43,255,0.10);
-  border-color: rgba(0,43,255,.35);
-}
-
-/* Firefox */
-input[type="range"]::-moz-range-track{
-  height: 10px;
-  background: #ffffff;
-  border: 1px solid var(--hag-border, #E6EBF2);
-  border-radius: 999px;
-}
-input[type="range"]::-moz-range-thumb{
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: #ffffff;
-  border: 2px solid rgba(0,43,255,.55);
-  box-shadow: 0 1px 2px rgba(16,24,40,.12);
-}
-input[type="range"]:focus::-moz-range-track{
-  box-shadow: 0 0 0 3px rgba(0,43,255,0.10);
-  border-color: rgba(0,43,255,.35);
-}
-
-
-
-/* =========================================================
-   HaG UI Clean Overhaul (lightweight, sleek, fast)
-   - Removes heavy gray slabs & glass blur
-   - Establishes a simple 3-layer system: bg / cards / controls
-   ========================================================= */
-
-:root{
-  --hag-bg: #F6F8FB;
-  --hag-card: #FFFFFF;
-  --hag-tint: #F9FAFB;      /* subtle fill for control group boxes */
-  --hag-border: #E6EBF2;
-  --hag-text: #111111;
-  --hag-muted: rgba(17,17,17,.62);
-  --hag-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
-}
-
-body{ background: var(--hag-bg) !important; color: var(--hag-text) !important; }
-
-.card,
-.panel{
-  background: var(--hag-card) !important;
-  border: 1px solid var(--hag-border) !important;
-  box-shadow: var(--hag-shadow) !important;
-  backdrop-filter: none !important;
-}
-
-label.panel,
-.panel label.panel{
-  background: var(--hag-tint) !important;
-  border: 1px solid var(--hag-border) !important;
-  box-shadow: none !important;
-}
-
-.card.full-width{
-  background: var(--hag-card) !important;
-}
-
-.small{ color: var(--hag-muted) !important; }
-.muted, .elig-meta{ color: var(--hag-muted) !important; }
-
-header, .header{
-  padding-top: 14px !important;
-  padding-bottom: 14px !important;
-}
-.header .bar, header .bar{
-  box-shadow: none !important;
-}
-
-button, .btn{
-  border-radius: 10px !important;
-  padding: 8px 10px !important;
-}
-button.ghost, .btn.ghost{
-  background: transparent !important;
-  border: 1px solid var(--hag-border) !important;
-}
-
-select,
-input:not([type]),
-input[type="search"],
-input[type="text"],
-input[type="number"],
-input[type="email"]{
-  background: #ffffff !important;
-  color: var(--hag-text) !important;
-  border: 1px solid var(--hag-border) !important;
-  border-radius: 10px !important;
-  padding: 8px 10px !important;
-  box-shadow: none !important;
-}
-
-select:focus,
-input:focus{
-  outline: none !important;
-  border-color: rgba(0, 43, 255, 0.45) !important;
-  box-shadow: 0 0 0 3px rgba(0, 43, 255, 0.10) !important;
-}
-
-.comparePanelOuter,
-.cmpInputWrap{
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-#deltaLegend .chip,
-#deltaLegend .pill,
-.legendRow .chip{
-  background: var(--hag-tint) !important;
-  border: 1px solid var(--hag-border) !important;
-  box-shadow: none !important;
-}
-
-.elig-row{
-  background: var(--hag-card) !important;
-  border: 1px solid var(--hag-border) !important;
-  box-shadow: none !important;
-  border-radius: 12px !important;
-  padding: 10px 12px !important;
-}
-
-.chip, .pill{
-  border-radius: 999px !important;
-  padding: 6px 10px !important;
-}
-
-table thead th{
-  color: rgba(17,17,17,.75) !important;
-}
-
-/* === STRATEGY WEIGHT SLIDER VISIBILITY FIX === */
-input[type="range"]{
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  background: transparent;
-}
-
-input[type="range"]::-webkit-slider-runnable-track{
-  height: 12px;
-  background: #F0F3F9; /* visible light gray track */
-  border: 1.5px solid #D6DEEB; /* stronger border */
-  border-radius: 999px;
-}
-
-input[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: #1F3CFF; /* banner blue */
-  border: 2px solid #ffffff;
-  box-shadow: 0 1px 3px rgba(16,24,40,.18);
-  margin-top: -4px;
-}
-
-input[type="range"]:focus{ outline: none; }
-input[type="range"]:focus::-webkit-slider-runnable-track{
-  box-shadow: 0 0 0 3px rgba(0,43,255,0.10);
-  border-color: rgba(0,43,255,.35);
-}
-
-/* Firefox */
-input[type="range"]::-moz-range-track{
-  height: 12px;
-  background: #F0F3F9;
-  border: 1.5px solid #D6DEEB;
-  border-radius: 999px;
-}
-input[type="range"]::-moz-range-thumb{
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: #1F3CFF;
-  border: 2px solid #ffffff;
-  box-shadow: 0 1px 3px rgba(16,24,40,.18);
-}
-input[type="range"]:focus::-moz-range-track{
-  box-shadow: 0 0 0 3px rgba(0,43,255,0.10);
-  border-color: rgba(0,43,255,.35);
-}
-
-
-/* === OVERRIDE: Strategy Weights sliders on LIGHT UI === */
-/* Existing .weightSlider rules use white-on-white. These override with visible track + blue thumb. */
-.weightSlider[type="range"]::-webkit-slider-runnable-track{
-  height: 12px !important;
-  background: #F0F3F9 !important;
-  border: 1.5px solid #D6DEEB !important;
-  border-radius: 999px !important;
-}
-
-.weightSlider[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance: none !important;
-  width: 18px !important;
-  height: 18px !important;
-  border-radius: 999px !important;
-  background: #1F3CFF !important; /* banner blue */
-  border: 2px solid #ffffff !important;
-  box-shadow: 0 1px 3px rgba(16,24,40,.18) !important;
-  margin-top: -4px !important;
-}
-
-.weightSlider[type="range"]::-moz-range-track{
-  height: 12px !important;
-  background: #F0F3F9 !important;
-  border: 1.5px solid #D6DEEB !important;
-  border-radius: 999px !important;
-}
-
-.weightSlider[type="range"]::-moz-range-thumb{
-  width: 18px !important;
-  height: 18px !important;
-  border-radius: 999px !important;
-  background: #1F3CFF !important;
-  border: 2px solid #ffffff !important;
-  box-shadow: 0 1px 3px rgba(16,24,40,.18) !important;
-}
-
-/* The 0-tick on the left edge should be visible on white cards */
-.sliderWrap .tick0{
-  background: #D6DEEB !important;
-}
-
-
-
-/* =========================================================
-   Six refinement changes (A-F)
-   A handled via auction.html + allocation.js
-   ========================================================= */
-
-/* B) Header height: slightly tighter */
-header, .header{
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-}
-
-/* tighten nav pills + top badges slightly */
-.nav a, .navBtn, .navLink{
-  padding-top: 7px !important;
-  padding-bottom: 7px !important;
-}
-
-/* C) Table header contrast + weight */
-table thead th{
-  color: rgba(17,17,17,.88) !important;
-  font-weight: 600 !important;
-}
-
-/* D) Color legend readability */
-#deltaLegend,
-#deltaLegend .chip,
-#deltaLegend .pill,
-.legendRow .chip{
-  font-size: 14px !important;
-  font-weight: 600 !important;
-}
-#deltaLegend .chip,
-#deltaLegend .pill,
-.legendRow .chip{
-  padding: 7px 11px !important;
-}
-
-/* E) Strategy sliders: clean/minimal, just larger (track + thumb) */
-.weightRow{
-  gap: 16px !important;
-}
-.sliderWrap{
-  padding: 10px 0 !important;
-}
-.weightSlider[type="range"]::-webkit-slider-runnable-track{
-  height: 16px !important;
-  background: #F0F3F9 !important;
-  border: 1.5px solid #D6DEEB !important;
-}
-.weightSlider[type="range"]::-webkit-slider-thumb{
-  width: 22px !important;
-  height: 22px !important;
-  background: #1F3CFF !important; /* banner blue */
-  border: 2px solid #ffffff !important;
-  margin-top: -3px !important;
-  box-shadow: 0 1px 3px rgba(16,24,40,.18) !important;
-}
-.weightSlider[type="range"]::-moz-range-track{
-  height: 16px !important;
-  background: #F0F3F9 !important;
-  border: 1.5px solid #D6DEEB !important;
-}
-.weightSlider[type="range"]::-moz-range-thumb{
-  width: 22px !important;
-  height: 22px !important;
-  background: #1F3CFF !important;
-  border: 2px solid #ffffff !important;
-  box-shadow: 0 1px 3px rgba(16,24,40,.18) !important;
-}
-/* visible 0 tick on light UI */
-.sliderWrap .tick0{
-  background: #D6DEEB !important;
-  height: 16px !important;
-}
-
-/* F) Recommended Targets checkbox + Max$ controls: compact + aligned */
-.recControls{
-  display: flex !important;
-  align-items: flex-end !important;
-  gap: 12px !important;
-  max-width: 520px !important;
-}
-.recCtl{
-  flex: 0 0 auto !important;
-}
-.recCheck{
-  padding: 0 !important;
-}
-.recCheck input[type="checkbox"]{
-  width: 16px !important;
-  height: 16px !important;
-  accent-color: #1F3CFF !important;
-}
-/* Make checkbox label feel like a compact control, not a big box */
-.recCheck .small{
-  font-size: 13px !important;
-  font-weight: 600 !important;
-}
-/* Put Max$ and checkbox into the same visual “row” feel */
-.recControls .recCtl{
-  background: var(--hag-tint, #F9FAFB) !important;
-  border: 1px solid var(--hag-border, #E6EBF2) !important;
-  border-radius: 12px !important;
-  padding: 10px 12px !important;
-  box-shadow: none !important;
-}
-/* Specifically shrink the checkbox container so it isn't a huge empty block */
-.recControls .recCheck{
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  min-height: 44px !important;
-}
-.recControls #recMaxBid{
-  width: 110px !important;
-}
-
-/* Helper cleanup v2: hide empty auction status/meta */
-#auctionMeta:empty, .auctionMeta:empty, #auctionStatus:empty, .auctionStatus:empty { display:none !important; }
-
-
-/* Small ? help links (inline) */
-.qHelp{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:16px;
-  height:16px;
-  margin-left:6px;
-  border-radius:999px;
-  border:1px solid rgba(0,0,0,0.14);
-  font-size:11px;
-  text-decoration:none;
-  color: rgba(0,0,0,0.55);
-}
-.qHelp:hover{
-  color: rgba(0,0,0,0.75);
-  border-color: rgba(0,0,0,0.22);
-}
-
-/* Spacer column to keep summary grid sizing when legends are moved to Methodology */
-.legendSpacer{ min-height: 1px; }
-
-
-/* Side-by-side Recommended Targets + Allocation Visualizer */
-.dualPanels{
-  display:flex;
-  gap:20px;
-}
-.dualPanels > .recommendedPanel,
-.dualPanels > .allocationPanel{
-  flex:1;
-  min-width:0;
-}
-
-
-
-/* Auction Board layout (Player Picker full-width; Rec + Allocation side-by-side; Compare full-width) */
-.abLayout{ display:flex; flex-direction:column; }
-.abRowTop .panel{ width:100%; }
-.abRowMid.dualPanels{ display:flex; gap:14px; flex-wrap:wrap; align-items:stretch; }
-.abRowMid.dualPanels > .panel{ flex:1 1 420px; min-width:360px; }
-.abRowCompare .panel{ width:100%; }
-@media (max-width: 980px){
-  .abRowMid.dualPanels > .panel{ min-width: 100%; }
-}
+/* Delta colors (table + legend) */
+.delta-pp { color: rgba(120, 255, 155, 0.95); }
+.delta-p  { color: rgba(110, 168, 255, 0.95); }
+.delta-0  { color: rgba(233,236,241,0.75); }
+.delta-n  { color: rgba(255, 176, 103, 0.95); }
+.delta-nn { color: rgba(255, 107, 107, 0.95); }
+
+.adj-cell { font-weight: 800; }

@@ -1,122 +1,102 @@
 // js/auction-page.js
 // Auction Board UI (targets + tier summary) + CSV-backed autocomplete/autofill
-// (Strategy Weights removed — stub left to add back later)
+// + Strategy Weights (used when CSV includes category component columns)
+
 import {
-  DEFAULT_WEIGHTS,
-  getSettings,
-  setSettings,
-  getCategoryWeights,
-  getCategoryWeightsUpdatedAt,
-  getRoster,
-  getLivePrices,
-  setLivePrice,
   getAuctionTargets,
   addAuctionTarget,
   updateAuctionTarget,
   removeAuctionTarget,
-  clearAuctionTargets
+  clearAuctionTargets,
+  getSettings,
+  setSettings,
+  DEFAULT_WEIGHTS
 } from "./storage.js";
 
-import { mountRecommendedTargets } from "./recommended-targets.js";
-import { mountAllocationVisualizer } from "./allocation.js";
-import { initCompare } from "./compare.js";
+import { loadAuctionPlayers, computeTargetPricing, detectCatStats as detectCatStatsCsv } from "./auction-data.js";
 
-import { loadPlayers as loadProjectionPlayers } from "./projections-data.js";
+console.log("[auction-page] LOADED v2 weights-test");
 
-import {
-  loadAuctionPlayers,
-  computeTargetPricing,
-  detectCatStats as detectCatStatsCsv
-,
-  getBaseVal26,
-  getMarketEstimate,
-  getBaselineVal
-} from "./auction-data.js";
+/* -------------------------- Delta Legend (static) -------------------------- */
 
-import { normalizeName, getPlayerKey } from "./player-key.js";
+function renderDeltaLegendKey() {
+  const el = document.getElementById("deltaLegend");
+  if (!el) return;
 
-console.log("[auction-page] LOADED v4.1 (picker POS + Ohtani collapsed)");
+  const buckets = [
+    { cls: "delta-pp", label: "Big +", hint: "≥ +8" },
+    { cls: "delta-p",  label: "+",     hint: "+3 to +7.9" },
+    { cls: "delta-0",  label: "Even",  hint: "-2.9 to +2.9" },
+    { cls: "delta-n",  label: "–",     hint: "-3 to -7.9" },
+    { cls: "delta-nn", label: "Big –", hint: "≤ -8" },
+  ];
 
-// -------------------------
-// Notes cleanup (1.4)
-// -------------------------
-const NOTE_STRIP_PATTERNS = [
-  /^val\s*\$?\d+/i,       // "Val $57"
-  /^val26\s*\$?\d+/i,     // "Val26 $57" (just in case)
-  /^adj\s*\$?\d+/i,       // "Adj $62"
-  /^tier\s*[a-c]/i,       // "Tier A"
-  /^role\s*[:\-]/i,       // "Role: SP"
-  /^score/i               // "Score25 4.2"
-];
+  el.innerHTML = `
+    <div class="legendRow">
+      ${buckets.map(b => `
+        <span class="chip ${b.cls}" title="${b.hint}">
+          ${b.label}<span class="chipSub">${b.hint}</span>
+        </span>
+      `).join("")}
+    </div>
+  `;
 
-function cleanNotes(notes) {
-  if (!notes) return "";
-  return String(notes)
-    .split(/[;,|]/)
-    .map(s => s.trim())
-    .filter(Boolean)
-    .filter(line => !NOTE_STRIP_PATTERNS.some(rx => rx.test(line)))
-    .join("; ");
+  // Useful signal that it actually ran
+  console.log("[auction-page] deltaLegend rendered:", el.querySelectorAll(".chip").length);
 }
+
+
+function deltaClass(d) {
+  const x = Number(d);
+  if (!Number.isFinite(x)) return "delta-0";
+  if (x >= 8) return "delta-pp";
+  if (x >= 3) return "delta-p";
+  if (x <= -8) return "delta-nn";
+  if (x <= -3) return "delta-n";
+  return "delta-0";
+}
+
+function deltaWhy(pricing) {
+  const md = pricing.marketDelta ?? 0;
+  const sd = pricing.strategyDelta ?? 0;
+  const a = (md >= 0 ? `Market +${md.toFixed(1)}` : `Market ${md.toFixed(1)}`);
+  const b = (sd >= 0 ? `Strat +${sd.toFixed(1)}` : `Strat ${sd.toFixed(1)}`);
+  return `${a} | ${b}`;
+}
+
+
+// Debug hook (optional)
+window.__renderDeltaLegendKey = renderDeltaLegendKey;
+
+/* ----------------------------- chip helpers ------------------------------ */
+
+function score25Tier(score) {
+  if (score >= 4.5) return "elite";
+  if (score >= 3.5) return "strong";
+  if (score >= 2.5) return "viable";
+  if (score >= 1.5) return "risk";
+  return "avoid";
+}
+
+function deltaTier(delta) {
+  if (delta >= 0.6) return "up-strong";
+  if (delta >= 0.3) return "up";
+  if (delta <= -0.6) return "down-strong";
+  if (delta <= -0.3) return "down";
+  return "flat";
+}
+
+// -------------------------
+// Strategy Weights UI
+// NOTE: weights only affect Val26 if the auction CSV includes per-category numeric columns
+// (either raw category components or normalized contributions).
+// -------------------------
+const ALL_CATS = ["OPS","TB","HR","RBI","R","AVG","SBN","IP","QS","K","HLD","SV","ERA","WHIP"];
+const HIT_CATS = ["OPS","TB","HR","RBI","R","AVG","SBN"];
+const PIT_CATS = ["IP","QS","K","HLD","SV","ERA","WHIP"];
+let HAS_CAT_STATS = false;
 
 /* ----------------------------- small utilities ---------------------------- */
-function isStrategyActive(weights) {
-  for (const k of Object.keys(DEFAULT_WEIGHTS)) {
-    const a = Number(weights?.[k]);
-    const b = Number(DEFAULT_WEIGHTS[k]);
-    if (!Number.isFinite(a) || !Number.isFinite(b)) continue;
-    if (Math.abs(a - b) >= 0.0001) return true;
-  }
-  return false;
-}
-
-function getValueMode() {
-  const s = getSettings();
-  const m = String(s?.value_mode ?? "proj").toLowerCase();
-  return m === "market" ? "market" : "proj";
-}
-
-function rosterBadgeText(rosterEntry) {
-  if (!rosterEntry) return "";
-  const y = Number(rosterEntry?.contractYear);
-  const t = Number(rosterEntry?.contractTotal);
-  const hasFrac = Number.isFinite(y) && Number.isFinite(t) && t > 0;
-  return hasFrac ? `ROSTERED (${y}/${t})` : "ROSTERED";
-}
-
-function formatSaved(ts) {
-  if (!ts) return "—";
-  try {
-    return new Date(ts).toLocaleString(undefined, {
-      month: "short",
-      day: "2-digit",
-      hour: "numeric",
-      minute: "2-digit"
-    });
-  } catch {
-    return "—";
-  }
-}
-
-function hydrateStrategyHeaderBadge() {
-  const elStatus = document.getElementById("hdrStrategy");
-  const elSaved  = document.getElementById("hdrStrategySaved");
-  if (!elStatus && !elSaved) return;
-
-  const weights = getCategoryWeights();
-  const active = isStrategyActive(weights);
-
-  if (elStatus) {
-    elStatus.textContent = `Strategy: ${active ? "Active" : "Neutral"}`;
-    elStatus.classList.toggle("strategy-active", active);
-    elStatus.classList.toggle("strategy-neutral", !active);
-  }
-
-  if (elSaved) {
-    const ts = getCategoryWeightsUpdatedAt();
-    elSaved.textContent = `Saved: ${formatSaved(ts)}`;
-  }
-}
 
 function norm(s) {
   return String(s ?? "")
@@ -149,238 +129,185 @@ function approxEqual(a, b, eps = 1e-9) {
   return Math.abs(num(a) - num(b)) <= eps;
 }
 
-// Normalize type strings to the app's canonical values.
-function normType(t) {
-  const x = norm(t);
-  return x === "pit" || x === "pitch" || x === "pitcher" ? "pit" : "hit";
+/* ---------------------- weights helpers + weighted value ------------------ */
+
+function getWeightsSafe() {
+  const s = getSettings();
+  const w = s.category_weights || {};
+  return { ...DEFAULT_WEIGHTS, ...w };
 }
 
-// Ohtani handling: Auction board treats Ohtani as ONE auction decision.
-// - Only one entry in picker
-// - POS forced to "DH/SP"
-// - Type forced to "hit"
-function isOhtani(p) {
-  const name = String(p?.Name ?? p?.player ?? p?.name ?? "").trim().toLowerCase();
-  return name === "shohei ohtani";
-}
-
-function isOhtaniPitchRow(p) {
-  return isOhtani(p) && normType(p?.type) === "pit";
-}
-
-/* ------------------------------- CSV loader ------------------------------- */
-
-async function loadCSV(url) {
-  const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
-  const text = await res.text();
-
-  // Simple CSV parser (OK for clean data w/ no quoted commas)
-  const lines = text.trim().split(/\r?\n/);
-  const headers = lines[0].split(",").map((h) => h.trim());
-
-  return lines.slice(1).map((line) => {
-    const cols = line.split(",");
-    const row = {};
-    headers.forEach((h, i) => (row[h] = (cols[i] ?? "").trim()));
-    return row;
-  });
-}
-
-/* --------------------------- 2025 stats (POS) ----------------------------- */
-
-const STATS_CSV_URL = "./data/2025_stats.csv"; // <-- must match /data filename exactly
-let statsByName = new Map();
-let statsByNameLoose = new Map();
-
-async function loadStats2025() {
-  const rows = await loadCSV(STATS_CSV_URL);
-
-  statsByName = new Map();
-  statsByNameLoose = new Map();
-
-  for (const r of rows) {
-    const name = String(r?.Name ?? r?.name ?? "").trim();
-    if (!name) continue;
-    statsByName.set(name, r);
-    statsByNameLoose.set(normLoose(name), r);
+function weightsAreNeutral(weights) {
+  const w = weights || {};
+  for (const k of ALL_CATS) {
+    if (!approxEqual(w[k] ?? DEFAULT_WEIGHTS[k] ?? 0, DEFAULT_WEIGHTS[k] ?? 0)) return false;
   }
-
-  console.log(`[stats] loaded ${rows.length} rows from ${STATS_CSV_URL}`);
-  console.log("[stats] sample:", rows[0]);
+  return true;
 }
 
-function lookupStatsByName(name) {
-  const raw = String(name ?? "").trim();
-  if (!raw) return null;
+function getCatStat(p, cat) {
+  if (!p) return null;
 
-  // exact
-  const exact = statsByName.get(raw);
-  if (exact) return exact;
+  // Common key possibilities
+  const k1 = cat;                       // OPS
+  const k2 = cat.toLowerCase();         // ops
+  const k3 = cat.toUpperCase();         // OPS
+  const k4 = `${cat}_26`;               // OPS_26
+  const k5 = `${cat.toLowerCase()}_26`; // ops_26
 
-  // loose
-  const loose = statsByNameLoose.get(normLoose(raw));
-  if (loose) return loose;
+  const candidates = [k1, k2, k3, k4, k5];
 
-  // "Last, First" -> "First Last" fallback
-  if (raw.includes(",")) {
-    const parts = raw.split(",").map((s) => s.trim()).filter(Boolean);
-    if (parts.length >= 2) {
-      const flipped = `${parts.slice(1).join(" ")} ${parts[0]}`.trim();
-      const ex2 = statsByName.get(flipped);
-      if (ex2) return ex2;
-      const lo2 = statsByNameLoose.get(normLoose(flipped));
-      if (lo2) return lo2;
-    }
+  for (const k of candidates) {
+    if (p[k] != null && p[k] !== "" && Number.isFinite(Number(p[k]))) return Number(p[k]);
   }
-
   return null;
 }
 
-/* -------------------------- Delta Legend (static) -------------------------- */
+// Strict: only returns true if the CSV actually contains category stat columns
+function detectCatStats(samplePlayer) {
+  if (!samplePlayer) return false;
+  let found = 0;
 
-function renderDeltaLegendKey() {
-  const el = document.getElementById("deltaLegend");
-  if (!el) return;
-
-  const buckets = [
-    { cls: "delta-pp", label: "Big +", hint: "≥ +8" },
-    { cls: "delta-p",  label: "+",     hint: "+3 to +7.9" },
-    { cls: "delta-0",  label: "Even",  hint: "-2.9 to +2.9" },
-    { cls: "delta-n",  label: "–",     hint: "-3 to -7.9" },
-    { cls: "delta-nn", label: "Big –", hint: "≤ -8" },
-  ];
-
-  el.innerHTML = `
-    <div class="legendRow">
-      ${buckets.map(b => `
-        <span class="chip ${b.cls}" title="${b.hint}">
-          ${b.label}<span class="chipSub">${b.hint}</span>
-        </span>
-      `).join("")}
-    </div>
-  `;
-
-  console.log("[auction-page] deltaLegend rendered:", el.querySelectorAll(".chip").length);
-}
-
-function deltaClass(d) {
-  const x = Number(d);
-  if (!Number.isFinite(x)) return "delta-0";
-  if (x >= 8) return "delta-pp";
-  if (x >= 3) return "delta-p";
-  if (x <= -8) return "delta-nn";
-  if (x <= -3) return "delta-n";
-  return "delta-0";
-}
-
-function deltaWhy(pricing) {
-  const md = Number(pricing.marketDelta ?? 0);
-  const sd = Number(pricing.strategyDelta ?? 0);
-
-  const market = (md >= 0 ? `Plan +${md.toFixed(1)}` : `Plan ${md.toFixed(1)}`);
-  const strat  = (sd >= 0 ? `Strategy +${sd.toFixed(1)}` : `Strategy ${sd.toFixed(1)}`);
-
-  const stratDollars = (sd >= 0 ? `+$${sd.toFixed(1)}` : `-$${Math.abs(sd).toFixed(1)}`);
-
-  return `Δ = Adj − Value. ${market} | ${strat} (strategy effect ${stratDollars})`;
-}
-
-function strategyMark(sd) {
-  const x = Number(sd ?? 0);
-  if (!Number.isFinite(x) || Math.abs(x) < 0.05) return "↔";
-  return x > 0 ? "↗" : "↘";
-}
-
-// Debug hook
-window.__renderDeltaLegendKey = renderDeltaLegendKey;
-
-/* ----------------------------- chip helpers ------------------------------ */
-
-function score25Tier(score) {
-  if (score >= 4.5) return "elite";
-  if (score >= 3.5) return "strong";
-  if (score >= 2.5) return "viable";
-  if (score >= 1.5) return "risk";
-  return "avoid";
-}
-
-function deltaTier(delta) {
-  if (delta >= 0.6) return "up-strong";
-  if (delta >= 0.3) return "up";
-  if (delta <= -0.6) return "down-strong";
-  if (delta <= -0.3) return "down";
-  return "flat";
-}
-
-/* ------------------------------ Strategy (ON) ------------------------------ */
-// Strategy weights now live on a separate Strategy page. Auction board just reads them.
-const STRATEGY_ENABLED = true;
-
-// Fallback helper so the page never hard-crashes if strategy plumbing changes.
-function applyStrategyValue(baseValue) {
-  return baseValue;
-}
-
-function getStrategyWeights() {
-  return getCategoryWeights();
-}
-
-function strategyOptions() {
-  return {
-    hasCatStats: STRATEGY_ENABLED && HAS_CAT_STATS,
-    valueMode: getValueMode(),
-  };
-}
-
-// Build comparable 0..1 category components for weighting.
-const STRAT_CATS_HIT = ["OPS","TB","HR","RBI","R","AVG","SB"];
-const STRAT_CATS_PIT = ["IP","QS","K","HLD","SV","ERA","WHIP"];
-const STRAT_LOWER_BETTER = new Set(["ERA","WHIP"]);
-
-function computePercentiles(players, cats, type) {
-  const pool = players.filter(p => typeLabel(p.type) === type);
-  for (const cat of cats) {
-    const vals = [];
-    for (const p of pool) {
-      const v = Number(p?.[cat]);
-      if (Number.isFinite(v)) vals.push(v);
-    }
-    if (vals.length < 25) continue;
-
-    const sorted = [...vals].sort((a,b)=>a-b);
-    const n = sorted.length;
-
-    function pctRank(x) {
-      let lo = 0, hi = n;
-      while (lo < hi) {
-        const mid = (lo + hi) >> 1;
-        if (sorted[mid] <= x) lo = mid + 1; else hi = mid;
-      }
-      const rank = Math.max(0, lo - 1);
-      const p = (n <= 1) ? 0.5 : (rank / (n - 1));
-      return STRAT_LOWER_BETTER.has(cat) ? (1 - p) : p;
-    }
-
-    for (const p of pool) {
-      const v = Number(p?.[cat]);
-      if (!Number.isFinite(v)) continue;
-      p[`${cat}__w`] = Number(pctRank(v).toFixed(4));
-    }
+  // Require at least 2 cats to reduce false positives
+  for (const cat of ALL_CATS) {
+    const v = getCatStat(samplePlayer, cat);
+    if (v != null) found++;
+    if (found >= 2) return true;
   }
+  return false;
 }
 
-function buildStrategyComponents(players) {
-  computePercentiles(players, STRAT_CATS_HIT, "hit");
-  computePercentiles(players, STRAT_CATS_PIT, "pit");
+/**
+ * Compute a "weighted Val26" using per-category columns if present.
+ * IMPORTANT: This assumes those category columns are already comparable components
+ * (e.g., normalized scores / z-ish contributions), NOT raw stats.
+ *
+ * If you only have a single auction_value_26 (no per-cat columns), weights cannot
+ * change value — we return the base value unchanged.
+ */
+function getWeightedVal26(p, weights) {
+  const baseVal = num(p?.auction_value_26);
+  if (!p || !HAS_CAT_STATS) return baseVal;
+
+  const w = weights || DEFAULT_WEIGHTS;
+  const cats = typeLabel(p.type) === "pit" ? PIT_CATS : HIT_CATS;
+
+  let baseScore = 0;
+  let weightedScore = 0;
+  let any = false;
+
+  for (const cat of cats) {
+    const v = getCatStat(p, cat);
+    if (v == null) continue;
+    any = true;
+
+    const ww = num(w[cat] ?? DEFAULT_WEIGHTS[cat] ?? 0);
+
+    baseScore += v;          // implicit weight=1
+    weightedScore += v * ww; // weight applied
+  }
+
+  if (!any || baseScore === 0) return baseVal;
+
+  // Scale base dollars by ratio of weighted to base score
+  const scaled = baseVal * (weightedScore / baseScore);
+  return Number.isFinite(scaled) ? Math.max(0, scaled) : baseVal;
 }
 
-/* --------------------------- Auction pool + index ------------------------- */
+/* --------------------------- weights panel render -------------------------- */
+
+function renderWeightsPanel(onChange) {
+  const box = document.getElementById("catWeights");
+  if (!box) return;
+
+  const weights = getWeightsSafe();
+  box.innerHTML = "";
+
+  for (const cat of ALL_CATS) {
+    const lab = document.createElement("div");
+    lab.className = "small";
+    lab.textContent = cat;
+
+    const inp = document.createElement("input");
+    inp.type = "number";
+    inp.step = "0.1";
+    inp.min = "0";
+    inp.value = (weights[cat] ?? 0).toFixed(1);
+    inp.dataset.cat = cat;
+    inp.style.width = "90px";
+
+    box.appendChild(lab);
+    box.appendChild(inp);
+  }
+
+  const btnSave = document.getElementById("btnWeightsSave");
+  const btnReset = document.getElementById("btnWeightsReset");
+
+  // Prevent double-binding if renderWeightsPanel is called multiple times
+  if (btnSave) btnSave.replaceWith(btnSave.cloneNode(true));
+  if (btnReset) btnReset.replaceWith(btnReset.cloneNode(true));
+
+  const btnSave2 = document.getElementById("btnWeightsSave");
+  const btnReset2 = document.getElementById("btnWeightsReset");
+
+  btnSave2?.addEventListener("click", () => {
+    const next = {};
+    box.querySelectorAll("input[data-cat]").forEach((el) => {
+      const cat = el.dataset.cat;
+      const val = Number(el.value);
+      next[cat] = Number.isFinite(val) ? val : 0;
+    });
+
+    const s = getSettings();
+    setSettings({ ...s, category_weights: { ...DEFAULT_WEIGHTS, ...next } });
+    onChange?.();
+  });
+
+  btnReset2?.addEventListener("click", () => {
+    const s = getSettings();
+    setSettings({ ...s, category_weights: { ...DEFAULT_WEIGHTS } });
+    renderWeightsPanel(onChange);
+    onChange?.();
+
+  const btnPresetBalanced = document.getElementById("btnWeightsPresetBalanced");
+  const btnPresetHaG = document.getElementById("btnWeightsPresetHaG");
+
+  if (btnPresetBalanced) btnPresetBalanced.replaceWith(btnPresetBalanced.cloneNode(true));
+  if (btnPresetHaG) btnPresetHaG.replaceWith(btnPresetHaG.cloneNode(true));
+
+  const btnPresetBalanced2 = document.getElementById("btnWeightsPresetBalanced");
+  const btnPresetHaG2 = document.getElementById("btnWeightsPresetHaG");
+
+  btnPresetBalanced2?.addEventListener("click", () => {
+    const next = {};
+    ALL_CATS.forEach((c) => (next[c] = 1.0));
+    const s = getSettings();
+    setSettings({ ...s, category_weights: { ...DEFAULT_WEIGHTS, ...next } });
+    renderWeightsPanel(onChange);
+    onChange?.();
+  });
+
+  btnPresetHaG2?.addEventListener("click", () => {
+    const next = {
+      // Hit
+      AVG: 0.0, OPS: 1.3, TB: 1.2, HR: 1.2, RBI: 1.1, R: 1.1, SBN: 0.0,
+      // Pit
+      ERA: 0.0, WHIP: 0.0, IP: 1.3, QS: 1.2, K: 1.2, SV: 0.0, HLD: 1.3
+    };
+    const s = getSettings();
+    setSettings({ ...s, category_weights: { ...DEFAULT_WEIGHTS, ...next } });
+    renderWeightsPanel(onChange);
+    onChange?.();
+  });
+
+  });
+}
+
+/* --------------------------- CSV pool + index ----------------------------- */
 
 let AUCTION_PLAYERS = [];
 let AUCTION_BY_NAME = new Map();
 let AUCTION_BY_NAME_LOOSE = new Map();
-let HAS_CAT_STATS = false;
 
 function buildPlayerIndex(players) {
   AUCTION_BY_NAME = new Map();
@@ -407,6 +334,7 @@ function ensureNameDatalist(players) {
     document.body.appendChild(dl);
   }
 
+  // cap for Safari performance
   const capped = players.slice(0, 2500);
   dl.innerHTML = capped
     .map((p) => {
@@ -420,131 +348,19 @@ function ensureNameDatalist(players) {
 
 async function initAuctionPool() {
   try {
-    // 1) Load auction-value rows (pricing/tier/flags)
-    const auctionOnlyRaw = await loadAuctionPlayers();
-
-    // Normalize auction rows
-    const auctionOnly = auctionOnlyRaw.map((row) => {
-      const a = { ...row };
-      const nm = String(a.player ?? a.Name ?? a.name ?? "").trim();
-      a.player = nm;
-      a.Name = nm;
-      a.name = nm;
-      a.type = typeLabel(a.type ?? a.Type ?? "");
-      return a;
-    });
-
-    // 2) Load projection rows (per-category stats)
-    let projOnlyRaw = [];
-    try {
-      const projRes = await loadProjectionPlayers();
-      if (Array.isArray(projRes)) projOnlyRaw = projRes;
-      else if (projRes && Array.isArray(projRes.players)) projOnlyRaw = projRes.players;
-      else projOnlyRaw = [];
-    } catch (e) {
-      console.warn("[AUCTION] Could not load projections CSV:", e);
-      projOnlyRaw = [];
-    }
-
-    const projOnly = projOnlyRaw.map((row) => {
-      const p = { ...row };
-      const nm = String(p.Name ?? p.name ?? p.player ?? "").trim();
-      p.Name = nm;
-      p.name = nm;
-      p.player = nm;
-      p.type = typeLabel(p.type ?? p.Type ?? "");
-      return p;
-    });
-
-    // 3) Merge by loose name + type; append projection-only players
-    const projMap = new Map();
-    for (const p of projOnly) {
-      if (!p.Name) continue;
-      const key = `${normalizeName(p.Name)}|${typeLabel(p.type)}`;
-      if (!projMap.has(key)) projMap.set(key, p);
-    }
-
-    const merged = [];
-    const seen = new Set();
-    const idxByKey = new Map();
-
-    const statCols = ["PA","AVG","OPS","TB","HR","RBI","R","SB","ERA","WHIP","IP","QS","K","SV","HLD","POS"];
-
-    for (const a of auctionOnly) {
-      if (!a.Name) continue;
-      const key = `${normalizeName(a.Name)}|${typeLabel(a.type)}`;
-      const p = projMap.get(key);
-
-      if (p) {
-        for (const c of statCols) {
-          if (p[c] != null && p[c] !== "") a[c] = p[c];
-        }
-      }
-
-       const existingIdx = idxByKey.get(key);
-  if (existingIdx != null) {
-    const existing = merged[existingIdx];
-
-    // prefer the row that actually has an auction value
-    const ev = num(existing.auction_value_26);
-    const nv = num(a.auction_value_26);
-
-    const winner = (nv > ev) ? a : existing;
-    const loser  = (nv > ev) ? existing : a;
-
-    // fill any missing fields from the loser into the winner
-    for (const c of ["tier","flags","POS","display_role", ...statCols]) {
-      if ((winner[c] == null || winner[c] === "") && (loser[c] != null && loser[c] !== "")) {
-        winner[c] = loser[c];
-      }
-    }
-
-    merged[existingIdx] = winner;
-    continue;
-  }
-
-  idxByKey.set(key, merged.length);
-  merged.push(a);
-  seen.add(key);
-    }
-
-    for (const p of projOnly) {
-      if (!p.Name) continue;
-      const key = `${normalizeName(p.Name)}|${typeLabel(p.type)}`;
-      if (seen.has(key)) continue;
-
-      const a = { ...p };
-      a.Name = p.Name;
-      a.name = p.Name;
-      a.player = p.Name;
-      a.type = typeLabel(p.type);
-
-      if (a.auction_value_26 == null || a.auction_value_26 === "") a.auction_value_26 = 0;
-      if (a.tier == null) a.tier = "";
-      if (a.flags == null) a.flags = "";
-
-
-      merged.push(a);
-    }
-
-    buildStrategyComponents(merged);
-
-    AUCTION_PLAYERS = merged;
+    AUCTION_PLAYERS = await loadAuctionPlayers();
     buildPlayerIndex(AUCTION_PLAYERS);
     ensureNameDatalist(AUCTION_PLAYERS);
 
+    // Better detection: scan first N players to avoid a weird first-row miss
     HAS_CAT_STATS = false;
-    const scanN = Math.min(150, AUCTION_PLAYERS.length);
+    const scanN = Math.min(50, AUCTION_PLAYERS.length);
     for (let i = 0; i < scanN; i++) {
       if (detectCatStatsCsv(AUCTION_PLAYERS[i])) {
         HAS_CAT_STATS = true;
         break;
       }
     }
-
-    console.log(
-      `[AUCTION] loaded ${AUCTION_PLAYERS.length} players (auction=${auctionOnly.length}, proj=${projOnly.length}). HAS_CAT_STATS=${HAS_CAT_STATS}`
-    );
   } catch (e) {
     console.error("[AUCTION] Failed to load auction CSV:", e);
     AUCTION_PLAYERS = [];
@@ -569,11 +385,12 @@ function lookupPlayerByName(name) {
   const loose = normLoose(name);
   if (loose && AUCTION_BY_NAME_LOOSE.has(loose)) return AUCTION_BY_NAME_LOOSE.get(loose);
 
+  // "Last, First" -> "First Last"
   const raw = String(name ?? "").trim();
   if (raw.includes(",")) {
     const parts = raw.split(",").map((s) => s.trim()).filter(Boolean);
     if (parts.length >= 2) {
-      const flipped = `${parts.slice(1).join(" ")} ${parts[0]}`.trim();
+      const flipped = `${parts.slice(1).join(" ")} ${parts[0]}`;
 
       const flippedStrict = norm(flipped);
       if (AUCTION_BY_NAME.has(flippedStrict)) return AUCTION_BY_NAME.get(flippedStrict);
@@ -585,54 +402,15 @@ function lookupPlayerByName(name) {
 
   return null;
 }
-function getAnchorVal(p) {
-  return num(p?.auction_value_26);
-}
 
-// "Shadow" pricing: a secondary reference price (usually 2025 actual/imputed)
-// used to auto-fill Hard Max and show context on targets.
-function getShadowVal(p) {
-  // Prefer explicit imputed column; fallback to actual 2025 auction price.
-  const imp = num(p?.auction_price_25_imputed, null);
-  if (imp != null) return Math.max(0, imp);
-  const a25 = num(p?.auction_price_25, 0);
-  return Math.max(0, a25);
-}
-
-
-function posLabel(p) {
-  const pos = String(p.POS ?? p.Pos ?? p.pos ?? "").trim();
-  return pos ? pos.toUpperCase() : "—";
-}
-
-function typeShort(p) {
-  const t = String(p.type ?? p.Type ?? "").trim().toLowerCase();
-  if (t === "hit" || t === "hitter") return "H";
-  if (t === "pit" || t === "pitch" || t === "pitcher") return "P";
-  return "";
-}
-
-// Decide if we need (H)/(P) disambiguation in the dropdown
-function buildNameCounts(players) {
-  const counts = new Map();
-  for (const p of players) {
-    const name = String(p.Name ?? p.name ?? p.player ?? "").trim();
-    if (!name) continue;
-    counts.set(name, (counts.get(name) || 0) + 1);
-  }
-  return counts;
-}
-
-function formatSearchLabel(p, nameCounts) {
-  const name = String(p.Name ?? p.name ?? p.player ?? "").trim();
-  const pos = posLabel(p);
-  const needsType = (nameCounts?.get(name) || 0) > 1;
-  const suffix = needsType ? ` (${typeShort(p)})` : "";
-  return `${name} — ${pos}${suffix}`;
-}
-
-/* ---------------------- CSV -> target autofill helpers -------------------- */
-
+/**
+ * Auto-fill from your CSV columns:
+ * - type
+ * - auction_value_26 => plan
+ * - auction_value_26_shadow => max
+ * - tier (numeric -> A/B/C)
+ * - draftable, flags -> notes
+ */
 function applyCsvAutofill(targetId, typedName) {
   const p = lookupPlayerByName(typedName);
   if (!p) return;
@@ -644,60 +422,24 @@ function applyCsvAutofill(targetId, typedName) {
   const csvType = norm(p.type);
   const uiTier = tierFromCsv(p.tier);
 
-  // Primary value used across the Auction Board:
-  // - auction_value_26 if present
-  // - otherwise fallback to auction_price_25_imputed (when available)
-  const mode = getValueMode();
-  const vProj = getBaseVal26(p);
-  const vMkt = getMarketEstimate(p);
-  const v = getBaselineVal(p, mode);
-  const s = getShadowVal(p);
-  const m = vMkt;
+  const v = num(p.auction_value_26);
+  const s = num(p.auction_value_26_shadow);
 
   const patch = {};
 
-  const statsRow = lookupStatsByName(typedName);
-  const statsPOS = String(statsRow?.POS ?? "").trim();
-  if (!current.pos && statsPOS) patch.pos = statsPOS;
-
+  // Autofill pos from CSV display_role for pitchers (only if user hasn't set pos)
   const dispRole = String(p.display_role ?? p.role_25 ?? "").trim();
-  if (!patch.pos && !current.pos && dispRole) patch.pos = dispRole;
+  if (!current.pos && dispRole) patch.pos = dispRole;
 
-  if (isOhtani(p)) {
-    patch.type = "hit";
-    patch.pos = "DH/SP";
-  } else {
-    if (csvType) patch.type = csvType;
-  }
-
+  if (csvType) patch.type = csvType;
   if (uiTier) patch.tier = uiTier;
 
-  if (v > 0 && curPlan === 0) patch.plan = v;
+  // Only fill plan/max if user hasn't already set them
+  if (!curPlan && v) patch.plan = v;
   if (!curMax && (s || v)) patch.max = s || v;
 
-  // Persist stable key + pricing fields for the Dashboard.
-  patch.player_key = String(p?.player_key || getPlayerKey({ type: (patch.type || csvType || current.type || "unk"), Name: typedName }) || "");
-  patch.val = Math.round(v || 0);
-  patch.shadow = Math.round(s || 0);
-
-  // Compute Adj/Δ using the same logic as the Auction Board.
-  try {
-    const weights = getStrategyWeights();
-    const opts = strategyOptions();
-    const planForPricing = Number(patch.plan ?? current.plan ?? v ?? 0);
-    const pricing = computeTargetPricing({ plan: planForPricing, max: Number(patch.max ?? current.max ?? 0) }, p, weights, opts);
-    const adjRaw = Number(pricing?.adjRaw);
-    if (Number.isFinite(adjRaw)) {
-      patch.adj = Math.round(adjRaw);
-      patch.delta = Math.round(adjRaw - (v || 0));
-    }
-  } catch {
-    // no-op; Dashboard will show — if not available
-  }
-
+  // Notes: show value/shadow + draftable + flags (no duplication)
   const bits = [];
-  if (vProj > 0) bits.push(`Proj ${money(vProj)}`);
-  if (vMkt != null && Number(vMkt) > 0) bits.push(`Mkt ${money(vMkt)}`);
   if (v > 0) bits.push(`Val ${money(v)}`);
   if (s > 0) bits.push(`Shad ${money(s)}`);
 
@@ -710,14 +452,18 @@ function applyCsvAutofill(targetId, typedName) {
   if (bits.length) {
     const existing = String(current.notes ?? "").trim();
     const extra = bits.join(" • ");
-    if (!existing) patch.notes = extra;
-    else if (!existing.includes(extra)) patch.notes = `${existing} | ${extra}`;
+
+    if (!existing) {
+      patch.notes = extra;
+    } else if (!existing.includes(extra)) {
+      patch.notes = `${existing} | ${extra}`;
+    }
   }
 
   updateAuctionTarget(targetId, patch);
 }
 
-/* -------------------- Model chips (strategy removed) ---------------------- */
+/* -------------------- Model chips (works with your CSV today) -------------- */
 
 function getModelChips(p) {
   if (!p) return [];
@@ -725,9 +471,11 @@ function getModelChips(p) {
   const out = [];
   const push = (text, html = text) => out.push({ text, html });
 
+  // Score25 + Delta are "always-present" model intelligence chips
   const s25 = num(p.score_25);
   const s24 = num(p.score_24);
 
+  // --- Score25 (colored, labeled) ---
   if (s25 !== 0) {
     const tier = score25Tier(s25);
     push(
@@ -735,6 +483,7 @@ function getModelChips(p) {
       `Score25 <span class="score-chip ${tier}">${s25.toFixed(1)}</span>`
     );
 
+    // --- Δ25–24 (ALWAYS render so it never looks broken) ---
     if (s24 !== 0) {
       const delta = Number((s25 - s24).toFixed(1));
       const dt = deltaTier(delta);
@@ -748,17 +497,22 @@ function getModelChips(p) {
     }
   }
 
-  const mode = getValueMode();
-  const baseVal = getBaselineVal(p, mode);
-  const projVal = getBaseVal26(p);
-  const mktVal = getMarketEstimate(p);
-  const shadVal = getShadowVal(p);
+  // --- Val26 (weighted if possible) ---
+  const weights = getWeightsSafe();
+  const baseVal = num(p.auction_value_26);
+  const wVal = getWeightedVal26(p, weights);
+
   if (baseVal > 0) {
-  const shown = applyStrategyValue(baseVal);
-  push(`${money(shown)}`);
-}
-  if (mktVal != null && Number(mktVal) > 0) push(`Mkt ${money(mktVal)}`);
-  if (shadVal > 0) push(`Shad ${money(shadVal)}`);
+    if (HAS_CAT_STATS && !weightsAreNeutral(weights) && Math.round(wVal) !== Math.round(baseVal)) {
+      push(`Val26 ${money(wVal)}`, `Val26 <span style="opacity:.95">${money(wVal)}</span>`);
+      push(`Base ${money(baseVal)}`, `Base <span style="opacity:.85">${money(baseVal)}</span>`);
+    } else {
+      push(`Val26 ${money(baseVal)}`);
+      if (!HAS_CAT_STATS && !weightsAreNeutral(weights)) {
+        push(`Wts N/A`, `Wts <span class="delta-chip flat">N/A</span>`);
+      }
+    }
+  }
 
   const draftable = String(p.draftable ?? "").trim();
   if (draftable) push(`Draftable ${draftable}`);
@@ -786,7 +540,6 @@ function sortTargets(list, sortKey) {
       break;
 
     case "max_desc":
-      // FIXED: was num(b.max) - num(b.max)
       arr.sort(
         (a, b) =>
           num(b.max) - num(a.max) ||
@@ -853,14 +606,15 @@ function renderTierSummary(allTargets) {
     const plan = num(t.plan);
     const maxv = num(t.max);
 
+    // Adj $ is based on Base Val + Δ (market + strategy), capped by hard max.
+    const weights = getWeightsSafe();
     const p = lookupPlayerByName(t.name ?? "");
-    const weights = getStrategyWeights();
-    const pricing = computeTargetPricing(t, p, weights, strategyOptions());
-
-    const adjv = Number.isFinite(pricing.adjRaw) ? pricing.adjRaw : 0;
+    const pricing = computeTargetPricing(t, p, weights, { hasCatStats: HAS_CAT_STATS });
+    const adjv = Number.isFinite(pricing.adjPrice) ? pricing.adjPrice : 0;
 
     if (plan > 0) byTier[tier].plan += plan;
     if (maxv > 0) byTier[tier].max += maxv;
+
     if (adjv > 0) byTier[tier].adj += adjv;
   }
 
@@ -937,49 +691,23 @@ function render() {
 
   const filtered = applyFilters(all);
 
-  // Always refresh auxiliary panels (they should not depend on having any targets).
-  // If we return early below (e.g., zero targets), these would otherwise never render/update.
-  try {
-    mountRecommendedTargets({
-      players: AUCTION_PLAYERS,
-      valueMode: getValueMode(),
-    });
-  } catch (e) {
-    console.warn("[rec] failed to render recommended targets", e);
-  }
-
-  try {
-    mountAllocationVisualizer({});
-  } catch (e) {
-    console.warn("[alloc] failed to render allocation", e);
-  }
-
   if (meta) {
-    const updatedAt = getCategoryWeightsUpdatedAt();
-    const stratTag = updatedAt
-      ? `Strategy: Active (${new Date(updatedAt).toLocaleString()})`
-      : `Strategy: Default`;
-
     const hit = all.filter((t) => typeLabel(t.type) === "hit").length;
     const pit = all.filter((t) => typeLabel(t.type) === "pit").length;
     const planSum = all.reduce((acc, t) => acc + num(t.plan), 0);
-
-    const weights = getStrategyWeights();
-    const opts = strategyOptions();
-
-    const adjSum = all.reduce((acc, t) => {
+    const weightsNow = getWeightsSafe();
+    const adjSum = all.reduce((acc,t)=>{
       const p = lookupPlayerByName(t.name ?? "");
-      const pr = computeTargetPricing(t, p, weights, opts);
-      return acc + (Number.isFinite(pr.adjRaw) ? pr.adjRaw : 0);
-    }, 0);
-
-    meta.textContent = "";
-}
+      const pr = computeTargetPricing(t, p, weightsNow, { hasCatStats: HAS_CAT_STATS });
+      return acc + (Number.isFinite(pr.adjPrice) ? pr.adjPrice : 0);
+    },0);
+    meta.textContent = `Targets: ${all.length} (hit ${hit} / pit ${pit}) • Planned: ${money(planSum)} • Adj: ${money(adjSum)}`;
+  }
 
   if (!filtered.length) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="13" class="small" style="padding:12px;">
+        <td colspan="12" class="small" style="padding:12px;">
           No targets match your filters.
         </td>
       </tr>
@@ -989,23 +717,11 @@ function render() {
 
   tbody.innerHTML = "";
 
-  const weightsNow = getStrategyWeights();
-  const opts = strategyOptions();
-  const rosterMap = new Map(
-    (getRoster() || []).map((r) => [normalizeName(r?.name || ""), r])
-  );
-
   for (const t of filtered) {
     const tr = document.createElement("tr");
 
-    // Row-level polish: plan over max highlight
-    const planNum = num(t.plan);
-    const maxNum  = num(t.max);
-    if (planNum > 0 && maxNum > 0 && planNum >= maxNum) tr.classList.add("planOverMax");
-
-    // Preload records
+    // Row-scoped CSV player record for this target (used by Pos + chips, etc.)
     const rowPlayer = lookupPlayerByName(t.name ?? "");
-    const statsRow = lookupStatsByName(t.name ?? "");
 
     // 1) Player (with datalist + model chips)
     {
@@ -1014,51 +730,25 @@ function render() {
       input.value = t.name ?? "";
       input.placeholder = "Player";
       input.style.width = "220px";
-      input.style.flex = "0 0 220px";
       input.setAttribute("list", "playerNameList");
-
-      const topRow = document.createElement("div");
-      topRow.style.display = "flex";
-      topRow.style.alignItems = "center";
-      topRow.style.gap = "8px";
-
-      const badge = document.createElement("span");
-      badge.className = "hag-badge hag-badge--rostered";
-
-      function syncRosterBadge(name) {
-        const key = normalizeName(name || "");
-        const entry = rosterMap.get(key);
-        if (!entry) {
-          badge.style.display = "none";
-          badge.textContent = "";
-          return;
-        }
-        badge.style.display = "inline-flex";
-        badge.textContent = rosterBadgeText(entry);
-      }
-
-      syncRosterBadge(input.value);
 
       input.addEventListener("input", () => {
         applyCsvAutofill(t.id, input.value);
-        syncRosterBadge(input.value);
       });
 
       input.addEventListener("change", () => {
         const newName = input.value;
         updateAuctionTarget(t.id, { name: newName });
         applyCsvAutofill(t.id, newName);
-        syncRosterBadge(newName);
         render();
       });
 
-      topRow.appendChild(input);
-      topRow.appendChild(badge);
-      td.appendChild(topRow);
+      td.appendChild(input);
 
       const p = lookupPlayerByName(input.value);
       if (p) window.__HAG_LAST_PLAYER = p;
 
+      // Model chips
       const modelChips = getModelChips(p);
       if (modelChips.length) {
         const chips = document.createElement("div");
@@ -1113,15 +803,13 @@ function render() {
       const td = document.createElement("td");
       const input = document.createElement("input");
 
-      const statsPOS = String(statsRow?.POS ?? "").trim();
-      const pitchPOS =
-        (rowPlayer && norm(rowPlayer.type) === "pit")
-          ? String(rowPlayer.display_role ?? rowPlayer.role_25 ?? "").trim()
+      const suggested =
+        (rowPlayer && (rowPlayer.type === "pit" || rowPlayer.type === "Pitcher"))
+          ? (rowPlayer.display_role || rowPlayer.role_25 || "")
           : "";
 
-      const suggested = (isOhtani(rowPlayer) ? "DH/SP" : (statsPOS || pitchPOS || ""));
       input.value = (t.pos ?? "") || suggested;
-      input.placeholder = suggested || "OF / SS / SP / RP";
+      input.placeholder = suggested || "OF / SP / RP";
       input.style.width = "120px";
 
       input.addEventListener("change", () => {
@@ -1152,53 +840,43 @@ function render() {
     }
 
     // 5) Val / Δ / Adj $ (computed)
-    const pricing = computeTargetPricing(t, rowPlayer, weightsNow, opts);
-
-    // Val (polish: valCell + num)
+    // Uses CSV base value + (market delta vs plan) + small capped strategy bias.
+    const weightsNow = getWeightsSafe();
+    const pricing = computeTargetPricing(t, rowPlayer, weightsNow, { hasCatStats: HAS_CAT_STATS });
     {
+      // Val
       const td = document.createElement("td");
       td.style.textAlign = "right";
-      td.className = "small valCell num";
-      const mode = getValueMode();
-      const projVal = getBaseVal26(rowPlayer);
-      const mktVal = getMarketEstimate(rowPlayer);
-      const baseShown = Number(pricing.baseVal ?? 0);
-      td.textContent = money(baseShown);
-      const modeLabel = mode === "market" ? "Market Estimate" : "Proj Anchor";
-      td.title = `${modeLabel}: ${money(baseShown)}${projVal != null ? `\nProj Anchor: ${money(projVal)}` : ""}${mktVal != null ? `\nMarket Estimate: ${money(mktVal)}` : ""}`;
+      td.className = "small";
+      td.textContent = money(pricing.baseVal);
       tr.appendChild(td);
     }
 
-    // Δ (polish: deltaChip)
     {
+      // Δ (total)
       const td = document.createElement("td");
       td.style.textAlign = "right";
-      td.className = "small num";
+      td.className = `small ${deltaClass(pricing.totalDelta)}`;
       td.title = deltaWhy(pricing);
-
-      const x = Number(pricing.totalDelta ?? 0);
-      const cls = deltaClass(x);
-      td.innerHTML = `<span class="deltaChip ${cls}">${x >= 0 ? `+${x.toFixed(1)}` : `${x.toFixed(1)}`}</span>`;
+      const x = pricing.totalDelta ?? 0;
+      td.textContent = (x >= 0 ? `+${x.toFixed(1)}` : `${x.toFixed(1)}`);
       tr.appendChild(td);
     }
 
-    // Adj (polish: adjCell + num, keep strategy mark)
     {
+      // Adj $
       const td = document.createElement("td");
       td.style.textAlign = "right";
-      td.className = "adj-cell adjCell num";
+      td.className = "adj-cell";
       td.title = deltaWhy(pricing);
-
-      const mark = strategyMark(pricing.strategyDelta);
-      td.innerHTML = `${money(pricing.adjRaw)} <span class="strat-mark">${mark}</span>`;
+      td.textContent = money(pricing.adjPrice);
       tr.appendChild(td);
     }
 
-    // 6) Plan $
+    // 5) Plan $
     {
       const td = document.createElement("td");
       td.style.textAlign = "right";
-      td.className = "planCell num";
       const input = document.createElement("input");
       input.type = "number";
       input.min = "0";
@@ -1213,11 +891,10 @@ function render() {
       tr.appendChild(td);
     }
 
-    // 7) Hard Max $
+    // 6) Hard Max $
     {
       const td = document.createElement("td");
       td.style.textAlign = "right";
-      td.className = "hardMaxCell num";
       const input = document.createElement("input");
       input.type = "number";
       input.min = "0";
@@ -1232,7 +909,7 @@ function render() {
       tr.appendChild(td);
     }
 
-    // 8) Enforce Up To $
+    // 7) Enforce Up To $
     {
       const td = document.createElement("td");
       td.style.textAlign = "right";
@@ -1250,54 +927,22 @@ function render() {
       tr.appendChild(td);
     }
 
-    // 9) Notes
+    // 8) Notes
     {
       const td = document.createElement("td");
       const input = document.createElement("input");
-
-      input.value = cleanNotes(t.notes ?? "");
-      input.placeholder = "—";
+      input.value = t.notes ?? "";
+      input.placeholder = "Notes";
       input.style.width = "260px";
-
       input.addEventListener("change", () => {
-        const cleaned = cleanNotes(input.value);
-        input.value = cleaned;
-        updateAuctionTarget(t.id, { notes: cleaned });
+        updateAuctionTarget(t.id, { notes: input.value });
         render();
       });
-
       td.appendChild(input);
       tr.appendChild(td);
     }
 
-    // 10) Live $ (optional) — keyed by stable player_key
-    {
-      const td = document.createElement("td");
-      td.style.textAlign = "right";
-      td.className = "num";
-
-      const key = String(t?.player_key || "").trim();
-      const liveMap = getLivePrices();
-      const cur = (key && liveMap && liveMap[key] != null) ? Number(liveMap[key]) : "";
-
-      const input = document.createElement("input");
-      input.type = "number";
-      input.min = "0";
-      input.step = "1";
-      input.placeholder = "—";
-      input.value = cur === "" ? "" : String(cur);
-      input.style.width = "90px";
-
-      input.addEventListener("change", () => {
-        setLivePrice(key, input.value);
-        render();
-      });
-
-      td.appendChild(input);
-      tr.appendChild(td);
-    }
-
-    // 11) Action
+    // 9) Action
     {
       const td = document.createElement("td");
       td.style.textAlign = "right";
@@ -1315,261 +960,37 @@ function render() {
 
     tbody.appendChild(tr);
   }
-
 }
 
-/* ------------------------ Recommended Targets Tabs ------------------------ */
+/* ------------------------------ quick add UI ------------------------------ */
 
-function initRecTabs() {
-  const btns = Array.from(document.querySelectorAll("[data-rec-tab]"));
-  if (!btns.length) return;
-  btns.forEach((b) => {
-    b.addEventListener("click", () => {
-      const tab = b.getAttribute("data-rec-tab");
-      btns.forEach((x) => x.classList.toggle("active", x === b));
-
-      const needs = document.getElementById("recNeeds");
-      const values = document.getElementById("recValues");
-      const fits = document.getElementById("recFits");
-      if (!needs || !values || !fits) return;
-
-      needs.style.display = tab === "needs" ? "block" : "none";
-      values.style.display = tab === "values" ? "block" : "none";
-      fits.style.display = tab === "fits" ? "block" : "none";
-    });
-  });
-}
-
-/* --------------------- Recommended Targets Controls --------------------- */
-
-function initRecControls() {
-  const cb = document.getElementById("recAffordableOnly");
-  const max = document.getElementById("recMaxBid");
-  if (!cb && !max) return;
-
-  const onChange = () => {
-    // The recommender reads these controls directly.
-    render();
-  };
-
-  cb?.addEventListener("change", onChange);
-  max?.addEventListener("change", onChange);
-}
-
-/* ------------------------------ Player Picker ----------------------------- */
-
-let PICK_SELECTED_NAME = "";
-let PICK_SELECTED_PLAYER = null;
-const PICK_MAX_RESULTS = 14;
-const PICK_HARDMAX_BUFFER = 5;
-
-function setPickSelected(player) {
-  PICK_SELECTED_PLAYER = player || null;
-  PICK_SELECTED_NAME = player ? String(player?.Name ?? player?.player ?? player?.name ?? "").trim() : "";
-
-  const el = document.getElementById("pickSelected");
-  if (el) el.textContent = PICK_SELECTED_NAME || "—";
-
-  const wrap = document.getElementById("pickResults");
-  if (!wrap) return;
-  wrap.querySelectorAll(".pickItem").forEach((btn) => {
-    const n = String(btn?.dataset?.name ?? "");
-    btn.classList.toggle("isSelected", PICK_SELECTED_NAME && n === PICK_SELECTED_NAME);
-  });
-}
-
-// --- POS normalizer (handles "OF OF", "OF/OF", AND "OFOF" style duplicates) ---
-function normalizePosText(pos) {
-  const raw0 = String(pos ?? "").trim().toUpperCase();
-  if (!raw0) return "";
-
-  const cleaned = raw0
-    .replace(/[\s,;|]+/g, "/")
-    .replace(/\/+/g, "/")
-    .replace(/^\/|\/$/g, "");
-
-  if (cleaned.includes("/")) {
-    const parts = cleaned.split("/").map(s => s.trim()).filter(Boolean);
-    const uniq = [];
-    for (const p of parts) if (!uniq.includes(p)) uniq.push(p);
-    return uniq.join("/");
-  }
-
-  const raw = cleaned;
-
-  const TOKENS = ["C","1B","2B","3B","SS","OF","LF","CF","RF","DH","UT","SP","RP","P"];
-
-  for (const t of TOKENS) {
-    if (raw.length > t.length && raw.length % t.length === 0) {
-      const k = raw.length / t.length;
-      if (k >= 2 && t.repeat(k) === raw) return t;
-    }
-  }
-
-  if (raw.length % 2 === 0) {
-    const half = raw.length / 2;
-    const a = raw.slice(0, half);
-    const b = raw.slice(half);
-    if (a === b) return a;
-  }
-
-  return raw;
-}
-
-function fmtPickSub(player) {
-  const v = getBaseVal26(player);
-  const tier = String(player?.tier ?? "").trim();
-
-  const bits = [];
-
-  const roleRaw = String(player?.display_role ?? player?.role_25 ?? "").trim();
-  const role = normalizePosText(roleRaw);
-  if (!isOhtani(player) && role) bits.push(role);
-
-  if (v) bits.push(money(v));
-  if (tier) bits.push(`Tier ${tier}`);
-
-  return bits.join(" • ");
-}
-
-function pickMatches(q) {
-  const query = normalizeName(q);
-  if (!query) return [];
-
-  const out = [];
-  for (const p of AUCTION_PLAYERS) {
-    if (isOhtaniPitchRow(p)) continue;
-
-    const n = String(p?.Name ?? p?.player ?? p?.name ?? "").trim();
-    if (!n) continue;
-
-    const key = normalizeName(n);
-    const i = key.indexOf(query);
-    if (i === -1) continue;
-
-    const score = (i === 0 ? 2 : 1);
-    out.push({ p, n, score });
-    if (out.length > 6000) break;
-  }
-
-  out.sort((a, b) => {
-    if (b.score !== a.score) return b.score - a.score;
-    const av = getBaseVal26(a.p);
-    const bv = getBaseVal26(b.p);
-    if (bv !== av) return bv - av;
-    return a.n.localeCompare(b.n);
-  });
-
-  return out.slice(0, PICK_MAX_RESULTS).map((x) => x.p);
-}
-
-function renderPickResults(q) {
-  const wrap = document.getElementById("pickResults");
-  if (!wrap) return;
-
-  if (!normLoose(q)) {
-    wrap.innerHTML = `<div class="small" style="opacity:.75; padding:6px 2px;">Type to search…</div>`;
-    return;
-  }
-
-  const matches = pickMatches(q);
-  if (!matches.length) {
-    wrap.innerHTML = `<div class="small" style="opacity:.75; padding:6px 2px;">No matches.</div>`;
-    return;
-  }
-
-  wrap.innerHTML = matches
-    .map((p) => {
-      const name = String(p?.Name ?? p?.player ?? p?.name ?? "").trim();
-      const safe = name.replace(/"/g, "&quot;");
-
-      const statsRow = lookupStatsByName(name);
-      const statsPOS = normalizePosText(statsRow?.POS);
-      const csvPOS   = normalizePosText(p?.POS ?? p?.pos);
-
-      const rawPos = isOhtani(p) ? "DH/SP" : (statsPOS || csvPOS || "—");
-      const posMain = normalizePosText(rawPos);
-
-      const sub = fmtPickSub(p).replace(/"/g, "&quot;");
-
-      const team = String(statsRow?.Team ?? p?.Team ?? p?.team ?? "").trim() || "—";
-      return `<button type="button" class="pickItem" data-name="${safe}">${safe} • ${team}<span class="sub"> • ${sub}</span></button>`;
-    })
-    .join("");
-
-  wrap.querySelectorAll(".pickItem").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const name = String(btn?.dataset?.name ?? "");
-      const p = lookupPlayerByName(name);
-      setPickSelected(p);
-      const input = document.getElementById("pickQuery");
-      if (input) input.value = name;
-    });
-  });
-
-  setPickSelected(PICK_SELECTED_PLAYER);
-}
-
-function buildTargetFromPlayer(p) {
-  const name = String(p?.Name ?? p?.player ?? p?.name ?? "").trim();
-
-  let type = normType(p?.type);
-  const tier = tierFromCsv(p?.tier) || "B";
-
-  const statsRow = lookupStatsByName(name);
-  const statsPOS = String(statsRow?.POS ?? "").trim();
-  const rolePOS = String(p?.display_role ?? p?.role_25 ?? "").trim();
-
-  let pos = statsPOS || rolePOS || "";
-
-  if (isOhtani(p)) {
-    type = "hit";
-    pos = "DH/SP";
-  }
-
-  const baseVal = getBaseVal26(p);
-  const shadow = getShadowVal(p);
-
-
-  const weights = getStrategyWeights();
-  const opts = strategyOptions();
-
-  const pricing = computeTargetPricing(
-    { plan: baseVal, max: (shadow || 0) },
-    p,
-    weights,
-    opts
-  );
-
-  const plan = baseVal;
-
-  const hardMax = Math.max(
-  Math.round(plan),
-  Math.round(plan) + PICK_HARDMAX_BUFFER
-);
-
-  const bits = [];
-  if (baseVal > 0) bits.push(`${money(baseVal)}`);
-  if (shadow > 0) bits.push(`Shad ${money(shadow)}`);
-  const flags = String(p?.flags ?? "").trim();
-  if (flags) bits.push(`Flags: ${flags}`);
+function readQuickAdd() {
+  const name = document.getElementById("qName")?.value ?? "";
+  const type = document.getElementById("qType")?.value ?? "hit";
+  const pos = document.getElementById("qPos")?.value ?? "";
+  const tier = document.getElementById("qTier")?.value ?? "B";
+  const plan = num(document.getElementById("qPlan")?.value);
+  const max = num(document.getElementById("qMax")?.value);
 
   return {
-    player_key: String(p?.player_key || getPlayerKey({ type, Name: name }) || ""),
-    name,
+    name: name.trim(),
     type,
-    pos,
+    pos: pos.trim(),
     tier,
-    plan: Math.round(plan),
-    max: Math.round(hardMax),
+    plan,
+    max,
     enforce: 0,
-    notes: bits.join(" • "),
-    // Persist pricing so Dashboard doesn't need to recompute
-    val: Math.round(baseVal),
-    shadow: Math.round(shadow || 0),
-    adj: Math.round(pricing?.adjRaw ?? baseVal),
-    delta: Math.round((pricing?.adjRaw ?? baseVal) - baseVal)
+    notes: ""
   };
+}
+
+function clearQuickAdd() {
+  const ids = ["qName", "qPos", "qPlan", "qMax"];
+  for (const id of ids) {
+    const el = document.getElementById(id);
+    if (el) el.value = "";
+  }
+  document.getElementById("qName")?.focus?.();
 }
 
 function syncExistingTargetsFromCsv() {
@@ -1585,95 +1006,32 @@ function syncExistingTargetsFromCsv() {
 
 async function init() {
   await initAuctionPool();
-  // Compare panel uses AUCTION_PLAYERS (master projections/auction CSV), not 2025 stats.
-  try { initCompare(AUCTION_PLAYERS); } catch (e) { console.warn("[COMPARE] init failed", e); }
-  await loadStats2025();
 
-  const pickInput = document.getElementById("pickQuery");
-  if (pickInput) {
-    pickInput.addEventListener("input", () => {
-      setPickSelected(lookupPlayerByName(pickInput.value));
-      renderPickResults(pickInput.value);
-    });
+  const qNameEl = document.getElementById("qName");
+  if (qNameEl) qNameEl.setAttribute("list", "playerNameList");
 
-    pickInput.addEventListener("keydown", (e) => {
-      if (e.key !== "Enter") return;
-      e.preventDefault();
-
-      if (!PICK_SELECTED_PLAYER) {
-        const matches = pickMatches(pickInput.value);
-        if (matches.length) {
-          setPickSelected(matches[0]);
-          pickInput.value = String(matches[0]?.Name ?? matches[0]?.player ?? matches[0]?.name ?? "").trim();
-        }
-      }
-
-      document.getElementById("btnPickAdd")?.click();
-    });
-
-    renderPickResults("");
-  }
-
-  renderColumnKey();
-  renderDeltaLegendKey();
-  hydrateStrategyHeaderBadge();
-  initRecTabs();
-  initRecControls();
-
-  // Allow other panels (e.g., Recommended Targets quick-add) to request a rerender.
-  window.hagRefreshAuction = render;
-
-  // Value Mode toggle (Proj Anchor vs Market Estimate).
-  // This changes the baseline used by the strategy engine, so Value/Adj/Δ all recalc.
-  const valueModeSel = document.getElementById("valueMode");
-  if (valueModeSel) {
-    valueModeSel.value = getValueMode();
-    valueModeSel.addEventListener("change", () => {
-      setSettings({ value_mode: valueModeSel.value });
-      renderColumnKey();
-      render();
-    });
-  }
-
-  function renderColumnKey() {
-    const el = document.getElementById("columnKey");
-    if (!el) return;
-
-    const mode = getValueMode();
-    const valLabel = "Value";
-    const valDesc = mode === "market"
-      ? "Market Estimate (projection + flags)"
-      : "Proj Anchor (pure projection value)";
-    const deltaNote = "Δ is always computed as (Adj − Value), using the selected baseline.";
-
-    el.innerHTML = `
-      <div class="columnKeyGrid">
-        <div class="k">${valLabel}</div><div class="v">${valDesc}</div>
-        <div class="k">Δ</div><div class="v">Strategy delta <span style="opacity:.8">(Adj − Value)</span></div>
-        <div class="k">Adj</div><div class="v">Strategy-adjusted value</div>
-        <div class="k">Plan $</div><div class="v">Intended bid target</div>
-        <div class="k">Max $</div><div class="v">Absolute bid ceiling</div>
-      </div>
-      <div class="columnKeyNote">Adj = Value + Δ • <span style="opacity:.85">${deltaNote}</span></div>
-    `;
-  }
-
-  syncExistingTargetsFromCsv();
   render();
+  renderDeltaLegendKey();
 
-  document.getElementById("btnPickAdd")?.addEventListener("click", () => {
-    const input = document.getElementById("pickQuery");
-    const typed = String(input?.value ?? "").trim();
-    const p = PICK_SELECTED_PLAYER || lookupPlayerByName(typed);
-    if (!p) return;
+  renderWeightsPanel(() => {
+    render();
+  });
 
-    const t = buildTargetFromPlayer(p);
+  setTimeout(() => {
+    syncExistingTargetsFromCsv();
+    render();
+  }, 0);
+
+  document.getElementById("btnAddTarget")?.addEventListener("click", () => {
+    const t = readQuickAdd();
+    if (!t.name) return;
+
+    if (!t.max && t.plan) t.max = t.plan;
+
     const created = addAuctionTarget(t);
     if (created?.id) applyCsvAutofill(created.id, created.name);
 
-    if (input) input.value = "";
-    setPickSelected(null);
-    renderPickResults("");
+    clearQuickAdd();
     render();
   });
 
@@ -1686,7 +1044,11 @@ async function init() {
     document.getElementById(id)?.addEventListener("change", render);
   });
 
-  console.log("[auction-page] init complete");
+  document.getElementById("qName")?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      document.getElementById("btnAddTarget")?.click();
+    }
+  });
 }
 
 init();

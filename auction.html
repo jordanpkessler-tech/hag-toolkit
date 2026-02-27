@@ -12,25 +12,18 @@
       <div class="wrap">
         <div class="topline">
           <div class="brand">HaG Toolkit</div>
-
           <div class="stats">
             <div class="pill" id="hdrBudget">Budget: —</div>
             <div class="pill" id="hdrSlots">Slots: —</div>
-
-            <!-- Strategy status -->
-            <div class="pill strategy-neutral" id="hdrStrategy">Strategy: —</div>
-            <div class="pill" id="hdrStrategySaved">Saved: —</div>
           </div>
         </div>
 
         <nav class="navrow">
-        <a href="index.html" data-tab="index.html">Dashboard</a>
-        <a href="auction.html" data-tab="auction.html">Auction Board</a>
-        <a href="strategy.html" data-tab="strategy.html">Strategy</a>
-        <a href="roster.html" data-tab="roster.html">Roster</a>
-        <a href="projections.html" data-tab="projections.html">Projections</a>
-        <a href="methodology.html" data-tab="methodology.html">Methodology</a>
-       </nav>
+          <a href="index.html" data-tab="index.html">Dashboard</a>
+          <a href="auction.html" data-tab="auction.html">Auction Board</a>
+          <a href="roster.html" data-tab="roster.html">Roster</a>
+          <a href="projections.html" data-tab="projections.html">Projections</a>
+        </nav>
       </div>
     </header>
 
@@ -38,172 +31,138 @@
       <!-- Intro + controls (boxed) -->
       <section class="card">
         <h1>Auction Board</h1>
-        <div class="abLayout">
-          <div class="abRow abRowTop">
-<section class="panel">
-          <div class="abTwoCol">
+        <p class="small">
+          Prep-mode target board (not a live draft tool). Build tiers, planned prices, hard max, and enforce numbers.
+          Saved locally so your list persists.
+        </p>
 
-            <!-- LEFT: Player Picker (unchanged content) -->
-            <div>
-              <strong>Player Picker</strong>
-              <div class="small" style="margin-top: 6px; opacity: .9;">
-                
-              </div>
+        <!-- Quick add -->
+        <section class="panel" style="margin-top: 14px;">
+          <strong>Quick Add</strong>
 
-              <div class="grid" style="margin-top: 10px; align-items: end;">
-                <label class="panel" style="grid-column: span 2;">
-                  <div class="small">Search player</div>
-                  <input id="pickQuery" type="text" placeholder="Start typing (e.g., Soto)" autocomplete="off" />
-                </label>
+          <div class="grid" style="margin-top: 10px;">
+            <label class="panel third">
+              <div class="small">Player</div>
+              <input id="qName" type="text" placeholder="Juan Soto" />
+            </label>
 
-                <div class="panel" style="grid-column: span 1;">
-                  <div class="small">Selected</div>
-                  <div id="pickSelected" style="font-weight:800; padding-top:6px;">—</div>
-                </div>
-              </div>
+            <label class="panel third">
+              <div class="small">Type</div>
+              <select id="qType">
+                <option value="hit">Hitter</option>
+                <option value="pit">Pitcher</option>
+              </select>
+            </label>
 
-              <div id="pickResults" class="pickResults" style="margin-top: 10px;"></div>
+            <label class="panel third">
+              <div class="small">Pos</div>
+              <input id="qPos" type="text" placeholder="OF / SP / RP" />
+            </label>
 
-              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; align-items:center;">
-                <button id="btnPickAdd" type="button">Add Target</button>
-                <button id="btnClearTargets" class="ghost" type="button">Clear All</button>
-                <span id="auctionMeta" class="small" style="opacity:.75;"></span>
-              </div>
-            </div>
+            <label class="panel third">
+              <div class="small">Tier</div>
+              <select id="qTier">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </label>
 
-            <!-- RIGHT: Filters (unchanged content) -->
-            <div>
-              <strong>Filters</strong>
+            <label class="panel third">
+              <div class="small">Plan $</div>
+              <input id="qPlan" type="number" min="0" step="1" placeholder="45" />
+            </label>
 
-              <div class="grid" style="margin-top: 10px;">
-                <label class="panel third">
-                  <div class="small">Show</div>
-                  <select id="fType">
-                    <option value="all">All</option>
-                    <option value="hit">Hitters</option>
-                    <option value="pit">Pitchers</option>
-                  </select>
-                </label>
+            <label class="panel third">
+              <div class="small">Hard Max $</div>
+              <input id="qMax" type="number" min="0" step="1" placeholder="55" />
+            </label>
+          </div>
 
-                <label class="panel third">
-                  <div class="small">Tier</div>
-                  <select id="fTier">
-                    <option value="all">All</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                  </select>
-                </label>
-
-                <label class="panel third">
-                  <div class="small">Sort</div>
-                  <select id="fSort">
-                    <option value="tier_plan_name">Tier → Plan → Name</option>
-                    <option value="plan_desc">Plan $ (high → low)</option>
-                    <option value="max_desc">Hard Max $ (high → low)</option>
-                    <option value="name_asc">Name (A → Z)</option>
-                  </select>
-                </label>
-
-                <label class="panel third">
-                  <div class="small">Value View</div>
-                  <select id="valueMode">
-                    <option value="proj">Proj Anchor</option>
-                    <option value="market">Market Estimate</option>
-                  </select>
-                </label>
-              </div>
-            </div>
-
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; align-items:center;">
+            <button id="btnAddTarget" type="button">Add Target</button>
+            <button id="btnClearTargets" class="ghost" type="button">Clear All</button>
+            <span id="auctionMeta" class="small" style="opacity:.75;"></span>
           </div>
         </section>
+
+        <!-- Filters -->
+        <section class="panel" style="margin-top: 14px;">
+          <strong>Filters</strong>
+
+          <div class="grid" style="margin-top: 10px;">
+            <label class="panel third">
+              <div class="small">Show</div>
+              <select id="fType">
+                <option value="all">All</option>
+                <option value="hit">Hitters</option>
+                <option value="pit">Pitchers</option>
+              </select>
+            </label>
+
+            <label class="panel third">
+              <div class="small">Tier</div>
+              <select id="fTier">
+                <option value="all">All</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </label>
+
+            <label class="panel third">
+              <div class="small">Sort</div>
+              <select id="fSort">
+                <option value="tier_plan_name">Tier → Plan → Name</option>
+                <option value="plan_desc">Plan $ (high → low)</option>
+                <option value="max_desc">Hard Max $ (high → low)</option>
+                <option value="name_asc">Name (A → Z)</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <!-- Tier Summary -->
+        <section class="panel" style="margin-top: 14px;">
+          <strong>Tier Summary</strong>
+          <div id="tierSummary" class="small" style="margin-top: 10px; opacity: .9;">
+            Add targets above to see tier counts and planned spend.
+          </div>
+        </section>
+
+        <!-- Strategy Weights -->
+        <section class="panel" style="margin-top: 14px;">
+          <strong>Strategy Weights</strong>
+          <div class="small" style="margin-top: 6px; opacity: .9;">
+            Off = 0. Normal = 1. Boost = 1.2–1.5. (Auction-safe: weights only nudge Δ, capped.)
           </div>
 
-          <div class="abRow abRowMid dualPanels" style="margin-top: 14px;">
-<section class="panel">
-            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-              <strong>Recommended Targets</strong>
-</div>
-            <div class="small" style="margin-top:6px; opacity:.8;">
-              Objective rankings biased only by your Strategy weights. Uses live price if entered; otherwise falls back to Market Estimate.
-            </div>
+          <div
+            id="catWeights"
+            style="margin-top: 10px; display: grid; grid-template-columns: 1fr 90px; gap: 8px 10px;"
+          ></div>
 
-            <div class="recControls">
-              <label class="recCtl recCheck">
-                <input id="recAffordableOnly" type="checkbox" />
-                <span class="small">Only show affordable</span>
-              </label>
+          <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn" id="btnWeightsSave" type="button">Save</button>
+            <button class="btn ghost" id="btnWeightsReset" type="button">Reset</button>
+            <span class="small" style="opacity:.75; padding:6px 6px;">Presets:</span>
+            <button class="btn ghost" id="btnWeightsPresetBalanced" type="button">Balanced</button>
+            <button class="btn ghost" id="btnWeightsPresetHaG" type="button">HaG Punt</button>
+          </div>
+        </section>
 
-              <div class="recCtl">
-                <div class="small">Max $</div>
-                <div class="recCtlRow">
-                  <input id="recMaxBid" type="number" min="0" step="1" placeholder="e.g. 25" />
-                  <span class="small" style="opacity:.75;">(optional)</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="recTabs">
-              <button class="recTabBtn active" type="button" data-rec-tab="needs">Fill Needs</button>
-              <button class="recTabBtn" type="button" data-rec-tab="values">Best Values</button>
-              <button class="recTabBtn" type="button" data-rec-tab="fits">Best Fits</button>
-            </div>
-
-            <div id="recTargets" class="recPanel">
-              <div id="recNeeds"></div>
-              <div id="recValues" style="display:none;"></div>
-              <div id="recFits" style="display:none;"></div>
-            </div>
-          </section>
-<section class="panel allocPanel">
-            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-              <strong>Allocation Visualizer</strong>
-</div>
-            <div class="small" style="margin-top:6px; opacity:.8;">
-              Planned allocation uses contracted roster $ + Auction Board Plan $. Pitchers are split by SP vs RP/CP using position eligibility.
-            </div>
-            <div>
-              <div class="allocRow">
-                <div class="allocPieWrap">
-                  <canvas id="allocPie" width="250" height="250" style="border-radius:999px;"></canvas>
-                </div>
-                <div id="allocLegend" class="small"></div>
-              </div>
-
-              <!-- Roster Snapshot (compact, scrollable) -->
-              <div class="snapHeader">
-                <div class="small" style="font-weight:900;">Roster Snapshot</div>
-                <a class="small" href="roster.html" style="opacity:.8; text-decoration:none;">Roster →</a>
-              </div>
-
-              <div id="rosterSnapshot" class="rosterSnapshot"></div>
-            </div>
-          </section>
+        <!-- Delta Color Legend (ADDED) -->
+        <section class="panel" style="margin-top: 14px;">
+          <strong>Delta Legend</strong>
+          <div class="small" style="margin-top: 6px; opacity: .9;">
+            Color key for Value Δ (Val − Plan). Chips should always display.
           </div>
 
-          <div class="abRow abRowCompare" style="margin-top: 14px;">
-<section class="panel comparePanelOuter">
-            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-              <strong>Compare</strong>
-              <button id="cmpClear" class="btn btn-sm" type="button" style="opacity:.85;">Clear</button>
-            </div>
-
-            <div class="cmpControls">
-              <div class="cmpInputWrap">
-                <input id="cmpInput" class="cmpInput" placeholder="Type a player name…" autocomplete="off" />
-                <div id="cmpSuggest" class="cmpSuggest" style="display:none;"></div>
-              </div>
-              <button id="cmpAdd" class="btn btn-sm" type="button">Add</button>
-            </div>
-
-            <div id="cmpPanel" class="cmpPanel"></div>
-          </section>
-          </div>
-        </div>
-<!-- ✅ CLOSE the intro card properly -->
+          <!-- IMPORTANT: this ID is what your JS should target -->
+          <div id="deltaLegend" style="margin-top: 10px;"></div>
+        </section>
       </section>
-
-      <!-- ✅ (legacy marker) CLOSES the intro card properly -->
+      <!-- ✅ CLOSES the intro card properly -->
 
       <!-- Full-width table -->
       <section class="card full-width" style="margin-top: 14px;">
@@ -215,20 +174,19 @@
                 <th>Type</th>
                 <th>Pos</th>
                 <th>Tier</th>
-                <th style="text-align:right;">Val<a class="qHelp" href="methodology.html#legends" title="Definitions">?</a></th>
-                <th style="text-align:right;">Δ<a class="qHelp" href="methodology.html#legends" title="Definitions">?</a></th>
-                <th style="text-align:right;">Adj<a class="qHelp" href="methodology.html#legends" title="Definitions">?</a></th>
-                <th style="text-align:right;">Plan $<a class="qHelp" href="methodology.html#legends" title="Definitions">?</a></th>
-                <th style="text-align:right;">Hard Max $<a class="qHelp" href="methodology.html#legends" title="Definitions">?</a></th>
-                <th style="text-align:right;">Enforce Up To $<a class="qHelp" href="methodology.html#legends" title="Definitions">?</a></th>
+                <th style="text-align:right;">Val</th>
+                <th style="text-align:right;">Δ</th>
+                <th style="text-align:right;">Adj</th>
+                <th style="text-align:right;">Plan $</th>
+                <th style="text-align:right;">Hard Max $</th>
+                <th style="text-align:right;">Enforce Up To $</th>
                 <th style="text-align:left;">Notes</th>
-                <th style="text-align:right;">Live $</th>
                 <th style="text-align:right;">Action</th>
               </tr>
             </thead>
             <tbody id="auctionTbody">
               <tr>
-                <td colspan="13" class="small" style="padding:12px;">No targets yet. Add one above.</td>
+                <td colspan="12" class="small" style="padding:12px;">No targets yet. Add one above.</td>
               </tr>
             </tbody>
           </table>

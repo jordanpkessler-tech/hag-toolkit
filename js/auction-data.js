@@ -3,7 +3,6 @@
 // Also provides pricing helpers for the Auction Board (Base Val → Δ → Adj $).
 
 import { DEFAULT_WEIGHTS } from "./storage.js";
-import { normalizeName, getPlayerKey } from "./player-key.js";
 
 function toNumberMaybe(raw) {
   const s = String(raw ?? "").trim();
@@ -62,7 +61,7 @@ function parseCSV(text) {
 }
 
 export async function loadAuctionPlayers() {
-  const url = "./data/master.csv";
+  const url = "./data/auction_values_2026_all_players_with_shadow.csv";
   const res = await fetch(url, { cache: "no-store" });
 
   if (!res.ok) {
@@ -83,126 +82,28 @@ export async function loadAuctionPlayers() {
       obj[h] = toNumberMaybe(values[i]);
     });
 
-    // --- New v3 schema compatibility -------------------------------------
-    // The CSV schema was updated to use projection-first anchors:
-    //   Proj Anchor       => projection value (base Val)
-    //   Market Estimate   => projection + flags (market reference)
-    //   Auction 25 Anchor => 2025 guide (imputed)
-    //   Actual 25 Draft$  => 2025 actual
-    // We keep legacy internal keys so the rest of the app remains stable.
-    const proj = obj["Proj Anchor"] ?? obj["ProjAnchor"] ?? obj.proj_anchor;
-    if (proj != null && proj !== "") obj.auction_value_26 = proj;
-
-    const mkt = obj["Market Estimate"] ?? obj["MarketEstimate"] ?? obj.market_estimate;
-    if (mkt != null && mkt !== "") obj.market_estimate = mkt;
-
-    const a25 = obj["Auction 25 Anchor"] ?? obj["Auction25 Anchor"] ?? obj["Auction25Anchor"];
-    if (a25 != null && a25 !== "") obj.auction_price_25_imputed = a25;
-
-    const d25 = obj["Actual 25 Draft$"] ?? obj["Actual25 Draft$"] ?? obj["Actual25Draft$"];
-    if (d25 != null && d25 !== "") obj.auction_price_25 = d25;
-
-    const dispRole = obj["Display Role"] ?? obj["DisplayRole"];
-    if (dispRole != null && dispRole !== "") obj.display_role = dispRole;
-
-    const flags = obj["Flags"] ?? obj.flags;
-    if (flags != null && flags !== "") obj.flags = flags;
-
-    // --- Canonicalize core identity fields ---
-    const nm = String(obj.player ?? obj.Player ?? obj.Name ?? obj.name ?? "").trim();
-    obj.Name = nm;
-    obj.name = nm;
-    obj.player = nm;
-
-    // Type normalization
-    obj.type = String(obj.type ?? obj.Type ?? "").trim().toLowerCase();
-
-    // POS normalization (supports POS / Pos / pos / Position)
-    obj.POS = String(
-      obj.POS ?? obj.Pos ?? obj.pos ?? obj.Position ?? obj.position ?? obj["Display Role"] ?? obj["DisplayRole"] ?? ""
-    )
-      .trim()
-      .toUpperCase();
-    obj.pos = obj.POS;
-
-    obj.Team = String(obj.Team ?? obj.team ?? obj.Tm ?? obj.tm ?? "").trim();
-    obj.team = obj.Team;
-
-    // --- Shadow migration (legacy compatibility) ---
-    // Older CSVs had auction_value_26_shadow. If present, promote it into
-    // auction_value_26 only when the new/projection value is missing.
-    const v26 = String(obj.auction_value_26 ?? "").trim();
-    const sh = String(obj.auction_value_26_shadow ?? "").trim();
-    if ((v26 === "" || v26 === "0") && sh !== "" && sh !== "0") {
-      const n = Number(sh);
-      if (Number.isFinite(n) && n > 0) obj.auction_value_26 = n;
-    }
+    // Your CSV uses "player" and "type"
+    obj.Name = String(obj.player ?? obj.Name ?? obj.name ?? "").trim();
+    obj.name = obj.Name;
+    obj.player = obj.Name; // keep it consistent
+    obj.type = String(obj.type ?? "").trim().toLowerCase();
 
     // Force known text columns to be strings (prevents weird coercion)
-    [
-      "display_role",
-      "role_25",
-      "role_24",
-      "flags",
-      "market_estimate",
-      "score_bucket",
-      "tier",
-      "draftable",
-    ].forEach((k) => {
+    ["display_role","role_25","role_24","flags","score_bucket","tier","draftable"].forEach((k) => {
       if (obj[k] != null && obj[k] !== "") obj[k] = String(obj[k]).trim();
     });
-
-    // Stable key + loose name normalization for joins
-    obj.player_key = getPlayerKey({ type: obj.type, Name: obj.Name });
-    obj._normName = normalizeName(obj.Name);
 
     return obj;
   });
 
-    // --- Dedupe by stable key (prevents Otto López vs Otto Lopez duplicates) ---
-  function hasDiacritics(s) {
-    return /[\u0300-\u036f]/.test(String(s || "").normalize("NFD"));
-  }
-
-  function scoreRow(p) {
-    const val = Number(p?.auction_value_26 ?? 0) || 0;
-    const shadow =
-      Number(p?.auction_price_25_imputed ?? 0) ||
-      Number(p?.auction_price_25 ?? 0) ||
-      0;
-
-    // Prefer: real Val > shadow > accented display name > draftable true
-    const accented = hasDiacritics(p?.Name) ? 1 : 0;
-    const draftable = String(p?.draftable ?? "").toUpperCase() === "TRUE" ? 1 : 0;
-
-    return val * 100000 + shadow * 100 + accented * 10 + draftable;
-  }
-
-  const byKey = new Map();
-  for (const p of players) {
-    const key = String(p?.player_key || "").trim();
-    if (!key) continue;
-
-    const cur = byKey.get(key);
-    if (!cur) {
-      byKey.set(key, p);
-    } else {
-      byKey.set(key, scoreRow(p) > scoreRow(cur) ? p : cur);
-    }
-  }
-
-  return Array.from(byKey.values());
-
+  return players;
 }
 
 /* ========================================================================== */
 /*                               Pricing helpers                              */
 /* ========================================================================== */
 
-// NOTE: Number(null) === 0, which would incorrectly treat a missing CSV cell
-// as a real 0. We want blanks/missing to fall back instead.
 function num(v, fallback = 0) {
-  if (v == null || v === "") return fallback;
   const n = Number(v);
   return Number.isFinite(n) ? n : fallback;
 }
@@ -216,8 +117,8 @@ function normType(t) {
   return (s === "pit" || s === "pitcher") ? "pit" : "hit";
 }
 
-const ALL_CATS = ["OPS","TB","HR","RBI","R","AVG","SB","IP","QS","K","HLD","SV","ERA","WHIP"];
-const HIT_CATS = ["OPS","TB","HR","RBI","R","AVG","SB"];
+const ALL_CATS = ["OPS","TB","HR","RBI","R","AVG","SBN","IP","QS","K","HLD","SV","ERA","WHIP"];
+const HIT_CATS = ["OPS","TB","HR","RBI","R","AVG","SBN"];
 const PIT_CATS = ["IP","QS","K","HLD","SV","ERA","WHIP"];
 
 /**
@@ -227,19 +128,13 @@ const PIT_CATS = ["IP","QS","K","HLD","SV","ERA","WHIP"];
 export function getCatStat(player, cat) {
   if (!player) return null;
 
-  // Strategy component key (computed by auction-page.js).
-  // This stores comparable 0..1 values so weights behave sensibly even if the
-  // underlying CSV has raw stats rather than pre-normalized components.
-  const kw1 = `${cat}__w`;
-  const kw2 = `${cat.toLowerCase()}__w`;
-
   const k1 = cat;
   const k2 = cat.toLowerCase();
   const k3 = cat.toUpperCase();
   const k4 = `${cat}_26`;
   const k5 = `${cat.toLowerCase()}_26`;
 
-  const candidates = [kw1, kw2, k1, k2, k3, k4, k5];
+  const candidates = [k1, k2, k3, k4, k5];
 
   for (const k of candidates) {
     const v = player[k];
@@ -247,42 +142,6 @@ export function getCatStat(player, cat) {
     if (v != null && v !== "" && Number.isFinite(n)) return n;
   }
   return null;
-}
-
-/**
- * Source-of-truth columns:
- * - Val (2026): auction_value_26
- * - Shadow (2025 reference): auction_price_25_imputed (fallback auction_price_25)
- */
-export function getVal26(player) {
-  const v = num(player?.auction_value_26, null);
-  return v == null ? null : Math.max(0, v);
-}
-
-// New v3 reference value (projection + flags). Does NOT replace Adj.
-export function getMarketEstimate(player) {
-  const v = num(player?.market_estimate, null);
-  return v == null ? null : Math.max(0, v);
-}
-
-// Baseline value used by the Auction Board engine.
-// - proj: projection anchor (with shadow fallback)
-// - market: market estimate (projection + flags). If missing, falls back to proj baseline.
-export function getBaselineVal(player, valueMode = "proj") {
-  const mode = String(valueMode || "proj").toLowerCase();
-  if (mode === "market") {
-    const m = getMarketEstimate(player);
-    if (m != null && m > 0) return m;
-    return getBaseVal26(player);
-  }
-  return getBaseVal26(player);
-}
-
-export function getShadow25(player) {
-  const imp = num(player?.auction_price_25_imputed, null);
-  if (imp != null) return Math.max(0, imp);
-  const a25 = num(player?.auction_price_25, null);
-  return a25 == null ? null : Math.max(0, a25);
 }
 
 /**
@@ -303,14 +162,7 @@ export function detectCatStats(samplePlayer) {
  * Base value used for pricing. This should always come from the CSV "auction_value_26".
  */
 export function getBaseVal26(player) {
-  // Pricing base for the app. Source-of-truth is Val (auction_value_26),
-  // but when missing we fall back to Shadow (imputed/actual 2025 price) so
-  // rookies/prospects still get a sensible default.
-  const v = getVal26(player);
-  if (v != null) return v;
-
-  const sh = getShadow25(player);
-  return sh != null ? sh : 0;
+  return Math.max(0, num(player?.auction_value_26, 0));
 }
 
 /**
@@ -320,9 +172,9 @@ export function getBaseVal26(player) {
  *
  * If the CSV does not contain per-cat columns, this returns baseVal unchanged.
  */
-export function getWeightedVal26(player, weights, hasCatStats, baseValOverride = null) {
-  const baseVal = (baseValOverride != null) ? baseValOverride : getBaseVal26(player);
-if (!player || !hasCatStats) return baseVal;
+export function getWeightedVal26(player, weights, hasCatStats) {
+  const baseVal = getBaseVal26(player);
+  if (!player || !hasCatStats) return baseVal;
 
   const w = { ...DEFAULT_WEIGHTS, ...(weights || {}) };
   const cats = normType(player.type) === "pit" ? PIT_CATS : HIT_CATS;
@@ -361,9 +213,9 @@ if (!player || !hasCatStats) return baseVal;
  * Output:
  * {
  *   baseVal, weightedVal,
- *   plan,
+ *   plan, hardMax,
  *   marketDelta, strategyDelta, totalDelta,
- *   adjRaw
+ *   adjPrice
  * }
  */
 export function computeTargetPricing(target, player, weights, opts = {}) {
@@ -373,44 +225,34 @@ export function computeTargetPricing(target, player, weights, opts = {}) {
   const strategyCap = num(caps.strategyCap, 6); // max $ strategy can move Δ
   const deltaCap = num(caps.deltaCap, 15);      // max total Δ
 
-  const valueMode = opts.valueMode || "proj";
+  const baseVal = getBaseVal26(player);
+  const weightedVal = getWeightedVal26(player, weights, hasCatStats);
 
-  // Baseline value (depends on Value Mode)
-  const baseValCsv = getBaselineVal(player, valueMode) ?? 0;
-
-  // Strategy-weighted value (only moves if hasCatStats)
-  const weightedVal = getWeightedVal26(player, weights, hasCatStats, baseValCsv);
-
-  // User plan
+  // Market delta is always "value minus plan"
   const plan = num(target?.plan, 0);
+  const hardMax = num(target?.max, 999);
 
-  // 🔁 Fallback for projection-only / rookie players:
-  // If no auction value exists, anchor pricing to Plan.
-  const baseVal = baseValCsv > 0 ? baseValCsv : plan;
-
-  // Market delta (relative to pricing base)
   const marketDelta = baseVal - plan;
 
-  // Strategy delta (relative to pricing base)
+  // Strategy delta is a capped nudge:
+  // difference between weighted and base value (if any per-cat stats exist)
   const strategyDeltaRaw = weightedVal - baseVal;
   const strategyDelta = clamp(strategyDeltaRaw, -strategyCap, strategyCap);
 
-  // Total delta (sanity capped)
   const totalDelta = clamp(marketDelta + strategyDelta, -deltaCap, deltaCap);
 
-  // ✅ Final Adj recommendation (uncapped by Hard Max)
-  const adjRaw = baseVal + totalDelta;
+  // "Adj $" is the bid recommendation anchored to base value,
+  // then bounded by hard max (never exceeds hard max).
+  const adjPrice = Math.min(baseVal + totalDelta, hardMax);
 
   return {
     baseVal,
     weightedVal,
     plan,
+    hardMax,
     marketDelta,
     strategyDelta,
     totalDelta,
-    adjRaw
+    adjPrice
   };
 }
-
-// Back-compat re-exports so other modules can import from auction-data.
-export { normalizeName, getPlayerKey } from "./player-key.js";

@@ -1,6 +1,4 @@
 // Tiny storage helper so every page reads/writes the same way.
-import { getPlayerKey } from "./player-key.js";
-
 export function load(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
@@ -11,46 +9,23 @@ export function load(key, fallback) {
 }
 export const DEFAULT_WEIGHTS = {
   // Hitting
-  AVG: 1.0,
-  OPS: 1.0,
-  TB: 1.0,
-  HR: 1.0,
-  RBI: 1.0,
-  R: 1.0,
-  // We only track SB in the CSV (no CS / Net SB). Keep this key as SB.
-  SB: 1.0,
+  AVG: 0.0,
+  OPS: 1.3,
+  TB: 1.2,
+  HR: 1.2,
+  RBI: 1.1,
+  R: 1.1,
+  SBN: 0.0,
 
   // Pitching
-  ERA: 1.0,
-  WHIP: 1.0,
-  IP: 1.0,
-  QS: 1.0,
-  K: 1.0,
-  SV: 1.0,
-  HLD: 1.0
+  ERA: 0.0,
+  WHIP: 0.0,
+  IP: 1.3,
+  QS: 1.2,
+  K: 1.2,
+  SV: 0.0,
+  HLD: 1.3
 };
-
-// Migration: older builds used the key "SBN" for stolen bases.
-// We only have SB in the dataset; transparently map SBN -> SB.
-function migrateWeights(obj) {
-  if (!obj || typeof obj !== "object") return obj;
-  if (obj.SB == null && obj.SBN != null) {
-    obj.SB = obj.SBN;
-    delete obj.SBN;
-  }
-  return obj;
-}
-function normalizeCategoryWeights(partial) {
-  const obj = migrateWeights(partial && typeof partial === "object" ? { ...partial } : {});
-  const out = { ...DEFAULT_WEIGHTS };
-
-  for (const k of Object.keys(DEFAULT_WEIGHTS)) {
-    const n = Number(obj[k]);
-    out[k] = Number.isFinite(n) ? n : DEFAULT_WEIGHTS[k];
-  }
-
-  return out;
-}
 
 export function save(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
@@ -60,66 +35,31 @@ export function save(key, value) {
 // Settings
 // -------------------------
 export function getSettings() {
-  const s = load("hag_settings", {
+  return load("hag_settings", {
     budget_total: 300,
     budget_remaining: 300,
     hitter_slots_total: 14,
     pitcher_slots_total: 9,
 
     // NEW — category strategy
-    category_weights: { ...DEFAULT_WEIGHTS },
-    category_weights_updated_at: null,
-
-    // UI preference: which value column to show in Auction Board
-    value_mode: "proj" // "proj" | "market"
+    category_weights: { ...DEFAULT_WEIGHTS }
   });
-
-  // Self-heal + migrate strategy weights (belt + suspenders)
-  s.category_weights = normalizeCategoryWeights(s.category_weights);
-
-  return s;
 }
-
 export function getCategoryWeights() {
   const s = getSettings();
-  return normalizeCategoryWeights(s.category_weights);
+  return { ...DEFAULT_WEIGHTS, ...(s.category_weights || {}) };
 }
 
 export function setCategoryWeights(nextWeights) {
   const s = getSettings();
-
-  const merged = {
-    ...DEFAULT_WEIGHTS,
-    ...(s.category_weights || {}),
-    ...(nextWeights || {})
-  };
-
-  const normalized = normalizeCategoryWeights(merged);
-
-  save("hag_settings", {
-    ...s,
-    category_weights: normalized,
-    category_weights_updated_at: Date.now()
-  });
-
-  return normalized;
-}
-
-
-export function getCategoryWeightsUpdatedAt() {
-  const s = getSettings();
-  return s.category_weights_updated_at ?? null;
+  const merged = { ...DEFAULT_WEIGHTS, ...(s.category_weights || {}), ...(nextWeights || {}) };
+  save("hag_settings", { ...s, category_weights: merged });
+  return merged;
 }
 
 
 export function setSettings(next) {
-  const prev = getSettings();
-  const merged = { ...prev, ...(next || {}) };
-
-  // Never allow category weights to be partial or missing
-  merged.category_weights = normalizeCategoryWeights(merged.category_weights);
-
-  save("hag_settings", merged);
+  save("hag_settings", next);
 }
 
 // -------------------------
@@ -141,53 +81,9 @@ const ROSTER_KEY = "hag_roster_v1";
  * }
  */
 export function getRoster() {
-  const roster = load(ROSTER_KEY, []);
-
-  // Migration: older builds used non-normalized ids (e.g., "hit|Shohei Ohtani").
-  // Normalize ids to the current getPlayerKey() format and de-dupe.
-  if (Array.isArray(roster) && roster.length) {
-    const byId = new Map();
-
-    for (const raw of roster) {
-      const r = normalizeRosterPlayer(raw);
-      const typeRaw = String(r.type ?? r.Type ?? "").trim().toLowerCase();
-      const type = typeRaw === "pit" ? "pit" : "hit";
-      const name = String(r.name ?? r.Name ?? "").trim();
-
-      const nextId = getPlayerKey({ Type: type, Name: name });
-
-      // Prefer any existing (newer) record; merge contract fields conservatively.
-      const prev = byId.get(nextId);
-      if (!prev) {
-        byId.set(nextId, { ...r, id: nextId, type, name });
-      } else {
-        byId.set(nextId, normalizeRosterPlayer({
-          ...prev,
-          ...r,
-          id: nextId,
-          type,
-          name,
-          // keep the "most committed" contract markers
-          underContract: Boolean(prev.underContract || r.underContract),
-          contractYear: Number.isFinite(Number(prev.contractYear)) ? prev.contractYear : r.contractYear,
-          contractTotal: Number.isFinite(Number(prev.contractTotal)) ? prev.contractTotal : r.contractTotal,
-          price: Number.isFinite(Number(prev.price)) ? prev.price : r.price,
-        }));
-      }
-    }
-
-    const migrated = Array.from(byId.values());
-    // Only write back if something changed (id migration or de-dupe)
-    const changed =
-      migrated.length !== roster.length ||
-      migrated.some((r, i) => r.id !== roster[i]?.id);
-
-    if (changed) setRoster(migrated);
-    return migrated;
-  }
-
-  return roster;
+  return load(ROSTER_KEY, []);
 }
+
 export function setRoster(next) {
   save(ROSTER_KEY, next);
 }
@@ -197,8 +93,9 @@ export function setRoster(next) {
  * Assumes CSV objects have Name and Type.
  */
 export function makeRosterId(player) {
-  // Stable roster id: type + normalized name (or id if present)
-  return getPlayerKey(player);
+  const type = String(player?.Type ?? "").trim().toLowerCase();
+  const name = String(player?.Name ?? "").trim();
+  return `${type || "unk"}|${name}`;
 }
 
 function toInt(val, fallback = 0) {
@@ -212,6 +109,7 @@ function clampInt(n, min, max) {
 }
 
 function normalizeRosterPlayer(p) {
+  // Enforce safe defaults + valid contract formatting
   const underContract = !!p.underContract;
 
   const contractTotal = clampInt(p.contractTotal ?? 1, 1, 10);
@@ -223,7 +121,6 @@ function normalizeRosterPlayer(p) {
     id: String(p.id),
     name: String(p.name ?? ""),
     type: p.type === "hit" || p.type === "pit" ? p.type : "hit",
-    team: String(p.team ?? ""),     // ✅ NEW
     pos: String(p.pos ?? ""),
     underContract,
     contractYear,
@@ -240,24 +137,21 @@ function normalizeRosterPlayer(p) {
 export function addToRosterFromCsv(csvPlayer) {
   const roster = getRoster();
 
-  const typeRaw = String(csvPlayer?.Type ?? "").trim().toLowerCase();
-const type = typeRaw === "pit" ? "pit" : "hit";
-const name = String(csvPlayer?.Name ?? "").trim();
-const team = String(csvPlayer?.Team ?? "").trim();   // ✅ NEW
-const pos = String(csvPlayer?.POS ?? "").trim();
+  const type = String(csvPlayer?.Type ?? "").trim().toLowerCase();
+  const name = String(csvPlayer?.Name ?? "").trim();
+  const pos = String(csvPlayer?.POS ?? "").trim();
 
-const id = getPlayerKey({ Type: type, Name: name });
+  const id = `${type}|${name}`;
 
   const existing = roster.find((r) => r.id === id);
   if (existing) {
     // Keep existing contract info; fill blanks for name/pos/type if needed
     const merged = normalizeRosterPlayer({
-  ...existing,
-  name: existing.name || name,
-  team: existing.team || team,   // ✅ NEW
-  pos: existing.pos || pos,
-  type: existing.type || type,
-});
+      ...existing,
+      name: existing.name || name,
+      pos: existing.pos || pos,
+      type: existing.type || type,
+    });
 
     const next = roster.map((r) => (r.id === id ? merged : r));
     setRoster(next);
@@ -265,16 +159,15 @@ const id = getPlayerKey({ Type: type, Name: name });
   }
 
   const created = normalizeRosterPlayer({
-  id,
-  name,
-  type: type === "pit" ? "pit" : "hit",
-  team,                 // ✅ NEW
-  pos,
-  underContract: false,
-  contractYear: 1,
-  contractTotal: 1,
-  price: 0,
-});
+    id,
+    name,
+    type: type === "pit" ? "pit" : "hit",
+    pos,
+    underContract: false,
+    contractYear: 1,
+    contractTotal: 1,
+    price: 0,
+  });
 
   setRoster([created, ...roster]);
   return created;
@@ -351,31 +244,16 @@ export function addAuctionTarget(target) {
     (crypto?.randomUUID?.() ??
       `t_${Date.now()}_${Math.random().toString(16).slice(2)}`);
 
-  // Preserve *all* fields passed by the caller (e.g., pricing fields used by
-  // the Dashboard) while still normalizing the core shape.
-  const name = String(target?.name ?? "").trim();
-  const type = String(target?.type ?? "hit").trim().toLowerCase();
-
   const created = {
     id,
-    ...(target || {}),
-    name,
-    type, // "hit" | "pit"
+    name: target?.name ?? "",
+    type: target?.type ?? "hit", // "hit" | "pit"
     pos: target?.pos ?? "",
     tier: target?.tier ?? "B", // "A" | "B" | "C"
     plan: Number(target?.plan ?? 0),
     max: Number(target?.max ?? 0),
     enforce: Number(target?.enforce ?? 0),
     notes: target?.notes ?? "",
-
-    // Stable join key (used by Dashboard + future joins)
-    player_key: String(target?.player_key || getPlayerKey({ type, Name: name }) || ""),
-
-    // Source-of-truth persisted numbers (optional but preferred)
-    val: target?.val != null && target?.val !== "" ? Number(target.val) : undefined,
-    shadow: target?.shadow != null && target?.shadow !== "" ? Number(target.shadow) : undefined,
-    adj: target?.adj != null && target?.adj !== "" ? Number(target.adj) : undefined,
-    delta: target?.delta != null && target?.delta !== "" ? Number(target.delta) : undefined,
   };
 
   list.unshift(created);
@@ -410,32 +288,4 @@ export function removeAuctionTarget(id) {
 
 export function clearAuctionTargets() {
   saveAuctionTargets([]);
-}
-
-// ==============================
-// Live Draft Prices (optional)
-// ==============================
-// Stores per-player entered price during a live auction.
-// Keyed by stable player_key (same key used by Auction Targets / CSV).
-const LIVE_PRICE_KEY = "hag_live_prices_v1";
-
-export function getLivePrices() {
-  return load(LIVE_PRICE_KEY, {});
-}
-
-export function setLivePrice(playerKey, price) {
-  const key = String(playerKey || "").trim();
-  if (!key) return;
-  const map = getLivePrices();
-  const n = Number(price);
-  if (!Number.isFinite(n) || n <= 0) {
-    delete map[key];
-  } else {
-    map[key] = Math.round(n);
-  }
-  save(LIVE_PRICE_KEY, map);
-}
-
-export function clearLivePrices() {
-  save(LIVE_PRICE_KEY, {});
 }

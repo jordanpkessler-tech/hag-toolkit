@@ -1,8 +1,7 @@
 // js/projections-page.js
 import { loadPlayers } from "./projections-data.js";
-import { normalizeName } from "./player-key.js";
 function normalize(s) {
-  return normalizeName(s);
+  return String(s ?? "").trim().toLowerCase();
 }
 
 function playerName(p) {
@@ -25,7 +24,6 @@ function renderHitters(rows) {
   for (const p of rows) {
     const tr = document.createElement("tr");
     tr.appendChild(td(p.Name));
-    tr.appendChild(td(p.Team));
     tr.appendChild(td(p.POS));
     tr.appendChild(td(p.PA));
     tr.appendChild(td(p.AVG));
@@ -49,7 +47,7 @@ function renderPitchers(rows) {
   if (!rows.length) {
     const tr = document.createElement("tr");
     const td = document.createElement("td");
-    td.colSpan = 10;
+    td.colSpan = 9;
     td.className = "small";
     td.style.padding = "12px";
     td.textContent = "No results.";
@@ -63,7 +61,6 @@ function renderPitchers(rows) {
 
     const cells = [
       p.Name,
-      p.Team,
       p.POS,
       p.ERA,
       p.WHIP,
@@ -82,6 +79,36 @@ function renderPitchers(rows) {
 
     pitTbody.appendChild(tr);
   }
+}
+function assertEl(id) {
+  const el = document.getElementById(id);
+  if (!el) throw new Error(`Missing #${id} in HTML`);
+  return el;
+}
+
+// Replace this with your real render logic
+function renderProjections(type) {
+  console.log("renderProjections()", { type });
+  // TODO: your existing render function body goes here
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const projType = assertEl("projType");
+
+  // Render once on load (so the page isn't blank)
+  renderProjections(projType.value || "all");
+
+  // Re-render when dropdown changes
+  projType.addEventListener("change", (e) => {
+    renderProjections(e.target.value);
+  });
+
+  console.log("projType listener attached ✅", projType.value);
+});
+
+
+function norm(s) {
+  return String(s ?? "").trim().toLowerCase();
 }
 
 function sortByStat(players, stat, asc = false) {
